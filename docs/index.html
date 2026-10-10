@@ -1,0 +1,2435 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT情報ダイジェスト | 理学療法新着論文</title>
+    <meta name="description" content="理学療法士管理職のための新着論文・制度情報ダイジェスト">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-primary: #38bdf8;
+            --accent-secondary: #34d399;
+            --badge-pubmed-bg: #0369a1;
+            --badge-openalex-bg: #047857;
+            --container-max-width: 680px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 16px 12px 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: var(--container-max-width);
+        }
+
+        header {
+            margin-bottom: 24px;
+            padding: 20px 16px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-meta {
+            font-size: 0.825rem;
+            color: var(--text-secondary);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .keywords-container {
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .kw-tag {
+            font-size: 0.75rem;
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-primary);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 20px 4px 12px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .count-badge {
+            font-size: 0.8rem;
+            background: #334155;
+            color: #f1f5f9;
+            padding: 2px 10px;
+            border-radius: 12px;
+        }
+
+        .paper-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .paper-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 16px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .paper-card:active, .paper-card:hover {
+            border-color: var(--accent-primary);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .source-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-pubmed { background-color: var(--badge-pubmed-bg); }
+        .badge-openalex { background-color: var(--badge-openalex-bg); }
+
+        .pub-date {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .paper-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.45;
+            margin-bottom: 10px;
+        }
+
+        .paper-title a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .paper-title a:hover {
+            color: var(--accent-primary);
+            text-decoration: underline;
+        }
+
+        .paper-meta {
+            font-size: 0.825rem;
+            color: var(--text-secondary);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 14px;
+            background: rgba(15, 23, 42, 0.4);
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+
+        .meta-item {
+            word-break: break-word;
+        }
+
+        .meta-label {
+            color: #64748b;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: rgba(56, 189, 248, 0.15);
+            color: var(--accent-primary);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+
+        .link-btn:hover {
+            background-color: rgba(56, 189, 248, 0.25);
+        }
+
+        .external-icon {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px dashed var(--card-border);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 32px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="header-title">
+                📋 PT情報ダイジェスト
+            </div>
+            <div class="header-meta">
+                <span>更新日: 2026年10月10日</span>
+                <span>自動更新: 毎朝</span>
+            </div>
+            <div class="keywords-container">
+                <span class="kw-tag">stroke rehabilitation</span><span class="kw-tag">frailty</span><span class="kw-tag">physical therapy</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="section-title">
+                <span>新着論文 (直近7日間)</span>
+                <span class="count-badge">108 件</span>
+            </div>
+
+            <section class="paper-list">
+                
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 10</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.12659/AJCR.953163" target="_blank" rel="noopener noreferrer">Case Report: Botulinum Toxin Type A Injection for Bruxism Following Left Basal Ganglia Hemorrhage</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Wang J, Zhu X, Fu Y...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Am J Case Rep</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.12659/ajcr.953163</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.12659/AJCR.953163" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1002/pmrj.70225" target="_blank" rel="noopener noreferrer">First aggression as a planning signal in post-acute stroke rehabilitation: Service benchmarks, goal setting, and a 60-day precaution window from a comprehensive observational cohort</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> García-Rudolph A, Hernandez-Pena E, Romero A...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>PM R</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1002/pmrj.70225</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1002/pmrj.70225" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1038/s41746-026-03141-z" target="_blank" rel="noopener noreferrer">Expanding the functional scope of AI-driven rehabilitation exergames: multimodal biofeedback and adaptive safety monitoring</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Hou Z, Chen C</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>NPJ Digit Med</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1038/s41746-026-03141-z</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1038/s41746-026-03141-z" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.clnesp.2026.105190" target="_blank" rel="noopener noreferrer">Dysphagia, Oral Health Burden, and Stool-Detected Oral-Associated Taxa in Older Inpatients After Stroke: A Cross-Sectional Study</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Yoshimura Y, Matsumoto A, Yoneda K...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Clin Nutr ESPEN</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.clnesp.2026.105190</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.clnesp.2026.105190" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.neuropsychologia.2026.109606" target="_blank" rel="noopener noreferrer">Affective prosody and facial expression cues differentially augment spoken sentence and discourse comprehension for acute left and right hemisphere stroke survivors</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Tilton-Bolowsky VE, Durfee AZ, Bunker LD...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Neuropsychologia</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.neuropsychologia.2026.109606</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.neuropsychologia.2026.109606" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1097/MD.0000000000050933" target="_blank" rel="noopener noreferrer">Dose-response effects of robot-assisted training on poststroke functional recovery: A systematic review and meta-analysis</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Hu S, Wang F, Liu J...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Medicine (Baltimore)</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1097/md.0000000000050933</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1097/MD.0000000000050933" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1097/MD.0000000000051043" target="_blank" rel="noopener noreferrer">Efficacy of Kinesio tape for central facial paralysis: A prospective, randomized sham-controlled, single-blinded clinical trial</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Li X, Wang J, Xiao H...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Medicine (Baltimore)</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1097/md.0000000000051043</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1097/MD.0000000000051043" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1371/journal.pone.0359951" target="_blank" rel="noopener noreferrer">Delivery of cardiac rehabilitation through hybrid models and alternative settings by country income classification and decade: Comparisons from the International Council of Cardiovascular Prevention and Rehabilitation's 2025 Global Audit Update</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Ghisi GLM, Carson RP, Turk Adawi K...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>PLoS One</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1371/journal.pone.0359951</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1371/journal.pone.0359951" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1371/journal.pone.0360216" target="_blank" rel="noopener noreferrer">Feasibility, acceptability, and preliminary efficacy of AdaptRehab VR, an immersive virtual reality system for upper limb stroke rehabilitation: A mixed-methods study in Ethiopia</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Kenea CD, Abessa TG, Lamba D...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>PLoS One</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1371/journal.pone.0360216</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1371/journal.pone.0360216" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 8</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.2196/93518" target="_blank" rel="noopener noreferrer">R-SPEAK, an AI-Based Smartphone App to Enhance Communication in People With Expressive Aphasia: Qualitative Acceptability and Usability Study</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Al-Tamimi AK, Andrews J, Benfield J...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>J Med Internet Res</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.2196/93518</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.2196/93518" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1161/STROKEAHA.126.055913" target="_blank" rel="noopener noreferrer">Parent Perspectives on I-ACQUIRE Therapy</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Yale MM, Hindery KA, Murray JF...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Stroke</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1161/strokeaha.126.055913</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1161/STROKEAHA.126.055913" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.34133/cbsystems.0702" target="_blank" rel="noopener noreferrer">Application of Artificial Intelligence in the Prediction and Management of Stroke Rehabilitation</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Song W, Si S, Wang Y...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Cyborg Bionic Syst</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.34133/cbsystems.0702</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.34133/cbsystems.0702" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1155/crpe/3631063" target="_blank" rel="noopener noreferrer">Pediatric Dilated Cardiomyopathy With Suspected Hereditary Protein C/S and Antithrombin III Deficiency Presenting as Ischemic Stroke-A Rare Case Report</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Imran MW, Moaz M, Nawaz SS...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Case Rep Pediatr</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1155/crpe/3631063</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1155/crpe/3631063" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 8</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1186/s13020-026-01501-1" target="_blank" rel="noopener noreferrer">Scalp acupuncture coupled with speech-language therapy modulates the ventral-dorsal structural brain network in patients with post-stroke anomia: a randomized clinical and DTI neuroimaging trial</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Song J, Nan R, Ni J...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Chin Med</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1186/s13020-026-01501-1</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1186/s13020-026-01501-1" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 8</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1159/ned/adwag047" target="_blank" rel="noopener noreferrer">Development of a protocol to retrospectively identify acute traumatic brain injury using electronic medical records from an academic health system data warehouse</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Kumar R, Kirschenbaum J, McCage S...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Neuroepidemiology</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1159/ned/adwag047</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1159/ned/adwag047" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 8</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1007/s12035-026-06259-z" target="_blank" rel="noopener noreferrer">High-Frequency Repetitive Transcranial Magnetic Stimulation Attenuates Post-Stroke Brain Fibrosis by Increasing Brain-Derived Estrogen Levels: A Dual-Tracer PET/CT Study</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Cao Y, Tang P, Feng D...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Mol Neurobiol</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1007/s12035-026-06259-z</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1007/s12035-026-06259-z" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 8</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1080/09593985.2026.2745707" target="_blank" rel="noopener noreferrer">Factors associated with exercise preferences and perceived barriers in individuals with chronic stroke: a psychophysical perspective</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Kiloatar H, Telli H, Aydogdu Delibay A...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Physiother Theory Pract</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1080/09593985.2026.2745707</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1080/09593985.2026.2745707" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 8</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1080/10749357.2026.2746392" target="_blank" rel="noopener noreferrer">Effects of thoracic kinesiological taping on pulmonary functions, respiratory muscle strength, and functional independence in patients with hemiplegia: a randomized controlled clinical trial</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Bitmani N, Günday Ç, Tütüneken YE...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Top Stroke Rehabil</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1080/10749357.2026.2746392</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1080/10749357.2026.2746392" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 8</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.2340/jrm.v58.45972" target="_blank" rel="noopener noreferrer">Relaxation interventions in neurological rehabilitation: a scoping review</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Rings P, Dziurla J, Van Damme T...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>J Rehabil Med</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.2340/jrm.v58.45972</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.2340/jrm.v58.45972" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 8</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1177/02692155261490507" target="_blank" rel="noopener noreferrer">Engagement strategies to support sub-acute, post-stroke upper limb interventions: A co-design study</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Wingfield M, Williams G, Brodtmann A...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Clin Rehabil</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1177/02692155261490507</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1177/02692155261490507" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2029-01-01</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.48683/1926.00129237" target="_blank" rel="noopener noreferrer">The design of soft-actuated upper-body exoskeletons for movement assistance and physical therapy</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Daniel George</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>CentAUR (University of Reading)</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.48683/1926.00129237</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.48683/1926.00129237" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2028-01-01</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.17870/bathspa.00017805" target="_blank" rel="noopener noreferrer">Brain-based digital twins for skilled interceptive movements: computational frameworks for neural-kinematic integration</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> D Pathak</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Research Space</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.17870/bathspa.00017805</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.17870/bathspa.00017805" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2027-01-01</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.14288/1.0451727" target="_blank" rel="noopener noreferrer">Learning to adapt : neurophysiological insights into split-belt treadmill walking following a stroke</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Kaya Yoshida</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>cIRcle (University of British Columbia)</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.14288/1.0451727</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.14288/1.0451727" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-11-12</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.5281/zenodo.21874928" target="_blank" rel="noopener noreferrer">Инсульт остаётся одной из наиболее актуальных медико-социальных проблем современности. По статистике Всемирной организации здравоохранения, ежегодно инсульт переносят более 15 миллионов человек, и около 5 миллионов из них остаются с тяжёлыми двигательными нарушениями. Полноценное восстановление после инсульта — сложный и длительный процесс, требующий комплексного подхода, где всё большую роль играет применение современных технологий, в частности робототехнических систем.</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Мохигуль Атоева</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Zenodo (CERN European Organization for Nuclear Research)</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.5281/zenodo.21874928</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.5281/zenodo.21874928" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-11-10</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.5281/zenodo.18309329" target="_blank" rel="noopener noreferrer">A Systemic Observational Framework Integrating Physiotherapy-Derived Functional, Physiological, And Behavioral Indicators In Predicting Pharmacological Response</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Dr. Kanchan Kholiya, Dr. Shalini dixit, Ram Sihag (PT), Dr. Samarpita Senapati (PT), Dr. Harish Sharma (PT), Dr. Gurpreet Kaur (PT)), Dr. Harshika Gupta (PT).</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Cultura</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.5281/zenodo.18309329</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.5281/zenodo.18309329" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-11-01</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.jhlto.2026.100647" target="_blank" rel="noopener noreferrer">Lung transplantation outcomes in candidates aged ≥ 70 years old: A 10-year single center experience.</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Jason M. Aubrey, Preetha Pamidighantam, Stephen D. Thorp...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>PubMed</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.jhlto.2026.100647</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.jhlto.2026.100647" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-11</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.5281/zenodo.18206166" target="_blank" rel="noopener noreferrer">TELEREHABILITATION: OPTIMIZING PATIENT OUTCOMES AND ACCESSIBILITY IN POST-STROKE RECOVERY</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Razan Abdulkarim Alkani, Lilas Almotasem Bellah El Arjawi, Waseem Nadim, Raad AlHmoud, Tasneem Abdul Muin Junaid, Sara Abdullah Alhoti ,Ahmad Bassam Al Halabi, Sami Mohammad Jameel, Raghad Emad Alhalabi, Osama Abdulnaser Kouzo, Yousef Jameel Eid Albalawi, Raghad Hassan Alsayed, Maysoon Saud S Alharthy</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>TPM Testing, psychometrics, methodology in applied psychology</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.5281/zenodo.18206166</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.5281/zenodo.18206166" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.13140/rg.2.2.11727.65449" target="_blank" rel="noopener noreferrer">Trajectory Tracking of a Four Degree of Freedom Robotic Manipulator</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Mohammad Rezwan Sheikh</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>UWM Digital Commons (University of Wisconsin–Milwaukee)</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.13140/rg.2.2.11727.65449</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.13140/rg.2.2.11727.65449" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1113/jp289463" target="_blank" rel="noopener noreferrer">Interplay between store‐operated calcium entry and mitochondrial phosphate handling modulates force and fatigue during exercise</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Emmet A. Francis, Juliette Hamid, A B Anil Kumar...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>The Journal of Physiology</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1113/jp289463</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1113/jp289463" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1007/978-3-032-19374-2_14" target="_blank" rel="noopener noreferrer">Shared Control for Assistive and Collaborative Robotics</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Claudio Pacchierotti, Divyaksh Subhash Chander, Louise Devigne...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Springer tracts in advanced robotics</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1007/978-3-032-19374-2_14</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1007/978-3-032-19374-2_14" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1177/02601060261494308" target="_blank" rel="noopener noreferrer">Acute postoperative dietary intake in older adult hip fracture patients: An exploratory three-day weighed food diary observational study</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Helen Lloyd, Sarah Allison, Naomi Burn...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Nutrition and Health</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1177/02601060261494308</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1177/02601060261494308" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1007/978-3-032-19374-2_24" target="_blank" rel="noopener noreferrer">Robotics for Aging Populations</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Kar Him Mo, Fei Chen, Giacinto Barresi</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Springer tracts in advanced robotics</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1007/978-3-032-19374-2_24</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1007/978-3-032-19374-2_24" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.20338/bjmb.v20i1.569" target="_blank" rel="noopener noreferrer">Concurrent validity of MABC-2 and sitting-rising test for motor skill screening of children</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Thailyne Bizinotto, Cibelle Kayenne Martins Roberto Formiga, Tânia Cristina Dias da Silva Hamú...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Brazilian Journal of Motor Behavior</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.20338/bjmb.v20i1.569</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.20338/bjmb.v20i1.569" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1007/978-3-032-19374-2_8" target="_blank" rel="noopener noreferrer">Social Robotics and Human–Robot Communication</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Guy Laban, Emily S. Cross</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Springer tracts in advanced robotics</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1007/978-3-032-19374-2_8</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1007/978-3-032-19374-2_8" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1007/978-3-032-19374-2_17" target="_blank" rel="noopener noreferrer">User Preferences for Enhanced Robot Adaptation in Assistive Tasks</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Gerard Canal, Guillem Alenyà, Carme Torras</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Springer tracts in advanced robotics</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1007/978-3-032-19374-2_17</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1007/978-3-032-19374-2_17" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.nut.2026.113426" target="_blank" rel="noopener noreferrer">Metabolic dysfunction in chronic critical illness: mechanisms, clinical consequences and therapeutic perspectives</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Sílvia Castro, Cristina Granja, Joanna Colleen Dionne...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Nutrition</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.nut.2026.113426</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.nut.2026.113426" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1007/978-3-032-19374-2_12" target="_blank" rel="noopener noreferrer">Occupational Wearable Robotics</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Jesús Ortiz, Luigi Monica, Sara Anastasi...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Springer tracts in advanced robotics</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1007/978-3-032-19374-2_12</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1007/978-3-032-19374-2_12" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1007/978-3-032-19374-2_10" target="_blank" rel="noopener noreferrer">Human Factors in Robotics for Motor Rehabilitation, Assistance, and Prosthetics</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Federico Tessari, Marek Sierotowicz, Sabine Thuerauf...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Springer tracts in advanced robotics</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1007/978-3-032-19374-2_10</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1007/978-3-032-19374-2_10" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.3389/fpain.2026.1923943" target="_blank" rel="noopener noreferrer">Effect of music on short-term pain perception during peripheral intravenous cannulation</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Andrei Cristinel Dragnea, Lars Michels, Till Fellner...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Frontiers in Pain Research</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.3389/fpain.2026.1923943</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.3389/fpain.2026.1923943" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.25258/ijddt.16.58s.135" target="_blank" rel="noopener noreferrer">Development And Validation Of Questionnaire To Assess Sleep Disturbances, Mental Health And Quality Of Life In Subacute Stroke</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> 著者情報なし</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>International Journal of Drug Delivery Technology</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.25258/ijddt.16.58s.135</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.25258/ijddt.16.58s.135" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1007/s41999-026-01620-w" target="_blank" rel="noopener noreferrer">Integrated physical and mental healthcare for older adults in Europe: from concept to implementation-a joint EuGMS and EAGP perspectives paper</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Beishon L, Nobels A, Alves M...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Eur Geriatr Med</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1007/s41999-026-01620-w</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1007/s41999-026-01620-w" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.2196/94561" target="_blank" rel="noopener noreferrer">Geriatric Assessment-Based Stratification to Evaluate Treatment Intensity, Quality of Life, and Survival in Older Patients With Metastatic Colorectal Cancer: Protocol for a Prospective Observational Study</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Hiramatsu T, Okazaki I, Hosokawa K...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>JMIR Res Protoc</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.2196/94561</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.2196/94561" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.clnesp.2026.105179" target="_blank" rel="noopener noreferrer">Comment on "Phase angle as a marker of frailty and prognosis in heart failure: Evidence from a prospective cohort study"</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Li L, Che B</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Clin Nutr ESPEN</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.clnesp.2026.105179</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.clnesp.2026.105179" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.jnha.2026.101003" target="_blank" rel="noopener noreferrer">Impact of preoperative frailty and sarcopenia on short-term functional recovery after cardiac surgery in elderly patients: a prospective cohort study</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Fan G, Zhang Y, Chen G...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>J Nutr Health Aging</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.jnha.2026.101003</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.jnha.2026.101003" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.jclinane.2026.112332" target="_blank" rel="noopener noreferrer">Fluid responsiveness-guided preinduction volume optimization and postinduction hypotension in older adults at increased frailty risk: A randomized clinical trial</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Wang M, Xu C, Zhang C...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>J Clin Anesth</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.jclinane.2026.112332</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.jclinane.2026.112332" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 4</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.archger.2026.106441" target="_blank" rel="noopener noreferrer">Childhood loneliness and deficit-accumulation frailty progression in mid-to-late life</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Wang J, Jiao D, Zhao X...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Arch Gerontol Geriatr</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.archger.2026.106441</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.archger.2026.106441" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.tjpad.2026.100682" target="_blank" rel="noopener noreferrer">Frailty in the anti-amyloid era: an opportunity to individualize care</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Vogt NM, Kim DH</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>J Prev Alzheimers Dis</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.tjpad.2026.100682</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.tjpad.2026.100682" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.2196/95303" target="_blank" rel="noopener noreferrer">Association Between Wrist-Worn Device-Estimated Sleep Efficiency and Hand Grip Strength in Older Outpatients With Cardiometabolic Diseases: Cross-Sectional Study</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Tamura Y, Gong R, Murao Y...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>JMIR Form Res</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.2196/95303</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.2196/95303" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1097/MD.0000000000051036" target="_blank" rel="noopener noreferrer">Shared genetic architecture between constipation and aging-related phenotypes: Insights from large-scale genome-wide cross-trait analysis</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Liao Y, Liu W, Liu X...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Medicine (Baltimore)</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1097/md.0000000000051036</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1097/MD.0000000000051036" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.2106/JBJS.26.00473" target="_blank" rel="noopener noreferrer">Adult Cervical Deformity: Contemporary Evaluation, Classification, and Surgical Decision-Making</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Dekhne MS, Kazarian GS, Kim HJ</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>J Bone Joint Surg Am</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.2106/jbjs.26.00473</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.2106/JBJS.26.00473" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 6</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1097/JNC.0000000000000703" target="_blank" rel="noopener noreferrer">Exercise to Mitigate the Effects of Aging With HIV: A Narrative Review With Exercise Recommendations for Practice</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> SantaBarbara NJ, Kurdziel L, Cellucci J...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>J Assoc Nurses AIDS Care</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1097/jnc.0000000000000703</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1097/JNC.0000000000000703" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1093/gerona/glag247" target="_blank" rel="noopener noreferrer">Intrinsic Capacity in a Nationally Representative US Population</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Sison SDM, Luo L, Kim S...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>J Gerontol A Biol Sci Med Sci</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1093/gerona/glag247</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1093/gerona/glag247" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1097/COH.0000000000001077" target="_blank" rel="noopener noreferrer">The interaction of comorbidities, aging, and HIV persistence in tissues</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> O'Hare KA, Freeman ML, Erlandson KM</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Curr Opin HIV AIDS</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1097/coh.0000000000001077</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1097/COH.0000000000001077" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1161/CIRCOUTCOMES.126.013494" target="_blank" rel="noopener noreferrer">Use of Anticoagulation Among Patients With Atrial Fibrillation or Atrial Flutter in the United States</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Gouda P, Harrington J, Arps K...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Circ Popul Health Outcomes</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1161/circoutcomes.126.013494</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1161/CIRCOUTCOMES.126.013494" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1002/hsr2.73363" target="_blank" rel="noopener noreferrer">Hip Fracture Management in Older Adults in Resource-Constrained Settings: Determinants, Care Pathways, and Outcomes-A Systematic Review and Meta-Analysis</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Ismail AI, Thomas OA, Ojiakor VO...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Health Sci Rep</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1002/hsr2.73363</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1002/hsr2.73363" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Nov</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1111/bcpt.70315" target="_blank" rel="noopener noreferrer">Vitamin D: Physiology, Pharmacology and Clinical Evidence for Supplementation-A Narrative Review</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Virtanen JK</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Basic Clin Pharmacol Toxicol</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1111/bcpt.70315</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1111/bcpt.70315" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1007/s10072-026-09452-z" target="_blank" rel="noopener noreferrer">Organizing healthcare delivery in the era of disease-modifying therapies for Alzheimer's Disease: an Italian RAND/UCLA consensus</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Padovani A, Altini M, Bellelli G...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Neurol Sci</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1007/s10072-026-09452-z</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1007/s10072-026-09452-z" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1007/s11764-026-02118-x" target="_blank" rel="noopener noreferrer">Frailty and risk of common chronic diseases among cancer survivors: a prospective cohort study</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Li W, Zhang Z, Lu C...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>J Cancer Surviv</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1007/s11764-026-02118-x</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1007/s11764-026-02118-x" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 8</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1007/s41999-026-01618-4" target="_blank" rel="noopener noreferrer">Prevalence and appropriateness of solid oral dosage form manipulation in long-term care facilities</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Malara A, Zucchelli A, Trevisan C...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Eur Geriatr Med</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1007/s41999-026-01618-4</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1007/s41999-026-01618-4" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 8</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1111/os.70451" target="_blank" rel="noopener noreferrer">Multidimensional Management of Degenerative Scoliosis: A Comprehensive Narrative Review Integrating Diagnostic Assessment, Surgical Decision-Making, and Patient-Centered Outcomes</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Wang Y, Zhao X, Wang K...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Orthop Surg</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1111/os.70451</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1111/os.70451" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-28</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://openalex.org/W7219475334" target="_blank" rel="noopener noreferrer">"He has no children": maternita, sterilita e fertilita nel Macbeth e in tre adattamenti cinematografici</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> GIULIA ARGENTIERI FEDERZONI</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Cineca Institutional Research Information System (Tor Vergata University)</em></div>
+                    
+                </div>
+                <div class="card-footer">
+                    <a href="https://openalex.org/W7219475334" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-16</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://openalex.org/W7220010108" target="_blank" rel="noopener noreferrer">Identifying which patients with metastatic hormone-sensitive prostate cancer benefit most from androgen receptor pathway inhibitors: STOPCAP systematic review and meta-analysis of individual participant data</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> David Fisher, Larysa H. M. Rydzewska, Peter John Godolphin...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>UCL Discovery (University College London)</em></div>
+                    
+                </div>
+                <div class="card-footer">
+                    <a href="https://openalex.org/W7220010108" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-10</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.26442/00403660.2026.09.203766" target="_blank" rel="noopener noreferrer">Predictors of ischemic stroke and systemic embolism in patients with atrial fibrillation over 60 years of age receiving anticoagulants (according to observation data from the Registry of Long-term Antithrombotic Therapy REGATTA-2)</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Ekaterina S. Kropacheva, M. I. Dashaeva, Е. П. Панченко</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Terapevticheskii arkhiv</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.26442/00403660.2026.09.203766</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.26442/00403660.2026.09.203766" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1186/s12888-026-08746-y" target="_blank" rel="noopener noreferrer">Prevalence of frailty and associated factors among aging residents with chronic schizophrenia in Taiwanese psychiatric nursing home: a cross-sectional study</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Tse-Tsung Liu, Su‐Jung Liao, Chia-Jou Hsieh</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>BMC Psychiatry</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1186/s12888-026-08746-y</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1186/s12888-026-08746-y" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1007/s00384-026-05245-0" target="_blank" rel="noopener noreferrer">Preoperative serum interleukin-6 and severe postoperative complications after colorectal cancer resection</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Pekka Peroja, Jukka M. J. Rintala, Anne Tuomisto...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>International Journal of Colorectal Disease</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1007/s00384-026-05245-0</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1007/s00384-026-05245-0" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1038/s41408-026-01634-4" target="_blank" rel="noopener noreferrer">Subcutaneous isatuximab by on-body-injector plus bortezomib, lenalidomide, and dexamethasone in newly diagnosed transplant-ineligible multiple myeloma: ISASOCUT study</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Arthur Bobin, Lisa Durocher, Cyrille Touzeau...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Blood Cancer Journal</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1038/s41408-026-01634-4</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1038/s41408-026-01634-4" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.20517/mrr.2026.42" target="_blank" rel="noopener noreferrer">The skin microbiome in aging from ecological dysbiosis to molecular therapeutics</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Yu Lei, Qianmei Liu, Qianjin Lu</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Microbiome Research Reports</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.20517/mrr.2026.42</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.20517/mrr.2026.42" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.17632/67phfrkhsr" target="_blank" rel="noopener noreferrer">Relationship between phosphatidylethanol levels and AUDIT scores in hospitalized patients with ACLD: modifying effects of interhospital transfer and anemia</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Ľubomír Skladaný, Světlana Adamcová Selčanová, Daniela Žilinčanová...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Mendeley Data</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.17632/67phfrkhsr</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.17632/67phfrkhsr" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.71112/q5wz7d96" target="_blank" rel="noopener noreferrer">Obesidad sarcopénica e indicadores cardiometabólicos en adultos mayores de América Latina: revisión sistemática actualizada, 2015-2026</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Cinthya Stephanie Vaca Velasteguí</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Revista Multidisciplinar Epistemología de las Ciencias</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.71112/q5wz7d96</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.71112/q5wz7d96" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-10-09</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.3389/fphar.2026.1917340" target="_blank" rel="noopener noreferrer">Tirzepatide versus other glucose-lowering therapies and risk of COPD exacerbations in patients with comorbid type 2 diabetes: a retrospective cohort study</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Wan-Hsuan Hsu, Yang-En Chan, Jheng-Yan Wu...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Frontiers in Pharmacology</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.3389/fphar.2026.1917340</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.3389/fphar.2026.1917340" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 10</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1080/09638288.2026.2734781" target="_blank" rel="noopener noreferrer">Exploring the participation of people with lower limb absence or amputation: a mixed methods study</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Pousett BM, Battalova A, Parag N...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Disabil Rehabil</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1080/09638288.2026.2734781</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1080/09638288.2026.2734781" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 10</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1111/hae.70413" target="_blank" rel="noopener noreferrer">Enhanced Functional Independence Score for Haemophilia (E-FISH) for Early Detection of Musculoskeletal Changes</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Padankatti SM, Priyadarshini S, Thomvic R...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Haemophilia</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1111/hae.70413</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1111/hae.70413" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 10</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1080/17518423.2026.2746730" target="_blank" rel="noopener noreferrer">Game-oriented interventions for children with cerebral palsy: a review of efficacy, engagement, and functional outcomes</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Mahmood Q</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Dev Neurorehabil</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1080/17518423.2026.2746730</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1080/17518423.2026.2746730" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1186/s13017-026-00739-2" target="_blank" rel="noopener noreferrer">Designing a hybrid surgical ICU to avoid intrahospital transport in selected critically Ill patients: the CUHK-SZ institutional concept</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Tsui BC, Chan HH, Peng M...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>World J Emerg Surg</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1186/s13017-026-00739-2</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1186/s13017-026-00739-2" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1186/s12905-026-04978-y" target="_blank" rel="noopener noreferrer">Women's experiences of a medically supervised fasting intervention for infertility: a qualitative study</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Behling JN, May KT, Batschari K...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>BMC Womens Health</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1186/s12905-026-04978-y</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1186/s12905-026-04978-y" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.berh.2026.102205" target="_blank" rel="noopener noreferrer">Implementing exercise therapy for hip and knee osteoarthritis in the clinic: a best practice narrative review</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Haber T, Bennell KL, Hinman RS...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Best Pract Res Clin Rheumatol</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.berh.2026.102205</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.berh.2026.102205" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.revmed.2026.06.010" target="_blank" rel="noopener noreferrer">[Hiccups in adults: Pathophysiology, diagnostic approach, and management]</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Aubignat M</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Rev Med Interne</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.revmed.2026.06.010</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.revmed.2026.06.010" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.2196/97392" target="_blank" rel="noopener noreferrer">Feasibility, Acceptability, and Appropriateness of an 8-Week Supervised Aerobic Exercise Intervention for Adults With Epilepsy: Pilot Randomized Controlled Trial</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Churchill S, Lansing J, Brellenthin A...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>JMIR Form Res</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.2196/97392</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.2196/97392" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.rmed.2026.109204" target="_blank" rel="noopener noreferrer">Effects of complementary therapies on physiological and psychological outcomes in chronic obstructive pulmonary disease patients: A systematic review and meta-analysis of randomized controlled trials</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Santiworakul A, Cetthakrikul S, Nemoto S...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Respir Med</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.rmed.2026.109204</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.rmed.2026.109204" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.jvsv.2026.102639" target="_blank" rel="noopener noreferrer">Post thrombotic syndrome after thrombotic venous thoracic outlet syndrome</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Benhalima S, Gautier G, Douane F...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>J Vasc Surg Venous Lymphat Disord</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.jvsv.2026.102639</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.jvsv.2026.102639" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.apmr.2026.10.005" target="_blank" rel="noopener noreferrer">Effect of Integrated Respiratory and Functional Training on Weaning from Mechanical Ventilation, Respiratory and Peripheral Muscle Strength, Functional Ability, and Pain After Emergency Abdominal Surgery: A Randomized Controlled Trial</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Mehani SHM, Mohamed AA, Mohamed MS...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Arch Phys Med Rehabil</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.apmr.2026.10.005</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.apmr.2026.10.005" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.medj.2026.101304" target="_blank" rel="noopener noreferrer">Trunk-mediated spinal cord stimulation: A step toward clinical implementation after spinal cord injury</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Bhatia S, Gerszten PC</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Med</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.medj.2026.101304</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.medj.2026.101304" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.gerinurse.2026.104373" target="_blank" rel="noopener noreferrer">Investigation of the physical and emotional status of elderly individuals with and without COVID-19: a cross-sectional study</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Mutlu A, Büyükturan B, Büyükturan Ö</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Geriatr Nurs</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.gerinurse.2026.104373</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.gerinurse.2026.104373" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 8</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.pscychresns.2026.112353" target="_blank" rel="noopener noreferrer">Dynamic functional abnormalities of cerebellar networks in adolescents with obsessive-compulsive disorder</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Jia A, Yuan X, Zhang K...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Psychiatry Res Neuroimaging</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.pscychresns.2026.112353</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.pscychresns.2026.112353" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 3</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.clinbiomech.2026.106986" target="_blank" rel="noopener noreferrer">Combined anterior cruciate ligament and anterolateral ligament reconstruction leads to better postural control than isolated anterior cruciate ligament reconstruction in the early postoperative phase</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Kim JS, Hwang UJ, Baek SH...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Clin Biomech (Bristol)</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.clinbiomech.2026.106986</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.clinbiomech.2026.106986" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.3171/2026.4.SPINE2679" target="_blank" rel="noopener noreferrer">Outcomes after MI-TLIF without bone morphogenetic protein: a retrospective study</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Mensah EO, Chalif JI, Ramirez-Velandia F...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>J Neurosurg Spine</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.3171/2026.4.spine2679</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.3171/2026.4.SPINE2679" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1097/SAP.0000000000004914" target="_blank" rel="noopener noreferrer">Financial Toxicity in Plastic Surgery: A Scoping Review</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Plascevic J, Liang J, Ludington S...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Ann Plast Surg</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1097/sap.0000000000004914</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1097/SAP.0000000000004914" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.2196/103353" target="_blank" rel="noopener noreferrer">Effect of Digital Technology-Based Interventions on Core Symptoms and Cognitive Function in Children With Attention-Deficit/Hyperactivity Disorder: Systematic Review and Meta-Analysis</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Wang A, Qin W, Chen L...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>J Med Internet Res</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.2196/103353</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.2196/103353" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.2196/90389" target="_blank" rel="noopener noreferrer">Association Between Embodiment of a Muscular Avatar and Muscle Performance in Virtual Reality for Chronic Low Back Pain: Exploratory Pre-Post Study</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Nakaso Y, Hu YH, Shiro Y...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>JMIR Serious Games</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.2196/90389</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.2196/90389" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-pubmed">PubMed</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026 Oct 9</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1097/MD.0000000000050765" target="_blank" rel="noopener noreferrer">Rehabilitative efficacy of cognitive behavioral therapy-based intervention for chronic fatigue syndrome: A systematic review and meta-analysis</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Jiang X, Liu J, Li S...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Medicine (Baltimore)</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1097/md.0000000000050765</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1097/MD.0000000000050765" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2027-07-08</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.25907/01071" target="_blank" rel="noopener noreferrer">Cardiac rehabilitation: A potential pathway for patients with peripheral artery disease</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Krist Feka</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>University of the Sunshine Coast</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.25907/01071</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.25907/01071" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2027-01-01</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.14288/1.0451822" target="_blank" rel="noopener noreferrer">Investigating the effects of vaping on lung structure and function with pulmonary imaging</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Schmidt, Alexandra</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>cIRcle (University of British Columbia)</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.14288/1.0451822</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.14288/1.0451822" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2027-01-01</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.21954/ou.ro.00110446" target="_blank" rel="noopener noreferrer">Quantifying cell-cycle decisions and their impact on single-cell and population behaviour</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Mattia Corigliano</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Open Research Online (The Open University)</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.21954/ou.ro.00110446</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.21954/ou.ro.00110446" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2027-01-01</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.bioactmat.2026.07.040" target="_blank" rel="noopener noreferrer">Preclinical evaluation of PSMA-targeted ultrasound contrast agents in an orthotopic model of prostate cancer in rabbits.</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Felipe M. Berg, Eric Abenojar, Pinunta Nittayacharn...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>PubMed</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.bioactmat.2026.07.040</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.bioactmat.2026.07.040" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-12-31</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.5281/zenodo.18113457" target="_blank" rel="noopener noreferrer">The Nexus of Thought, Health, And Disease: A Comprehensive Review of Cognitive Influences on Mental and Physical Well-Being and the Efficacy of Adaptive Management Strategies</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Athalia Tiffany Harwanto, Budi Harwanto</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>International Journal of Social Science and Human Research</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.5281/zenodo.18113457</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.5281/zenodo.18113457" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-12-30</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.5281/zenodo.22768009" target="_blank" rel="noopener noreferrer">Video and digital games: Historical controversies, benefits, and risks for children and adolescents</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Hanna David</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Journal of Child Development, Exceptionality and Education</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.5281/zenodo.22768009</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.5281/zenodo.22768009" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-12-23</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.5281/zenodo.22654614" target="_blank" rel="noopener noreferrer">EFFECT OF PHONOPHORESIS WITH DICLOFENAC SODIUM AND THERAPEUTIC ULTRASOUND WITH TRADITIONAL PHYSIOTHERAPY IN KNEE OSTEOARTHRITIS</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Pakistan Journal of Medical & Cardiological Review</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Zenodo (CERN European Organization for Nuclear Research)</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.5281/zenodo.22654614</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.5281/zenodo.22654614" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-12-15</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.5281/zenodo.18464498" target="_blank" rel="noopener noreferrer">DIAGNOSTIC ACCURACY OF MRI IN DETECTING ROTATOR CUFF TEARS TAKING INDIRECT MR ARTHROGRAPHY AS GOLD STANDARD</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> DR. MARIA MURTAZA , DR MUHAMMAD AQEEL BABRI , DR. AFAF ARIF , DR. HASSAN RASHID ,</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>TPM Testing, psychometrics, methodology in applied psychology</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.5281/zenodo.18464498</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.5281/zenodo.18464498" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-12-10</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.omta.2026.201832" target="_blank" rel="noopener noreferrer">Sequence-based artificial intelligence-guided inhibitory peptides to counteract AAV neutralizing antibodies in gene therapy.</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Bingqi Xu, Xin Zhang, Dandan Yu...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>PubMed</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.omta.2026.201832</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.omta.2026.201832" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-12-01</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.36721/pjps.2026.39.12.348.1" target="_blank" rel="noopener noreferrer">Albiflorin suppresses breast cancer via the HINT2/NLRP3 signaling pathway.</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Yunpeng Hu, Chen Li, Yiyao Cui</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>PubMed</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.36721/pjps.2026.39.12.348.1</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.36721/pjps.2026.39.12.348.1" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-11-13</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.3238/arztebl.m2026.0172" target="_blank" rel="noopener noreferrer">The Ataxias as an Example of Rare Diseases: Diagnosis, Genetics, and Treatment.</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Friedrich Erdlenbruch, Andreas Thieme, Christel Depienne...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>PubMed</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.3238/arztebl.m2026.0172</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.3238/arztebl.m2026.0172" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-11-05</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.5281/zenodo.18456560" target="_blank" rel="noopener noreferrer">TO STUDY THE RESPONSE RATE OF HYPO-FRACTIONATED BLADDER PRESERVATION RADIOTHERAPY IN MUSCLE INVASIVE BLADDER CANCER</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> DR. SHEIKH TAHIR SIDDIQUE , DR. ZEESHAN BADAR , DR. MUHAMMAD UMAIR , DR SANA NAEEM , DR. SAMINA SIDDIQUE , DR RAB NAWAZ MAKEN (SUPERVISOR)</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>TPM Testing, psychometrics, methodology in applied psychology</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.5281/zenodo.18456560</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.5281/zenodo.18456560" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-11-01</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1007/s00125-026-06726-1" target="_blank" rel="noopener noreferrer">Metabolic dysfunction-associated Steatotic liver disease prevalence, incidence and global aspects</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Sarah H. Wild, Jeffrey V. Lazarus, C. Wendy Spearman...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>ePrints Soton (University of Southampton)</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1007/s00125-026-06726-1</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1007/s00125-026-06726-1" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-11-01</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.1016/j.bpsgos.2026.100790" target="_blank" rel="noopener noreferrer">Outdoor Air Pollution, Perivascular Space Morphology, and Cognition in Preadolescence.</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Jessica Morrel, Kirthana Sukumaran, Carinna Torgerson...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>PubMed</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.1016/j.bpsgos.2026.100790</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.1016/j.bpsgos.2026.100790" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-11-01</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://doi.org/10.5281/zenodo.23247992" target="_blank" rel="noopener noreferrer">Before Qualia, Strategic Existence Begins</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Angelina Inesia-Forde</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>PhilPapers (PhilPapers Foundation)</em></div>
+                    <div class="meta-item"><span class="meta-label">DOI:</span> 10.5281/zenodo.23247992</div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://doi.org/10.5281/zenodo.23247992" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-11-01</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://openalex.org/W7216638656" target="_blank" rel="noopener noreferrer">Lived Experiences of Couples Regarding Grief Caused by Recurrent Miscarriages in Infertile Women: A Phenomenological Study</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Hoda Zaraj, Manijeh Firoozi, Katayon Vakilian...</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Psychology of Woman Journal</em></div>
+                    
+                </div>
+                <div class="card-footer">
+                    <a href="https://openalex.org/W7216638656" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-11-01</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://openalex.org/W7217300480" target="_blank" rel="noopener noreferrer">The Effectiveness of Self-Compassion Training on Body Image Concern and Difficulties in Emotion Regulation in Women with Overweight</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Zohre Safari, Seyedeh Fatemeh Dinparast, Mahdieh Salari</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Psychology of Woman Journal</em></div>
+                    
+                </div>
+                <div class="card-footer">
+                    <a href="https://openalex.org/W7217300480" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="paper-card">
+                <div class="card-header">
+                    <span class="source-badge badge-openalex">OpenAlex</span>
+                    <span class="pub-date"><i class="far fa-calendar-alt"></i> 2026-11-01</span>
+                </div>
+                <h2 class="paper-title">
+                    <a href="https://openalex.org/W7217566277" target="_blank" rel="noopener noreferrer">The Effectiveness of Emotional Schema Therapy on Defense Mechanisms, Emotional Distress Tolerance, and Psychosomatic Symptoms in Married Women with Psychosomatic Disorder Symptoms</a>
+                </h2>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">著者:</span> Zeinab Haghighi, Milad Abedi Ghelich Gheshlaghi</div>
+                    <div class="meta-item"><span class="meta-label">雑誌:</span> <em>Psychology of Woman Journal</em></div>
+                    
+                </div>
+                <div class="card-footer">
+                    <a href="https://openalex.org/W7217566277" target="_blank" rel="noopener noreferrer" class="link-btn">
+                        原文を読む <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                    </a>
+                </div>
+            </article>
+            
+            </section>
+        </main>
+
+        <footer>
+            <p>PT Daily Digest &copy; 2026 | Free & Open Source</p>
+        </footer>
+    </div>
+</body>
+</html>

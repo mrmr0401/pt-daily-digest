@@ -1,0 +1,1891 @@
+{
+  "generated_at": "2026-10-10 21:34:49",
+  "keywords": [
+    "stroke rehabilitation",
+    "frailty",
+    "physical therapy"
+  ],
+  "count": 108,
+  "papers": [
+    {
+      "title": "Case Report: Botulinum Toxin Type A Injection for Bruxism Following Left Basal Ganglia Hemorrhage",
+      "authors": [
+        "Wang J",
+        "Zhu X",
+        "Fu Y",
+        "Zheng Y"
+      ],
+      "journal": "Am J Case Rep",
+      "pubdate": "2026 Oct 10",
+      "url": "https://doi.org/10.12659/AJCR.953163",
+      "doi": "10.12659/ajcr.953163",
+      "source_api": "PubMed",
+      "pmid": "42855873"
+    },
+    {
+      "title": "First aggression as a planning signal in post-acute stroke rehabilitation: Service benchmarks, goal setting, and a 60-day precaution window from a comprehensive observational cohort",
+      "authors": [
+        "García-Rudolph A",
+        "Hernandez-Pena E",
+        "Romero A",
+        "Wright MA",
+        "Saurí J",
+        "Teixido-Font C",
+        "Opisso E",
+        "Cedersund G",
+        "Bernabeu M"
+      ],
+      "journal": "PM R",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1002/pmrj.70225",
+      "doi": "10.1002/pmrj.70225",
+      "source_api": "PubMed",
+      "pmid": "42855834"
+    },
+    {
+      "title": "Expanding the functional scope of AI-driven rehabilitation exergames: multimodal biofeedback and adaptive safety monitoring",
+      "authors": [
+        "Hou Z",
+        "Chen C"
+      ],
+      "journal": "NPJ Digit Med",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1038/s41746-026-03141-z",
+      "doi": "10.1038/s41746-026-03141-z",
+      "source_api": "PubMed",
+      "pmid": "42855477"
+    },
+    {
+      "title": "Dysphagia, Oral Health Burden, and Stool-Detected Oral-Associated Taxa in Older Inpatients After Stroke: A Cross-Sectional Study",
+      "authors": [
+        "Yoshimura Y",
+        "Matsumoto A",
+        "Yoneda K",
+        "Wakabayashi H",
+        "Maeda K"
+      ],
+      "journal": "Clin Nutr ESPEN",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1016/j.clnesp.2026.105190",
+      "doi": "10.1016/j.clnesp.2026.105190",
+      "source_api": "PubMed",
+      "pmid": "42854972"
+    },
+    {
+      "title": "Affective prosody and facial expression cues differentially augment spoken sentence and discourse comprehension for acute left and right hemisphere stroke survivors",
+      "authors": [
+        "Tilton-Bolowsky VE",
+        "Durfee AZ",
+        "Bunker LD",
+        "You V",
+        "Kang J",
+        "Kim H",
+        "Hillis AE"
+      ],
+      "journal": "Neuropsychologia",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1016/j.neuropsychologia.2026.109606",
+      "doi": "10.1016/j.neuropsychologia.2026.109606",
+      "source_api": "PubMed",
+      "pmid": "42854866"
+    },
+    {
+      "title": "Dose-response effects of robot-assisted training on poststroke functional recovery: A systematic review and meta-analysis",
+      "authors": [
+        "Hu S",
+        "Wang F",
+        "Liu J",
+        "Zhu J",
+        "Wang G",
+        "Hong F",
+        "He Y",
+        "Chu Y",
+        "Kim D"
+      ],
+      "journal": "Medicine (Baltimore)",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1097/MD.0000000000050933",
+      "doi": "10.1097/md.0000000000050933",
+      "source_api": "PubMed",
+      "pmid": "42854007"
+    },
+    {
+      "title": "Efficacy of Kinesio tape for central facial paralysis: A prospective, randomized sham-controlled, single-blinded clinical trial",
+      "authors": [
+        "Li X",
+        "Wang J",
+        "Xiao H",
+        "Shao C",
+        "Li S",
+        "Wang S",
+        "Liu Q"
+      ],
+      "journal": "Medicine (Baltimore)",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1097/MD.0000000000051043",
+      "doi": "10.1097/md.0000000000051043",
+      "source_api": "PubMed",
+      "pmid": "42854004"
+    },
+    {
+      "title": "Delivery of cardiac rehabilitation through hybrid models and alternative settings by country income classification and decade: Comparisons from the International Council of Cardiovascular Prevention and Rehabilitation's 2025 Global Audit Update",
+      "authors": [
+        "Ghisi GLM",
+        "Carson RP",
+        "Turk Adawi K",
+        "Ding R",
+        "Cruz Rivero M",
+        "Anchique CV",
+        "van Schalkwijk DL",
+        "Gallagher J",
+        "Mettananda C",
+        "Fernández R",
+        "Aimakova GT",
+        "Kim WS",
+        "Seron P",
+        "Jiandani MP",
+        "Martinez J",
+        "Maskhulia L",
+        "Batalik L",
+        "Akinci B",
+        "Chen SY",
+        "Diaba Gaye N",
+        "Quesada-Chaves DF",
+        "Fukumoto Y",
+        "Grace SL",
+        "ICCPR Global Cardiac Rehabilitation Audit Update Investigators"
+      ],
+      "journal": "PLoS One",
+      "pubdate": "2026",
+      "url": "https://doi.org/10.1371/journal.pone.0359951",
+      "doi": "10.1371/journal.pone.0359951",
+      "source_api": "PubMed",
+      "pmid": "42853801"
+    },
+    {
+      "title": "Feasibility, acceptability, and preliminary efficacy of AdaptRehab VR, an immersive virtual reality system for upper limb stroke rehabilitation: A mixed-methods study in Ethiopia",
+      "authors": [
+        "Kenea CD",
+        "Abessa TG",
+        "Lamba D",
+        "Bonnechère B"
+      ],
+      "journal": "PLoS One",
+      "pubdate": "2026",
+      "url": "https://doi.org/10.1371/journal.pone.0360216",
+      "doi": "10.1371/journal.pone.0360216",
+      "source_api": "PubMed",
+      "pmid": "42853792"
+    },
+    {
+      "title": "R-SPEAK, an AI-Based Smartphone App to Enhance Communication in People With Expressive Aphasia: Qualitative Acceptability and Usability Study",
+      "authors": [
+        "Al-Tamimi AK",
+        "Andrews J",
+        "Benfield J",
+        "Sweby C",
+        "Gilmartin C",
+        "Lindley R",
+        "Trusson D",
+        "Dziunka M",
+        "Webster D",
+        "Radford K"
+      ],
+      "journal": "J Med Internet Res",
+      "pubdate": "2026 Oct 8",
+      "url": "https://doi.org/10.2196/93518",
+      "doi": "10.2196/93518",
+      "source_api": "PubMed",
+      "pmid": "42853042"
+    },
+    {
+      "title": "Parent Perspectives on I-ACQUIRE Therapy",
+      "authors": [
+        "Yale MM",
+        "Hindery KA",
+        "Murray JF",
+        "Darragh AR",
+        "Ramey CT",
+        "DeLuca SC",
+        "Pauls Q",
+        "Heathcock JC",
+        "Lo WD",
+        "Martin RH",
+        "Trucks MR",
+        "Ramey SL"
+      ],
+      "journal": "Stroke",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1161/STROKEAHA.126.055913",
+      "doi": "10.1161/strokeaha.126.055913",
+      "source_api": "PubMed",
+      "pmid": "42852504"
+    },
+    {
+      "title": "Application of Artificial Intelligence in the Prediction and Management of Stroke Rehabilitation",
+      "authors": [
+        "Song W",
+        "Si S",
+        "Wang Y",
+        "Chang H",
+        "Tang X"
+      ],
+      "journal": "Cyborg Bionic Syst",
+      "pubdate": "2026",
+      "url": "https://doi.org/10.34133/cbsystems.0702",
+      "doi": "10.34133/cbsystems.0702",
+      "source_api": "PubMed",
+      "pmid": "42852356"
+    },
+    {
+      "title": "Pediatric Dilated Cardiomyopathy With Suspected Hereditary Protein C/S and Antithrombin III Deficiency Presenting as Ischemic Stroke-A Rare Case Report",
+      "authors": [
+        "Imran MW",
+        "Moaz M",
+        "Nawaz SS",
+        "Ilyas A",
+        "Abid S"
+      ],
+      "journal": "Case Rep Pediatr",
+      "pubdate": "2026",
+      "url": "https://doi.org/10.1155/crpe/3631063",
+      "doi": "10.1155/crpe/3631063",
+      "source_api": "PubMed",
+      "pmid": "42851964"
+    },
+    {
+      "title": "Scalp acupuncture coupled with speech-language therapy modulates the ventral-dorsal structural brain network in patients with post-stroke anomia: a randomized clinical and DTI neuroimaging trial",
+      "authors": [
+        "Song J",
+        "Nan R",
+        "Ni J",
+        "Chai L",
+        "Zhang L",
+        "Wang M",
+        "Wang N",
+        "Lin B",
+        "Huang J"
+      ],
+      "journal": "Chin Med",
+      "pubdate": "2026 Oct 8",
+      "url": "https://doi.org/10.1186/s13020-026-01501-1",
+      "doi": "10.1186/s13020-026-01501-1",
+      "source_api": "PubMed",
+      "pmid": "42850647"
+    },
+    {
+      "title": "Development of a protocol to retrospectively identify acute traumatic brain injury using electronic medical records from an academic health system data warehouse",
+      "authors": [
+        "Kumar R",
+        "Kirschenbaum J",
+        "McCage S",
+        "Novick R",
+        "Esterov D",
+        "Bannon SM",
+        "Jette N",
+        "Dams-O Apos Connor K"
+      ],
+      "journal": "Neuroepidemiology",
+      "pubdate": "2026 Oct 8",
+      "url": "https://doi.org/10.1159/ned/adwag047",
+      "doi": "10.1159/ned/adwag047",
+      "source_api": "PubMed",
+      "pmid": "42848732"
+    },
+    {
+      "title": "High-Frequency Repetitive Transcranial Magnetic Stimulation Attenuates Post-Stroke Brain Fibrosis by Increasing Brain-Derived Estrogen Levels: A Dual-Tracer PET/CT Study",
+      "authors": [
+        "Cao Y",
+        "Tang P",
+        "Feng D",
+        "He H",
+        "Wu H",
+        "Liu Y",
+        "Tian J",
+        "Hu K",
+        "Zhong Y"
+      ],
+      "journal": "Mol Neurobiol",
+      "pubdate": "2026 Oct 8",
+      "url": "https://doi.org/10.1007/s12035-026-06259-z",
+      "doi": "10.1007/s12035-026-06259-z",
+      "source_api": "PubMed",
+      "pmid": "42848250"
+    },
+    {
+      "title": "Factors associated with exercise preferences and perceived barriers in individuals with chronic stroke: a psychophysical perspective",
+      "authors": [
+        "Kiloatar H",
+        "Telli H",
+        "Aydogdu Delibay A",
+        "Doven A",
+        "Ozyurek A",
+        "Ilik O",
+        "Ozturk R",
+        "Köse M",
+        "Demir B"
+      ],
+      "journal": "Physiother Theory Pract",
+      "pubdate": "2026 Oct 8",
+      "url": "https://doi.org/10.1080/09593985.2026.2745707",
+      "doi": "10.1080/09593985.2026.2745707",
+      "source_api": "PubMed",
+      "pmid": "42848006"
+    },
+    {
+      "title": "Effects of thoracic kinesiological taping on pulmonary functions, respiratory muscle strength, and functional independence in patients with hemiplegia: a randomized controlled clinical trial",
+      "authors": [
+        "Bitmani N",
+        "Günday Ç",
+        "Tütüneken YE",
+        "Soltanalizadeh R"
+      ],
+      "journal": "Top Stroke Rehabil",
+      "pubdate": "2026 Oct 8",
+      "url": "https://doi.org/10.1080/10749357.2026.2746392",
+      "doi": "10.1080/10749357.2026.2746392",
+      "source_api": "PubMed",
+      "pmid": "42847866"
+    },
+    {
+      "title": "Relaxation interventions in neurological rehabilitation: a scoping review",
+      "authors": [
+        "Rings P",
+        "Dziurla J",
+        "Van Damme T",
+        "Alaerts K",
+        "Groll C",
+        "Zietz D"
+      ],
+      "journal": "J Rehabil Med",
+      "pubdate": "2026 Oct 8",
+      "url": "https://doi.org/10.2340/jrm.v58.45972",
+      "doi": "10.2340/jrm.v58.45972",
+      "source_api": "PubMed",
+      "pmid": "42847760"
+    },
+    {
+      "title": "Engagement strategies to support sub-acute, post-stroke upper limb interventions: A co-design study",
+      "authors": [
+        "Wingfield M",
+        "Williams G",
+        "Brodtmann A",
+        "English K",
+        "Newton SP",
+        "Barker R",
+        "Hayward KS",
+        "Fini NA"
+      ],
+      "journal": "Clin Rehabil",
+      "pubdate": "2026 Oct 8",
+      "url": "https://doi.org/10.1177/02692155261490507",
+      "doi": "10.1177/02692155261490507",
+      "source_api": "PubMed",
+      "pmid": "42847552"
+    },
+    {
+      "title": "The design of soft-actuated upper-body exoskeletons for movement assistance and physical therapy",
+      "authors": [
+        "Daniel George"
+      ],
+      "journal": "CentAUR (University of Reading)",
+      "pubdate": "2029-01-01",
+      "url": "https://doi.org/10.48683/1926.00129237",
+      "doi": "10.48683/1926.00129237",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7151411061"
+    },
+    {
+      "title": "Brain-based digital twins for skilled interceptive movements: computational frameworks for neural-kinematic integration",
+      "authors": [
+        "D Pathak"
+      ],
+      "journal": "Research Space",
+      "pubdate": "2028-01-01",
+      "url": "https://doi.org/10.17870/bathspa.00017805",
+      "doi": "10.17870/bathspa.00017805",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7162566981"
+    },
+    {
+      "title": "Learning to adapt : neurophysiological insights into split-belt treadmill walking following a stroke",
+      "authors": [
+        "Kaya Yoshida"
+      ],
+      "journal": "cIRcle (University of British Columbia)",
+      "pubdate": "2027-01-01",
+      "url": "https://doi.org/10.14288/1.0451727",
+      "doi": "10.14288/1.0451727",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7141648330"
+    },
+    {
+      "title": "Инсульт остаётся одной из наиболее актуальных медико-социальных проблем современности. По статистике Всемирной организации здравоохранения, ежегодно инсульт переносят более 15 миллионов человек, и около 5 миллионов из них остаются с тяжёлыми двигательными нарушениями. Полноценное восстановление после инсульта — сложный и длительный процесс, требующий комплексного подхода, где всё большую роль играет применение современных технологий, в частности робототехнических систем.",
+      "authors": [
+        "Мохигуль Атоева"
+      ],
+      "journal": "Zenodo (CERN European Organization for Nuclear Research)",
+      "pubdate": "2026-11-12",
+      "url": "https://doi.org/10.5281/zenodo.21874928",
+      "doi": "10.5281/zenodo.21874928",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7202137828"
+    },
+    {
+      "title": "A Systemic Observational Framework Integrating Physiotherapy-Derived Functional, Physiological, And Behavioral Indicators In Predicting Pharmacological Response",
+      "authors": [
+        "Dr. Kanchan Kholiya, Dr. Shalini dixit, Ram Sihag (PT), Dr. Samarpita Senapati (PT), Dr. Harish Sharma (PT), Dr. Gurpreet Kaur (PT)), Dr. Harshika Gupta (PT)."
+      ],
+      "journal": "Cultura",
+      "pubdate": "2026-11-10",
+      "url": "https://doi.org/10.5281/zenodo.18309329",
+      "doi": "10.5281/zenodo.18309329",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7124911714"
+    },
+    {
+      "title": "Lung transplantation outcomes in candidates aged ≥ 70 years old: A 10-year single center experience.",
+      "authors": [
+        "Jason M. Aubrey",
+        "Preetha Pamidighantam",
+        "Stephen D. Thorp",
+        "Isabelle Pokora",
+        "Taylor Zimmer",
+        "Cameron K. Lawson",
+        "Scott R. Chicotka",
+        "Reda E. Girgis",
+        "Tomasz A. Timek",
+        "Edward T. Murphy"
+      ],
+      "journal": "PubMed",
+      "pubdate": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jhlto.2026.100647",
+      "doi": "10.1016/j.jhlto.2026.100647",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7171660057"
+    },
+    {
+      "title": "TELEREHABILITATION: OPTIMIZING PATIENT OUTCOMES AND ACCESSIBILITY IN POST-STROKE RECOVERY",
+      "authors": [
+        "Razan Abdulkarim Alkani, Lilas Almotasem Bellah El Arjawi, Waseem Nadim, Raad AlHmoud, Tasneem Abdul Muin Junaid, Sara Abdullah Alhoti ,Ahmad Bassam Al Halabi, Sami Mohammad Jameel, Raghad Emad Alhalabi, Osama Abdulnaser Kouzo, Yousef Jameel Eid Albalawi, Raghad Hassan Alsayed, Maysoon Saud S Alharthy"
+      ],
+      "journal": "TPM Testing, psychometrics, methodology in applied psychology",
+      "pubdate": "2026-10-11",
+      "url": "https://doi.org/10.5281/zenodo.18206166",
+      "doi": "10.5281/zenodo.18206166",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7121069504"
+    },
+    {
+      "title": "Trajectory Tracking of a Four Degree of Freedom Robotic Manipulator",
+      "authors": [
+        "Mohammad Rezwan Sheikh"
+      ],
+      "journal": "UWM Digital Commons (University of Wisconsin–Milwaukee)",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.13140/rg.2.2.11727.65449",
+      "doi": "10.13140/rg.2.2.11727.65449",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W2990064031"
+    },
+    {
+      "title": "Interplay between store‐operated calcium entry and mitochondrial phosphate handling modulates force and fatigue during exercise",
+      "authors": [
+        "Emmet A. Francis",
+        "Juliette Hamid",
+        "A B Anil Kumar",
+        "Padmini Rangamani"
+      ],
+      "journal": "The Journal of Physiology",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.1113/jp289463",
+      "doi": "10.1113/jp289463",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W4410778022"
+    },
+    {
+      "title": "Shared Control for Assistive and Collaborative Robotics",
+      "authors": [
+        "Claudio Pacchierotti",
+        "Divyaksh Subhash Chander",
+        "Louise Devigne",
+        "Marie Babel",
+        "Charles Pontonnier"
+      ],
+      "journal": "Springer tracts in advanced robotics",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.1007/978-3-032-19374-2_14",
+      "doi": "10.1007/978-3-032-19374-2_14",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7133272143"
+    },
+    {
+      "title": "Acute postoperative dietary intake in older adult hip fracture patients: An exploratory three-day weighed food diary observational study",
+      "authors": [
+        "Helen Lloyd",
+        "Sarah Allison",
+        "Naomi Burn",
+        "Fatemeh Vida Zohoori",
+        "Cecile Jones",
+        "Vicki Whittaker",
+        "John Derek Franklin"
+      ],
+      "journal": "Nutrition and Health",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.1177/02601060261494308",
+      "doi": "10.1177/02601060261494308",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7214417933"
+    },
+    {
+      "title": "Robotics for Aging Populations",
+      "authors": [
+        "Kar Him Mo",
+        "Fei Chen",
+        "Giacinto Barresi"
+      ],
+      "journal": "Springer tracts in advanced robotics",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.1007/978-3-032-19374-2_24",
+      "doi": "10.1007/978-3-032-19374-2_24",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7220942351"
+    },
+    {
+      "title": "Concurrent validity of MABC-2 and sitting-rising test for motor skill screening of children",
+      "authors": [
+        "Thailyne Bizinotto",
+        "Cibelle Kayenne Martins Roberto Formiga",
+        "Tânia Cristina Dias da Silva Hamú",
+        "Thiago Weyk de Oliveira Beliche",
+        "Celmo Celeno Porto"
+      ],
+      "journal": "Brazilian Journal of Motor Behavior",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.20338/bjmb.v20i1.569",
+      "doi": "10.20338/bjmb.v20i1.569",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221008782"
+    },
+    {
+      "title": "Social Robotics and Human–Robot Communication",
+      "authors": [
+        "Guy Laban",
+        "Emily S. Cross"
+      ],
+      "journal": "Springer tracts in advanced robotics",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.1007/978-3-032-19374-2_8",
+      "doi": "10.1007/978-3-032-19374-2_8",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221014476"
+    },
+    {
+      "title": "User Preferences for Enhanced Robot Adaptation in Assistive Tasks",
+      "authors": [
+        "Gerard Canal",
+        "Guillem Alenyà",
+        "Carme Torras"
+      ],
+      "journal": "Springer tracts in advanced robotics",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.1007/978-3-032-19374-2_17",
+      "doi": "10.1007/978-3-032-19374-2_17",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221045564"
+    },
+    {
+      "title": "Metabolic dysfunction in chronic critical illness: mechanisms, clinical consequences and therapeutic perspectives",
+      "authors": [
+        "Sílvia Castro",
+        "Cristina Granja",
+        "Joanna Colleen Dionne",
+        "Alexandra Binnie"
+      ],
+      "journal": "Nutrition",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.1016/j.nut.2026.113426",
+      "doi": "10.1016/j.nut.2026.113426",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221047971"
+    },
+    {
+      "title": "Occupational Wearable Robotics",
+      "authors": [
+        "Jesús Ortiz",
+        "Luigi Monica",
+        "Sara Anastasi",
+        "Darwin  Gordon Caldwell"
+      ],
+      "journal": "Springer tracts in advanced robotics",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.1007/978-3-032-19374-2_12",
+      "doi": "10.1007/978-3-032-19374-2_12",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221051117"
+    },
+    {
+      "title": "Human Factors in Robotics for Motor Rehabilitation, Assistance, and Prosthetics",
+      "authors": [
+        "Federico Tessari",
+        "Marek Sierotowicz",
+        "Sabine Thuerauf",
+        "Heloisa Seratiuk Flores",
+        "Jonas Grau Thomsen",
+        "Matteo Laffranchi",
+        "Lorenzo De Michieli",
+        "Emanuele Gruppioni",
+        "Satoshi Muraki",
+        "Letizia Leocani",
+        "Giampaolo Brichetto",
+        "Loredana Zollo",
+        "Claudio Castellini",
+        "Giacinto Barresi"
+      ],
+      "journal": "Springer tracts in advanced robotics",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.1007/978-3-032-19374-2_10",
+      "doi": "10.1007/978-3-032-19374-2_10",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221051822"
+    },
+    {
+      "title": "Effect of music on short-term pain perception during peripheral intravenous cannulation",
+      "authors": [
+        "Andrei Cristinel Dragnea",
+        "Lars Michels",
+        "Till Fellner",
+        "Argyro Christou",
+        "Giovanna Brandi",
+        "Giulio Bicciatto",
+        "Riccardo Ludovichetti",
+        "Thomas Frauenfelder",
+        "Zsolt Kulcsar",
+        "Meritxell Garcia Alzamora"
+      ],
+      "journal": "Frontiers in Pain Research",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.3389/fpain.2026.1923943",
+      "doi": "10.3389/fpain.2026.1923943",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221073662"
+    },
+    {
+      "title": "Development And Validation Of Questionnaire To Assess Sleep Disturbances, Mental Health And Quality Of Life In Subacute Stroke",
+      "authors": [],
+      "journal": "International Journal of Drug Delivery Technology",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.25258/ijddt.16.58s.135",
+      "doi": "10.25258/ijddt.16.58s.135",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221075796"
+    },
+    {
+      "title": "Integrated physical and mental healthcare for older adults in Europe: from concept to implementation-a joint EuGMS and EAGP perspectives paper",
+      "authors": [
+        "Beishon L",
+        "Nobels A",
+        "Alves M",
+        "Bogdanovic N",
+        "Cowan R",
+        "Crowther G",
+        "Flôr-Rodrigues B",
+        "Frisardi V",
+        "Geoghegan C",
+        "Miot S",
+        "Soysal P",
+        "Van Den Noortgate N",
+        "Walesby KE",
+        "Welsh TJ",
+        "Yilmaz O",
+        "Voshaar RCO",
+        "Benraad C",
+        "EuGMS and EAGP Task & Finish Group on Integrated Psychiatric & Geriatric Care"
+      ],
+      "journal": "Eur Geriatr Med",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1007/s41999-026-01620-w",
+      "doi": "10.1007/s41999-026-01620-w",
+      "source_api": "PubMed",
+      "pmid": "42855642"
+    },
+    {
+      "title": "Geriatric Assessment-Based Stratification to Evaluate Treatment Intensity, Quality of Life, and Survival in Older Patients With Metastatic Colorectal Cancer: Protocol for a Prospective Observational Study",
+      "authors": [
+        "Hiramatsu T",
+        "Okazaki I",
+        "Hosokawa K",
+        "Yoshimatsu K",
+        "Nagasaka T"
+      ],
+      "journal": "JMIR Res Protoc",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.2196/94561",
+      "doi": "10.2196/94561",
+      "source_api": "PubMed",
+      "pmid": "42855147"
+    },
+    {
+      "title": "Comment on \"Phase angle as a marker of frailty and prognosis in heart failure: Evidence from a prospective cohort study\"",
+      "authors": [
+        "Li L",
+        "Che B"
+      ],
+      "journal": "Clin Nutr ESPEN",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1016/j.clnesp.2026.105179",
+      "doi": "10.1016/j.clnesp.2026.105179",
+      "source_api": "PubMed",
+      "pmid": "42854964"
+    },
+    {
+      "title": "Impact of preoperative frailty and sarcopenia on short-term functional recovery after cardiac surgery in elderly patients: a prospective cohort study",
+      "authors": [
+        "Fan G",
+        "Zhang Y",
+        "Chen G",
+        "Wang W",
+        "Zhao W",
+        "Meng X",
+        "Ji F"
+      ],
+      "journal": "J Nutr Health Aging",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1016/j.jnha.2026.101003",
+      "doi": "10.1016/j.jnha.2026.101003",
+      "source_api": "PubMed",
+      "pmid": "42854514"
+    },
+    {
+      "title": "Fluid responsiveness-guided preinduction volume optimization and postinduction hypotension in older adults at increased frailty risk: A randomized clinical trial",
+      "authors": [
+        "Wang M",
+        "Xu C",
+        "Zhang C",
+        "Wang K",
+        "Lu J",
+        "Zhou Q"
+      ],
+      "journal": "J Clin Anesth",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1016/j.jclinane.2026.112332",
+      "doi": "10.1016/j.jclinane.2026.112332",
+      "source_api": "PubMed",
+      "pmid": "42854351"
+    },
+    {
+      "title": "Childhood loneliness and deficit-accumulation frailty progression in mid-to-late life",
+      "authors": [
+        "Wang J",
+        "Jiao D",
+        "Zhao X",
+        "Tian Y",
+        "Tao L",
+        "Guo X"
+      ],
+      "journal": "Arch Gerontol Geriatr",
+      "pubdate": "2026 Oct 4",
+      "url": "https://doi.org/10.1016/j.archger.2026.106441",
+      "doi": "10.1016/j.archger.2026.106441",
+      "source_api": "PubMed",
+      "pmid": "42854322"
+    },
+    {
+      "title": "Frailty in the anti-amyloid era: an opportunity to individualize care",
+      "authors": [
+        "Vogt NM",
+        "Kim DH"
+      ],
+      "journal": "J Prev Alzheimers Dis",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1016/j.tjpad.2026.100682",
+      "doi": "10.1016/j.tjpad.2026.100682",
+      "source_api": "PubMed",
+      "pmid": "42854290"
+    },
+    {
+      "title": "Association Between Wrist-Worn Device-Estimated Sleep Efficiency and Hand Grip Strength in Older Outpatients With Cardiometabolic Diseases: Cross-Sectional Study",
+      "authors": [
+        "Tamura Y",
+        "Gong R",
+        "Murao Y",
+        "Kobayashi F",
+        "Kobayashi S",
+        "Kodera R",
+        "Oba K",
+        "Shirobe M",
+        "Toyoshima K",
+        "Kubo K",
+        "Chiba Y",
+        "Kawai H",
+        "Ishikawa J",
+        "Sasai H",
+        "Fujiwara Y",
+        "Kyo S",
+        "Toba K",
+        "Akishita M",
+        "Obuchi S",
+        "Araki A"
+      ],
+      "journal": "JMIR Form Res",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.2196/95303",
+      "doi": "10.2196/95303",
+      "source_api": "PubMed",
+      "pmid": "42854245"
+    },
+    {
+      "title": "Shared genetic architecture between constipation and aging-related phenotypes: Insights from large-scale genome-wide cross-trait analysis",
+      "authors": [
+        "Liao Y",
+        "Liu W",
+        "Liu X",
+        "Xiao Y"
+      ],
+      "journal": "Medicine (Baltimore)",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1097/MD.0000000000051036",
+      "doi": "10.1097/md.0000000000051036",
+      "source_api": "PubMed",
+      "pmid": "42854059"
+    },
+    {
+      "title": "Adult Cervical Deformity: Contemporary Evaluation, Classification, and Surgical Decision-Making",
+      "authors": [
+        "Dekhne MS",
+        "Kazarian GS",
+        "Kim HJ"
+      ],
+      "journal": "J Bone Joint Surg Am",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.2106/JBJS.26.00473",
+      "doi": "10.2106/jbjs.26.00473",
+      "source_api": "PubMed",
+      "pmid": "42853901"
+    },
+    {
+      "title": "Exercise to Mitigate the Effects of Aging With HIV: A Narrative Review With Exercise Recommendations for Practice",
+      "authors": [
+        "SantaBarbara NJ",
+        "Kurdziel L",
+        "Cellucci J",
+        "Conz K",
+        "Finlayson H",
+        "McKinney R",
+        "Bharath L"
+      ],
+      "journal": "J Assoc Nurses AIDS Care",
+      "pubdate": "2026 Oct 6",
+      "url": "https://doi.org/10.1097/JNC.0000000000000703",
+      "doi": "10.1097/jnc.0000000000000703",
+      "source_api": "PubMed",
+      "pmid": "42853671"
+    },
+    {
+      "title": "Intrinsic Capacity in a Nationally Representative US Population",
+      "authors": [
+        "Sison SDM",
+        "Luo L",
+        "Kim S",
+        "Pritchard K",
+        "Kim DH",
+        "Shi S"
+      ],
+      "journal": "J Gerontol A Biol Sci Med Sci",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1093/gerona/glag247",
+      "doi": "10.1093/gerona/glag247",
+      "source_api": "PubMed",
+      "pmid": "42853646"
+    },
+    {
+      "title": "The interaction of comorbidities, aging, and HIV persistence in tissues",
+      "authors": [
+        "O'Hare KA",
+        "Freeman ML",
+        "Erlandson KM"
+      ],
+      "journal": "Curr Opin HIV AIDS",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1097/COH.0000000000001077",
+      "doi": "10.1097/coh.0000000000001077",
+      "source_api": "PubMed",
+      "pmid": "42853144"
+    },
+    {
+      "title": "Use of Anticoagulation Among Patients With Atrial Fibrillation or Atrial Flutter in the United States",
+      "authors": [
+        "Gouda P",
+        "Harrington J",
+        "Arps K",
+        "Sanders G",
+        "Marks A",
+        "Chiswell K",
+        "Hofmann P",
+        "Marsolo K",
+        "Asfaw K",
+        "Coppolecchia R",
+        "Alexander JH",
+        "Piccini J",
+        "Granger CB",
+        "May HT",
+        "Chrischilles E",
+        "Steinberg BA",
+        "Chamberlain AM",
+        "Van Wormer J",
+        "Jones WS",
+        "Patel MR"
+      ],
+      "journal": "Circ Popul Health Outcomes",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1161/CIRCOUTCOMES.126.013494",
+      "doi": "10.1161/circoutcomes.126.013494",
+      "source_api": "PubMed",
+      "pmid": "42852510"
+    },
+    {
+      "title": "Hip Fracture Management in Older Adults in Resource-Constrained Settings: Determinants, Care Pathways, and Outcomes-A Systematic Review and Meta-Analysis",
+      "authors": [
+        "Ismail AI",
+        "Thomas OA",
+        "Ojiakor VO",
+        "Nto NJ",
+        "Oviosun A",
+        "Anyanwu CN",
+        "Makena W",
+        "Chima UOP",
+        "Anyanwu EG"
+      ],
+      "journal": "Health Sci Rep",
+      "pubdate": "2026 Oct",
+      "url": "https://doi.org/10.1002/hsr2.73363",
+      "doi": "10.1002/hsr2.73363",
+      "source_api": "PubMed",
+      "pmid": "42851934"
+    },
+    {
+      "title": "Vitamin D: Physiology, Pharmacology and Clinical Evidence for Supplementation-A Narrative Review",
+      "authors": [
+        "Virtanen JK"
+      ],
+      "journal": "Basic Clin Pharmacol Toxicol",
+      "pubdate": "2026 Nov",
+      "url": "https://doi.org/10.1111/bcpt.70315",
+      "doi": "10.1111/bcpt.70315",
+      "source_api": "PubMed",
+      "pmid": "42850721"
+    },
+    {
+      "title": "Organizing healthcare delivery in the era of disease-modifying therapies for Alzheimer's Disease: an Italian RAND/UCLA consensus",
+      "authors": [
+        "Padovani A",
+        "Altini M",
+        "Bellelli G",
+        "Bozzali M",
+        "Brignoli O",
+        "Cagnin A",
+        "Cherubini A",
+        "Iannacci M",
+        "Lodi R",
+        "Logroscino G",
+        "Marra C",
+        "Nicora C",
+        "Parretti S",
+        "Sacco A",
+        "Spadin P",
+        "Zappia M"
+      ],
+      "journal": "Neurol Sci",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1007/s10072-026-09452-z",
+      "doi": "10.1007/s10072-026-09452-z",
+      "source_api": "PubMed",
+      "pmid": "42850455"
+    },
+    {
+      "title": "Frailty and risk of common chronic diseases among cancer survivors: a prospective cohort study",
+      "authors": [
+        "Li W",
+        "Zhang Z",
+        "Lu C",
+        "Xu Y",
+        "Han S",
+        "Zhan Y",
+        "Ge G",
+        "Wang Z",
+        "Lan X",
+        "Zhang X",
+        "Lu H",
+        "Guo J"
+      ],
+      "journal": "J Cancer Surviv",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1007/s11764-026-02118-x",
+      "doi": "10.1007/s11764-026-02118-x",
+      "source_api": "PubMed",
+      "pmid": "42850428"
+    },
+    {
+      "title": "Prevalence and appropriateness of solid oral dosage form manipulation in long-term care facilities",
+      "authors": [
+        "Malara A",
+        "Zucchelli A",
+        "Trevisan C",
+        "Borselli G",
+        "Antonelli Incalzi R",
+        "Onder G",
+        "Cherubini A",
+        "Cignarella A",
+        "Marengoni A",
+        "Morandi A",
+        "Castaldo A",
+        "Testa GD",
+        "Leosco D",
+        "Ungar A",
+        "Prescription Day LTCFs Workgroup"
+      ],
+      "journal": "Eur Geriatr Med",
+      "pubdate": "2026 Oct 8",
+      "url": "https://doi.org/10.1007/s41999-026-01618-4",
+      "doi": "10.1007/s41999-026-01618-4",
+      "source_api": "PubMed",
+      "pmid": "42850398"
+    },
+    {
+      "title": "Multidimensional Management of Degenerative Scoliosis: A Comprehensive Narrative Review Integrating Diagnostic Assessment, Surgical Decision-Making, and Patient-Centered Outcomes",
+      "authors": [
+        "Wang Y",
+        "Zhao X",
+        "Wang K",
+        "Liu Z",
+        "Zhang L",
+        "Jia S",
+        "Wang H",
+        "Zhang W",
+        "Yang Y",
+        "Xu T",
+        "Wu H"
+      ],
+      "journal": "Orthop Surg",
+      "pubdate": "2026 Oct 8",
+      "url": "https://doi.org/10.1111/os.70451",
+      "doi": "10.1111/os.70451",
+      "source_api": "PubMed",
+      "pmid": "42849905"
+    },
+    {
+      "title": "\"He has no children\": maternita, sterilita e fertilita nel Macbeth e in tre adattamenti cinematografici",
+      "authors": [
+        "GIULIA ARGENTIERI FEDERZONI"
+      ],
+      "journal": "Cineca Institutional Research Information System (Tor Vergata University)",
+      "pubdate": "2026-10-28",
+      "url": "https://openalex.org/W7219475334",
+      "doi": null,
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7219475334"
+    },
+    {
+      "title": "Identifying which patients with metastatic hormone-sensitive prostate cancer benefit most from androgen receptor pathway inhibitors: STOPCAP systematic review and meta-analysis of individual participant data",
+      "authors": [
+        "David Fisher",
+        "Larysa H. M. Rydzewska",
+        "Peter John Godolphin",
+        "Claire Louise Vale",
+        "Sarah Burdett",
+        "Neeraj Agarwal",
+        "G. Attard",
+        "Kim N Chi",
+        "Noel William Clarke",
+        "Ian D. Davis",
+        "Karim Fizazi",
+        "Stéphanie Foulon",
+        "Silke Gillessen",
+        "Nicholas D James",
+        "David Matheson",
+        "Laura Murphy",
+        "Robert Oldroyd",
+        "Mahesh KB Parmar",
+        "Vinod Vijay Subhash",
+        "Christopher J Sweeney",
+        "Catherine M Tangen",
+        "Bertrand F. TOMBAL",
+        "Ian R. White",
+        "Jayne F. Tierney"
+      ],
+      "journal": "UCL Discovery (University College London)",
+      "pubdate": "2026-10-16",
+      "url": "https://openalex.org/W7220010108",
+      "doi": null,
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7220010108"
+    },
+    {
+      "title": "Predictors of ischemic stroke and systemic embolism in patients with atrial fibrillation over 60 years of age receiving anticoagulants (according to observation data from the Registry of Long-term Antithrombotic Therapy REGATTA-2)",
+      "authors": [
+        "Ekaterina S. Kropacheva",
+        "M. I. Dashaeva",
+        "Е. П. Панченко"
+      ],
+      "journal": "Terapevticheskii arkhiv",
+      "pubdate": "2026-10-10",
+      "url": "https://doi.org/10.26442/00403660.2026.09.203766",
+      "doi": "10.26442/00403660.2026.09.203766",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221078246"
+    },
+    {
+      "title": "Prevalence of frailty and associated factors among aging residents with chronic schizophrenia in Taiwanese psychiatric nursing home: a cross-sectional study",
+      "authors": [
+        "Tse-Tsung Liu",
+        "Su‐Jung Liao",
+        "Chia-Jou Hsieh"
+      ],
+      "journal": "BMC Psychiatry",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.1186/s12888-026-08746-y",
+      "doi": "10.1186/s12888-026-08746-y",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7220962340"
+    },
+    {
+      "title": "Preoperative serum interleukin-6 and severe postoperative complications after colorectal cancer resection",
+      "authors": [
+        "Pekka Peroja",
+        "Jukka M. J. Rintala",
+        "Anne Tuomisto",
+        "Päivi Sirniö",
+        "Markus J. Mäkinen",
+        "Juha P. Väyrynen"
+      ],
+      "journal": "International Journal of Colorectal Disease",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.1007/s00384-026-05245-0",
+      "doi": "10.1007/s00384-026-05245-0",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7220963281"
+    },
+    {
+      "title": "Subcutaneous isatuximab by on-body-injector plus bortezomib, lenalidomide, and dexamethasone in newly diagnosed transplant-ineligible multiple myeloma: ISASOCUT study",
+      "authors": [
+        "Arthur Bobin",
+        "Lisa Durocher",
+        "Cyrille Touzeau",
+        "Nicolas Branche",
+        "Aurore Perrot",
+        "Mamoun Dib",
+        "Jean‐Sébastien Blade",
+        "Thomas Chalopin",
+        "Lydia Montes",
+        "Julie Gay",
+        "Mourad Tiab",
+        "Margaret Macro",
+        "Titouan Cazaubiel",
+        "Frédérique Orisini Piocelle",
+        "Alberto Santagostino",
+        "adrienne de thomas de labarthe",
+        "Marlène Ochmann",
+        "Christophe Roul",
+        "Reza Tabrizi",
+        "Muriel Newinger-Porte",
+        "Olivier Fitoussi",
+        "Mony Morisse Chenda",
+        "Rick Zhang",
+        "Douaa Dhahri",
+        "Murielle Roussel",
+        "Lionel Karlin",
+        "Mohamad Mohty",
+        "Philippe Moreau",
+        "Anaïs Schavgoulidze",
+        "Jill Corre",
+        "Thierry Facon",
+        "Cyrille Hulin",
+        "Salomon Manier",
+        "Stéphanie Ragot",
+        "Xavier P Leleu"
+      ],
+      "journal": "Blood Cancer Journal",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.1038/s41408-026-01634-4",
+      "doi": "10.1038/s41408-026-01634-4",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7220979471"
+    },
+    {
+      "title": "The skin microbiome in aging from ecological dysbiosis to molecular therapeutics",
+      "authors": [
+        "Yu Lei",
+        "Qianmei Liu",
+        "Qianjin Lu"
+      ],
+      "journal": "Microbiome Research Reports",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.20517/mrr.2026.42",
+      "doi": "10.20517/mrr.2026.42",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221038488"
+    },
+    {
+      "title": "Relationship between phosphatidylethanol levels and AUDIT scores in hospitalized patients with ACLD: modifying effects of interhospital transfer and anemia",
+      "authors": [
+        "Ľubomír Skladaný",
+        "Světlana Adamcová Selčanová",
+        "Daniela Žilinčanová",
+        "Lukáš Lafférs"
+      ],
+      "journal": "Mendeley Data",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.17632/67phfrkhsr",
+      "doi": "10.17632/67phfrkhsr",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221065393"
+    },
+    {
+      "title": "Obesidad sarcopénica e indicadores cardiometabólicos en adultos mayores de América Latina: revisión sistemática actualizada, 2015-2026",
+      "authors": [
+        "Cinthya Stephanie Vaca Velasteguí"
+      ],
+      "journal": "Revista Multidisciplinar Epistemología de las Ciencias",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.71112/q5wz7d96",
+      "doi": "10.71112/q5wz7d96",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221072920"
+    },
+    {
+      "title": "Tirzepatide versus other glucose-lowering therapies and risk of COPD exacerbations in patients with comorbid type 2 diabetes: a retrospective cohort study",
+      "authors": [
+        "Wan-Hsuan Hsu",
+        "Yang-En Chan",
+        "Jheng-Yan Wu",
+        "Yao-Ming Chuang",
+        "Chia-Yu Kuo",
+        "Bo-Wen Shiau",
+        "Po‐Yu Huang",
+        "Chih-Cheng Lai"
+      ],
+      "journal": "Frontiers in Pharmacology",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.3389/fphar.2026.1917340",
+      "doi": "10.3389/fphar.2026.1917340",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221075034"
+    },
+    {
+      "title": "Exploring the participation of people with lower limb absence or amputation: a mixed methods study",
+      "authors": [
+        "Pousett BM",
+        "Battalova A",
+        "Parag N",
+        "Cumming D",
+        "Welch KA",
+        "Rapaport MS",
+        "MacKay C",
+        "Miller WC"
+      ],
+      "journal": "Disabil Rehabil",
+      "pubdate": "2026 Oct 10",
+      "url": "https://doi.org/10.1080/09638288.2026.2734781",
+      "doi": "10.1080/09638288.2026.2734781",
+      "source_api": "PubMed",
+      "pmid": "42856014"
+    },
+    {
+      "title": "Enhanced Functional Independence Score for Haemophilia (E-FISH) for Early Detection of Musculoskeletal Changes",
+      "authors": [
+        "Padankatti SM",
+        "Priyadarshini S",
+        "Thomvic R",
+        "Jebaraj P",
+        "Muppidi GE",
+        "Jebaraj D",
+        "Lakshmi KM",
+        "Sebastian T",
+        "David JA",
+        "Poonnoose PM",
+        "Abraham A",
+        "Srivastava A"
+      ],
+      "journal": "Haemophilia",
+      "pubdate": "2026 Oct 10",
+      "url": "https://doi.org/10.1111/hae.70413",
+      "doi": "10.1111/hae.70413",
+      "source_api": "PubMed",
+      "pmid": "42856013"
+    },
+    {
+      "title": "Game-oriented interventions for children with cerebral palsy: a review of efficacy, engagement, and functional outcomes",
+      "authors": [
+        "Mahmood Q"
+      ],
+      "journal": "Dev Neurorehabil",
+      "pubdate": "2026 Oct 10",
+      "url": "https://doi.org/10.1080/17518423.2026.2746730",
+      "doi": "10.1080/17518423.2026.2746730",
+      "source_api": "PubMed",
+      "pmid": "42856006"
+    },
+    {
+      "title": "Designing a hybrid surgical ICU to avoid intrahospital transport in selected critically Ill patients: the CUHK-SZ institutional concept",
+      "authors": [
+        "Tsui BC",
+        "Chan HH",
+        "Peng M",
+        "Qiu MJ",
+        "Liu W",
+        "Wang X",
+        "Tsui JJ"
+      ],
+      "journal": "World J Emerg Surg",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1186/s13017-026-00739-2",
+      "doi": "10.1186/s13017-026-00739-2",
+      "source_api": "PubMed",
+      "pmid": "42855690"
+    },
+    {
+      "title": "Women's experiences of a medically supervised fasting intervention for infertility: a qualitative study",
+      "authors": [
+        "Behling JN",
+        "May KT",
+        "Batschari K",
+        "Sochiera-Plegniere K",
+        "Blakeslee SB",
+        "Stritter W",
+        "Jeitler M",
+        "Kandil FI",
+        "Kunz B",
+        "Prüß A",
+        "Michalsen A",
+        "Koppold DA"
+      ],
+      "journal": "BMC Womens Health",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1186/s12905-026-04978-y",
+      "doi": "10.1186/s12905-026-04978-y",
+      "source_api": "PubMed",
+      "pmid": "42855686"
+    },
+    {
+      "title": "Implementing exercise therapy for hip and knee osteoarthritis in the clinic: a best practice narrative review",
+      "authors": [
+        "Haber T",
+        "Bennell KL",
+        "Hinman RS",
+        "Zhu S",
+        "Nelligan RK"
+      ],
+      "journal": "Best Pract Res Clin Rheumatol",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1016/j.berh.2026.102205",
+      "doi": "10.1016/j.berh.2026.102205",
+      "source_api": "PubMed",
+      "pmid": "42855411"
+    },
+    {
+      "title": "[Hiccups in adults: Pathophysiology, diagnostic approach, and management]",
+      "authors": [
+        "Aubignat M"
+      ],
+      "journal": "Rev Med Interne",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1016/j.revmed.2026.06.010",
+      "doi": "10.1016/j.revmed.2026.06.010",
+      "source_api": "PubMed",
+      "pmid": "42855361"
+    },
+    {
+      "title": "Feasibility, Acceptability, and Appropriateness of an 8-Week Supervised Aerobic Exercise Intervention for Adults With Epilepsy: Pilot Randomized Controlled Trial",
+      "authors": [
+        "Churchill S",
+        "Lansing J",
+        "Brellenthin A",
+        "Phillips A",
+        "Stegemöller E",
+        "Meyer J"
+      ],
+      "journal": "JMIR Form Res",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.2196/97392",
+      "doi": "10.2196/97392",
+      "source_api": "PubMed",
+      "pmid": "42855145"
+    },
+    {
+      "title": "Effects of complementary therapies on physiological and psychological outcomes in chronic obstructive pulmonary disease patients: A systematic review and meta-analysis of randomized controlled trials",
+      "authors": [
+        "Santiworakul A",
+        "Cetthakrikul S",
+        "Nemoto S",
+        "Nakabo T",
+        "Kuroyama Y",
+        "Khuna L",
+        "Longlalerng K"
+      ],
+      "journal": "Respir Med",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1016/j.rmed.2026.109204",
+      "doi": "10.1016/j.rmed.2026.109204",
+      "source_api": "PubMed",
+      "pmid": "42855085"
+    },
+    {
+      "title": "Post thrombotic syndrome after thrombotic venous thoracic outlet syndrome",
+      "authors": [
+        "Benhalima S",
+        "Gautier G",
+        "Douane F",
+        "Fouasson-Chailloux A",
+        "Gadbled G",
+        "Espinasse B",
+        "Maurel B",
+        "Morard M",
+        "Espitia O"
+      ],
+      "journal": "J Vasc Surg Venous Lymphat Disord",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1016/j.jvsv.2026.102639",
+      "doi": "10.1016/j.jvsv.2026.102639",
+      "source_api": "PubMed",
+      "pmid": "42855073"
+    },
+    {
+      "title": "Effect of Integrated Respiratory and Functional Training on Weaning from Mechanical Ventilation, Respiratory and Peripheral Muscle Strength, Functional Ability, and Pain After Emergency Abdominal Surgery: A Randomized Controlled Trial",
+      "authors": [
+        "Mehani SHM",
+        "Mohamed AA",
+        "Mohamed MS",
+        "Mahmoud MIM"
+      ],
+      "journal": "Arch Phys Med Rehabil",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1016/j.apmr.2026.10.005",
+      "doi": "10.1016/j.apmr.2026.10.005",
+      "source_api": "PubMed",
+      "pmid": "42854888"
+    },
+    {
+      "title": "Trunk-mediated spinal cord stimulation: A step toward clinical implementation after spinal cord injury",
+      "authors": [
+        "Bhatia S",
+        "Gerszten PC"
+      ],
+      "journal": "Med",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1016/j.medj.2026.101304",
+      "doi": "10.1016/j.medj.2026.101304",
+      "source_api": "PubMed",
+      "pmid": "42854680"
+    },
+    {
+      "title": "Investigation of the physical and emotional status of elderly individuals with and without COVID-19: a cross-sectional study",
+      "authors": [
+        "Mutlu A",
+        "Büyükturan B",
+        "Büyükturan Ö"
+      ],
+      "journal": "Geriatr Nurs",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1016/j.gerinurse.2026.104373",
+      "doi": "10.1016/j.gerinurse.2026.104373",
+      "source_api": "PubMed",
+      "pmid": "42854638"
+    },
+    {
+      "title": "Dynamic functional abnormalities of cerebellar networks in adolescents with obsessive-compulsive disorder",
+      "authors": [
+        "Jia A",
+        "Yuan X",
+        "Zhang K",
+        "Zhang C",
+        "Li R",
+        "Fu C",
+        "Wang B",
+        "Li K"
+      ],
+      "journal": "Psychiatry Res Neuroimaging",
+      "pubdate": "2026 Oct 8",
+      "url": "https://doi.org/10.1016/j.pscychresns.2026.112353",
+      "doi": "10.1016/j.pscychresns.2026.112353",
+      "source_api": "PubMed",
+      "pmid": "42854305"
+    },
+    {
+      "title": "Combined anterior cruciate ligament and anterolateral ligament reconstruction leads to better postural control than isolated anterior cruciate ligament reconstruction in the early postoperative phase",
+      "authors": [
+        "Kim JS",
+        "Hwang UJ",
+        "Baek SH",
+        "Chung KS"
+      ],
+      "journal": "Clin Biomech (Bristol)",
+      "pubdate": "2026 Oct 3",
+      "url": "https://doi.org/10.1016/j.clinbiomech.2026.106986",
+      "doi": "10.1016/j.clinbiomech.2026.106986",
+      "source_api": "PubMed",
+      "pmid": "42854272"
+    },
+    {
+      "title": "Outcomes after MI-TLIF without bone morphogenetic protein: a retrospective study",
+      "authors": [
+        "Mensah EO",
+        "Chalif JI",
+        "Ramirez-Velandia F",
+        "Kilgallon JL",
+        "Patel RV",
+        "Manchella M",
+        "Lopez J",
+        "Liu DD",
+        "Chi JH"
+      ],
+      "journal": "J Neurosurg Spine",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.3171/2026.4.SPINE2679",
+      "doi": "10.3171/2026.4.spine2679",
+      "source_api": "PubMed",
+      "pmid": "42854246"
+    },
+    {
+      "title": "Financial Toxicity in Plastic Surgery: A Scoping Review",
+      "authors": [
+        "Plascevic J",
+        "Liang J",
+        "Ludington S",
+        "Kim J",
+        "Kaplan S",
+        "Rezak K",
+        "Patel A"
+      ],
+      "journal": "Ann Plast Surg",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1097/SAP.0000000000004914",
+      "doi": "10.1097/sap.0000000000004914",
+      "source_api": "PubMed",
+      "pmid": "42854222"
+    },
+    {
+      "title": "Effect of Digital Technology-Based Interventions on Core Symptoms and Cognitive Function in Children With Attention-Deficit/Hyperactivity Disorder: Systematic Review and Meta-Analysis",
+      "authors": [
+        "Wang A",
+        "Qin W",
+        "Chen L",
+        "Tuo W"
+      ],
+      "journal": "J Med Internet Res",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.2196/103353",
+      "doi": "10.2196/103353",
+      "source_api": "PubMed",
+      "pmid": "42854193"
+    },
+    {
+      "title": "Association Between Embodiment of a Muscular Avatar and Muscle Performance in Virtual Reality for Chronic Low Back Pain: Exploratory Pre-Post Study",
+      "authors": [
+        "Nakaso Y",
+        "Hu YH",
+        "Shiro Y",
+        "Inoue M",
+        "Kanaya T",
+        "Nakamura T",
+        "Narumi T",
+        "Ushida T"
+      ],
+      "journal": "JMIR Serious Games",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.2196/90389",
+      "doi": "10.2196/90389",
+      "source_api": "PubMed",
+      "pmid": "42854187"
+    },
+    {
+      "title": "Rehabilitative efficacy of cognitive behavioral therapy-based intervention for chronic fatigue syndrome: A systematic review and meta-analysis",
+      "authors": [
+        "Jiang X",
+        "Liu J",
+        "Li S",
+        "Pei Q",
+        "Huang Q"
+      ],
+      "journal": "Medicine (Baltimore)",
+      "pubdate": "2026 Oct 9",
+      "url": "https://doi.org/10.1097/MD.0000000000050765",
+      "doi": "10.1097/md.0000000000050765",
+      "source_api": "PubMed",
+      "pmid": "42854071"
+    },
+    {
+      "title": "Cardiac rehabilitation: A potential pathway for patients with peripheral artery disease",
+      "authors": [
+        "Krist Feka"
+      ],
+      "journal": "University of the Sunshine Coast",
+      "pubdate": "2027-07-08",
+      "url": "https://doi.org/10.25907/01071",
+      "doi": "10.25907/01071",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7167918322"
+    },
+    {
+      "title": "Investigating the effects of vaping on lung structure and function with pulmonary imaging",
+      "authors": [
+        "Schmidt, Alexandra"
+      ],
+      "journal": "cIRcle (University of British Columbia)",
+      "pubdate": "2027-01-01",
+      "url": "https://doi.org/10.14288/1.0451822",
+      "doi": "10.14288/1.0451822",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7153078620"
+    },
+    {
+      "title": "Quantifying cell-cycle decisions and their impact on single-cell and population behaviour",
+      "authors": [
+        "Mattia Corigliano"
+      ],
+      "journal": "Open Research Online (The Open University)",
+      "pubdate": "2027-01-01",
+      "url": "https://doi.org/10.21954/ou.ro.00110446",
+      "doi": "10.21954/ou.ro.00110446",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7165952245"
+    },
+    {
+      "title": "Preclinical evaluation of PSMA-targeted ultrasound contrast agents in an orthotopic model of prostate cancer in rabbits.",
+      "authors": [
+        "Felipe M. Berg",
+        "Eric Abenojar",
+        "Pinunta Nittayacharn",
+        "Nathan K. Hoggard",
+        "Sidhartha Tavri",
+        "Jing Wang",
+        "Felipe Matsunaga",
+        "Michaela B. Cooley",
+        "Dana Wegierak",
+        "Xinning Wang",
+        "Thomas J. Rosol",
+        "James P. Basilion",
+        "Agata A Exner"
+      ],
+      "journal": "PubMed",
+      "pubdate": "2027-01-01",
+      "url": "https://doi.org/10.1016/j.bioactmat.2026.07.040",
+      "doi": "10.1016/j.bioactmat.2026.07.040",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7202208994"
+    },
+    {
+      "title": "The Nexus of Thought, Health, And Disease: A Comprehensive Review of Cognitive Influences on Mental and Physical Well-Being and the Efficacy of Adaptive Management Strategies",
+      "authors": [
+        "Athalia Tiffany Harwanto",
+        "Budi Harwanto"
+      ],
+      "journal": "International Journal of Social Science and Human Research",
+      "pubdate": "2026-12-31",
+      "url": "https://doi.org/10.5281/zenodo.18113457",
+      "doi": "10.5281/zenodo.18113457",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7118009900"
+    },
+    {
+      "title": "Video and digital games: Historical controversies, benefits, and risks for children and adolescents",
+      "authors": [
+        "Hanna David"
+      ],
+      "journal": "Journal of Child Development, Exceptionality and Education",
+      "pubdate": "2026-12-30",
+      "url": "https://doi.org/10.5281/zenodo.22768009",
+      "doi": "10.5281/zenodo.22768009",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7213265892"
+    },
+    {
+      "title": "EFFECT OF PHONOPHORESIS WITH DICLOFENAC SODIUM AND THERAPEUTIC ULTRASOUND WITH TRADITIONAL PHYSIOTHERAPY IN KNEE OSTEOARTHRITIS",
+      "authors": [
+        "Pakistan Journal of Medical & Cardiological Review"
+      ],
+      "journal": "Zenodo (CERN European Organization for Nuclear Research)",
+      "pubdate": "2026-12-23",
+      "url": "https://doi.org/10.5281/zenodo.22654614",
+      "doi": "10.5281/zenodo.22654614",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7211951065"
+    },
+    {
+      "title": "DIAGNOSTIC ACCURACY OF MRI IN DETECTING ROTATOR CUFF TEARS TAKING INDIRECT MR ARTHROGRAPHY AS GOLD STANDARD",
+      "authors": [
+        "DR. MARIA MURTAZA , DR MUHAMMAD AQEEL BABRI , DR. AFAF ARIF , DR. HASSAN RASHID ,"
+      ],
+      "journal": "TPM Testing, psychometrics, methodology in applied psychology",
+      "pubdate": "2026-12-15",
+      "url": "https://doi.org/10.5281/zenodo.18464498",
+      "doi": "10.5281/zenodo.18464498",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7127449069"
+    },
+    {
+      "title": "Sequence-based artificial intelligence-guided inhibitory peptides to counteract AAV neutralizing antibodies in gene therapy.",
+      "authors": [
+        "Bingqi Xu",
+        "Xin Zhang",
+        "Dandan Yu",
+        "Panjing Wang",
+        "Ying Chi",
+        "Wei Liu",
+        "Feng Xue",
+        "Lingling Chen",
+        "Huiyuan Li",
+        "Wentian Wang",
+        "Yunfei Chen",
+        "Xiaofan Liu",
+        "Rongfeng Fu",
+        "Renchi Yang",
+        "Wenwei Shao",
+        "Siwei Yu",
+        "Xiaolei Pei",
+        "Lei Zhang"
+      ],
+      "journal": "PubMed",
+      "pubdate": "2026-12-10",
+      "url": "https://doi.org/10.1016/j.omta.2026.201832",
+      "doi": "10.1016/j.omta.2026.201832",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7197044566"
+    },
+    {
+      "title": "Albiflorin suppresses breast cancer via the HINT2/NLRP3 signaling pathway.",
+      "authors": [
+        "Yunpeng Hu",
+        "Chen Li",
+        "Yiyao Cui"
+      ],
+      "journal": "PubMed",
+      "pubdate": "2026-12-01",
+      "url": "https://doi.org/10.36721/pjps.2026.39.12.348.1",
+      "doi": "10.36721/pjps.2026.39.12.348.1",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7211924811"
+    },
+    {
+      "title": "The Ataxias as an Example of Rare Diseases: Diagnosis, Genetics, and Treatment.",
+      "authors": [
+        "Friedrich Erdlenbruch",
+        "Andreas Thieme",
+        "Christel Depienne",
+        "Tobias B. Haack",
+        "Jennifer Faber",
+        "Dagmar Timmann"
+      ],
+      "journal": "PubMed",
+      "pubdate": "2026-11-13",
+      "url": "https://doi.org/10.3238/arztebl.m2026.0172",
+      "doi": "10.3238/arztebl.m2026.0172",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7220945447"
+    },
+    {
+      "title": "TO STUDY THE RESPONSE RATE OF HYPO-FRACTIONATED BLADDER PRESERVATION RADIOTHERAPY IN MUSCLE INVASIVE BLADDER CANCER",
+      "authors": [
+        "DR. SHEIKH TAHIR SIDDIQUE , DR. ZEESHAN BADAR , DR. MUHAMMAD UMAIR , DR SANA NAEEM , DR. SAMINA SIDDIQUE , DR RAB NAWAZ MAKEN (SUPERVISOR)"
+      ],
+      "journal": "TPM Testing, psychometrics, methodology in applied psychology",
+      "pubdate": "2026-11-05",
+      "url": "https://doi.org/10.5281/zenodo.18456560",
+      "doi": "10.5281/zenodo.18456560",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7127164891"
+    },
+    {
+      "title": "Metabolic dysfunction-associated Steatotic liver disease prevalence, incidence and global aspects",
+      "authors": [
+        "Sarah H. Wild",
+        "Jeffrey V. Lazarus",
+        "C. Wendy Spearman",
+        "Ponsiano Ocama",
+        "Josh Bilson",
+        "Xiao-Dong Zhou",
+        "Ming-Hua Zheng",
+        "Chrisopher D. Byrne"
+      ],
+      "journal": "ePrints Soton (University of Southampton)",
+      "pubdate": "2026-11-01",
+      "url": "https://doi.org/10.1007/s00125-026-06726-1",
+      "doi": "10.1007/s00125-026-06726-1",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7155662412"
+    },
+    {
+      "title": "Outdoor Air Pollution, Perivascular Space Morphology, and Cognition in Preadolescence.",
+      "authors": [
+        "Jessica Morrel",
+        "Kirthana Sukumaran",
+        "Carinna Torgerson",
+        "Michael A. Rosario",
+        "Haoyu Lan",
+        "Joel David Schwartz",
+        "Jiu‐Chiuan Chen",
+        "Jeiran Choupan",
+        "Megan M. Herting"
+      ],
+      "journal": "PubMed",
+      "pubdate": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.bpsgos.2026.100790",
+      "doi": "10.1016/j.bpsgos.2026.100790",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7169602828"
+    },
+    {
+      "title": "Before Qualia, Strategic Existence Begins",
+      "authors": [
+        "Angelina Inesia-Forde"
+      ],
+      "journal": "PhilPapers (PhilPapers Foundation)",
+      "pubdate": "2026-11-01",
+      "url": "https://doi.org/10.5281/zenodo.23247992",
+      "doi": "10.5281/zenodo.23247992",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7213723230"
+    },
+    {
+      "title": "Lived Experiences of Couples Regarding Grief Caused by Recurrent Miscarriages in Infertile Women: A Phenomenological Study",
+      "authors": [
+        "Hoda Zaraj",
+        "Manijeh Firoozi",
+        "Katayon Vakilian",
+        "Fatimah Nosrati"
+      ],
+      "journal": "Psychology of Woman Journal",
+      "pubdate": "2026-11-01",
+      "url": "https://openalex.org/W7216638656",
+      "doi": null,
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7216638656"
+    },
+    {
+      "title": "The Effectiveness of Self-Compassion Training on Body Image Concern and Difficulties in Emotion Regulation in Women with Overweight",
+      "authors": [
+        "Zohre Safari",
+        "Seyedeh Fatemeh Dinparast",
+        "Mahdieh Salari"
+      ],
+      "journal": "Psychology of Woman Journal",
+      "pubdate": "2026-11-01",
+      "url": "https://openalex.org/W7217300480",
+      "doi": null,
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7217300480"
+    },
+    {
+      "title": "The Effectiveness of Emotional Schema Therapy on Defense Mechanisms, Emotional Distress Tolerance, and Psychosomatic Symptoms in Married Women with Psychosomatic Disorder Symptoms",
+      "authors": [
+        "Zeinab Haghighi",
+        "Milad Abedi Ghelich Gheshlaghi"
+      ],
+      "journal": "Psychology of Woman Journal",
+      "pubdate": "2026-11-01",
+      "url": "https://openalex.org/W7217566277",
+      "doi": null,
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7217566277"
+    }
+  ]
+}
