@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-10 21:34:49",
+  "generated_at": "2026-10-10 13:20:15",
   "keywords": [
     "stroke rehabilitation",
     "frailty",
     "physical therapy"
   ],
-  "count": 108,
+  "count": 94,
   "papers": [
     {
       "title": "Case Report: Botulinum Toxin Type A Injection for Bruxism Following Left Basal Ganglia Hemorrhage",
@@ -681,399 +681,6 @@
       "openalex_id": "https://openalex.org/W7221075796"
     },
     {
-      "title": "Integrated physical and mental healthcare for older adults in Europe: from concept to implementation-a joint EuGMS and EAGP perspectives paper",
-      "authors": [
-        "Beishon L",
-        "Nobels A",
-        "Alves M",
-        "Bogdanovic N",
-        "Cowan R",
-        "Crowther G",
-        "Flôr-Rodrigues B",
-        "Frisardi V",
-        "Geoghegan C",
-        "Miot S",
-        "Soysal P",
-        "Van Den Noortgate N",
-        "Walesby KE",
-        "Welsh TJ",
-        "Yilmaz O",
-        "Voshaar RCO",
-        "Benraad C",
-        "EuGMS and EAGP Task & Finish Group on Integrated Psychiatric & Geriatric Care"
-      ],
-      "journal": "Eur Geriatr Med",
-      "pubdate": "2026 Oct 9",
-      "url": "https://doi.org/10.1007/s41999-026-01620-w",
-      "doi": "10.1007/s41999-026-01620-w",
-      "source_api": "PubMed",
-      "pmid": "42855642"
-    },
-    {
-      "title": "Geriatric Assessment-Based Stratification to Evaluate Treatment Intensity, Quality of Life, and Survival in Older Patients With Metastatic Colorectal Cancer: Protocol for a Prospective Observational Study",
-      "authors": [
-        "Hiramatsu T",
-        "Okazaki I",
-        "Hosokawa K",
-        "Yoshimatsu K",
-        "Nagasaka T"
-      ],
-      "journal": "JMIR Res Protoc",
-      "pubdate": "2026 Oct 9",
-      "url": "https://doi.org/10.2196/94561",
-      "doi": "10.2196/94561",
-      "source_api": "PubMed",
-      "pmid": "42855147"
-    },
-    {
-      "title": "Comment on \"Phase angle as a marker of frailty and prognosis in heart failure: Evidence from a prospective cohort study\"",
-      "authors": [
-        "Li L",
-        "Che B"
-      ],
-      "journal": "Clin Nutr ESPEN",
-      "pubdate": "2026 Oct 9",
-      "url": "https://doi.org/10.1016/j.clnesp.2026.105179",
-      "doi": "10.1016/j.clnesp.2026.105179",
-      "source_api": "PubMed",
-      "pmid": "42854964"
-    },
-    {
-      "title": "Impact of preoperative frailty and sarcopenia on short-term functional recovery after cardiac surgery in elderly patients: a prospective cohort study",
-      "authors": [
-        "Fan G",
-        "Zhang Y",
-        "Chen G",
-        "Wang W",
-        "Zhao W",
-        "Meng X",
-        "Ji F"
-      ],
-      "journal": "J Nutr Health Aging",
-      "pubdate": "2026 Oct 9",
-      "url": "https://doi.org/10.1016/j.jnha.2026.101003",
-      "doi": "10.1016/j.jnha.2026.101003",
-      "source_api": "PubMed",
-      "pmid": "42854514"
-    },
-    {
-      "title": "Fluid responsiveness-guided preinduction volume optimization and postinduction hypotension in older adults at increased frailty risk: A randomized clinical trial",
-      "authors": [
-        "Wang M",
-        "Xu C",
-        "Zhang C",
-        "Wang K",
-        "Lu J",
-        "Zhou Q"
-      ],
-      "journal": "J Clin Anesth",
-      "pubdate": "2026 Oct 9",
-      "url": "https://doi.org/10.1016/j.jclinane.2026.112332",
-      "doi": "10.1016/j.jclinane.2026.112332",
-      "source_api": "PubMed",
-      "pmid": "42854351"
-    },
-    {
-      "title": "Childhood loneliness and deficit-accumulation frailty progression in mid-to-late life",
-      "authors": [
-        "Wang J",
-        "Jiao D",
-        "Zhao X",
-        "Tian Y",
-        "Tao L",
-        "Guo X"
-      ],
-      "journal": "Arch Gerontol Geriatr",
-      "pubdate": "2026 Oct 4",
-      "url": "https://doi.org/10.1016/j.archger.2026.106441",
-      "doi": "10.1016/j.archger.2026.106441",
-      "source_api": "PubMed",
-      "pmid": "42854322"
-    },
-    {
-      "title": "Frailty in the anti-amyloid era: an opportunity to individualize care",
-      "authors": [
-        "Vogt NM",
-        "Kim DH"
-      ],
-      "journal": "J Prev Alzheimers Dis",
-      "pubdate": "2026 Oct 9",
-      "url": "https://doi.org/10.1016/j.tjpad.2026.100682",
-      "doi": "10.1016/j.tjpad.2026.100682",
-      "source_api": "PubMed",
-      "pmid": "42854290"
-    },
-    {
-      "title": "Association Between Wrist-Worn Device-Estimated Sleep Efficiency and Hand Grip Strength in Older Outpatients With Cardiometabolic Diseases: Cross-Sectional Study",
-      "authors": [
-        "Tamura Y",
-        "Gong R",
-        "Murao Y",
-        "Kobayashi F",
-        "Kobayashi S",
-        "Kodera R",
-        "Oba K",
-        "Shirobe M",
-        "Toyoshima K",
-        "Kubo K",
-        "Chiba Y",
-        "Kawai H",
-        "Ishikawa J",
-        "Sasai H",
-        "Fujiwara Y",
-        "Kyo S",
-        "Toba K",
-        "Akishita M",
-        "Obuchi S",
-        "Araki A"
-      ],
-      "journal": "JMIR Form Res",
-      "pubdate": "2026 Oct 9",
-      "url": "https://doi.org/10.2196/95303",
-      "doi": "10.2196/95303",
-      "source_api": "PubMed",
-      "pmid": "42854245"
-    },
-    {
-      "title": "Shared genetic architecture between constipation and aging-related phenotypes: Insights from large-scale genome-wide cross-trait analysis",
-      "authors": [
-        "Liao Y",
-        "Liu W",
-        "Liu X",
-        "Xiao Y"
-      ],
-      "journal": "Medicine (Baltimore)",
-      "pubdate": "2026 Oct 9",
-      "url": "https://doi.org/10.1097/MD.0000000000051036",
-      "doi": "10.1097/md.0000000000051036",
-      "source_api": "PubMed",
-      "pmid": "42854059"
-    },
-    {
-      "title": "Adult Cervical Deformity: Contemporary Evaluation, Classification, and Surgical Decision-Making",
-      "authors": [
-        "Dekhne MS",
-        "Kazarian GS",
-        "Kim HJ"
-      ],
-      "journal": "J Bone Joint Surg Am",
-      "pubdate": "2026 Oct 9",
-      "url": "https://doi.org/10.2106/JBJS.26.00473",
-      "doi": "10.2106/jbjs.26.00473",
-      "source_api": "PubMed",
-      "pmid": "42853901"
-    },
-    {
-      "title": "Exercise to Mitigate the Effects of Aging With HIV: A Narrative Review With Exercise Recommendations for Practice",
-      "authors": [
-        "SantaBarbara NJ",
-        "Kurdziel L",
-        "Cellucci J",
-        "Conz K",
-        "Finlayson H",
-        "McKinney R",
-        "Bharath L"
-      ],
-      "journal": "J Assoc Nurses AIDS Care",
-      "pubdate": "2026 Oct 6",
-      "url": "https://doi.org/10.1097/JNC.0000000000000703",
-      "doi": "10.1097/jnc.0000000000000703",
-      "source_api": "PubMed",
-      "pmid": "42853671"
-    },
-    {
-      "title": "Intrinsic Capacity in a Nationally Representative US Population",
-      "authors": [
-        "Sison SDM",
-        "Luo L",
-        "Kim S",
-        "Pritchard K",
-        "Kim DH",
-        "Shi S"
-      ],
-      "journal": "J Gerontol A Biol Sci Med Sci",
-      "pubdate": "2026 Oct 9",
-      "url": "https://doi.org/10.1093/gerona/glag247",
-      "doi": "10.1093/gerona/glag247",
-      "source_api": "PubMed",
-      "pmid": "42853646"
-    },
-    {
-      "title": "The interaction of comorbidities, aging, and HIV persistence in tissues",
-      "authors": [
-        "O'Hare KA",
-        "Freeman ML",
-        "Erlandson KM"
-      ],
-      "journal": "Curr Opin HIV AIDS",
-      "pubdate": "2026 Oct 9",
-      "url": "https://doi.org/10.1097/COH.0000000000001077",
-      "doi": "10.1097/coh.0000000000001077",
-      "source_api": "PubMed",
-      "pmid": "42853144"
-    },
-    {
-      "title": "Use of Anticoagulation Among Patients With Atrial Fibrillation or Atrial Flutter in the United States",
-      "authors": [
-        "Gouda P",
-        "Harrington J",
-        "Arps K",
-        "Sanders G",
-        "Marks A",
-        "Chiswell K",
-        "Hofmann P",
-        "Marsolo K",
-        "Asfaw K",
-        "Coppolecchia R",
-        "Alexander JH",
-        "Piccini J",
-        "Granger CB",
-        "May HT",
-        "Chrischilles E",
-        "Steinberg BA",
-        "Chamberlain AM",
-        "Van Wormer J",
-        "Jones WS",
-        "Patel MR"
-      ],
-      "journal": "Circ Popul Health Outcomes",
-      "pubdate": "2026 Oct 9",
-      "url": "https://doi.org/10.1161/CIRCOUTCOMES.126.013494",
-      "doi": "10.1161/circoutcomes.126.013494",
-      "source_api": "PubMed",
-      "pmid": "42852510"
-    },
-    {
-      "title": "Hip Fracture Management in Older Adults in Resource-Constrained Settings: Determinants, Care Pathways, and Outcomes-A Systematic Review and Meta-Analysis",
-      "authors": [
-        "Ismail AI",
-        "Thomas OA",
-        "Ojiakor VO",
-        "Nto NJ",
-        "Oviosun A",
-        "Anyanwu CN",
-        "Makena W",
-        "Chima UOP",
-        "Anyanwu EG"
-      ],
-      "journal": "Health Sci Rep",
-      "pubdate": "2026 Oct",
-      "url": "https://doi.org/10.1002/hsr2.73363",
-      "doi": "10.1002/hsr2.73363",
-      "source_api": "PubMed",
-      "pmid": "42851934"
-    },
-    {
-      "title": "Vitamin D: Physiology, Pharmacology and Clinical Evidence for Supplementation-A Narrative Review",
-      "authors": [
-        "Virtanen JK"
-      ],
-      "journal": "Basic Clin Pharmacol Toxicol",
-      "pubdate": "2026 Nov",
-      "url": "https://doi.org/10.1111/bcpt.70315",
-      "doi": "10.1111/bcpt.70315",
-      "source_api": "PubMed",
-      "pmid": "42850721"
-    },
-    {
-      "title": "Organizing healthcare delivery in the era of disease-modifying therapies for Alzheimer's Disease: an Italian RAND/UCLA consensus",
-      "authors": [
-        "Padovani A",
-        "Altini M",
-        "Bellelli G",
-        "Bozzali M",
-        "Brignoli O",
-        "Cagnin A",
-        "Cherubini A",
-        "Iannacci M",
-        "Lodi R",
-        "Logroscino G",
-        "Marra C",
-        "Nicora C",
-        "Parretti S",
-        "Sacco A",
-        "Spadin P",
-        "Zappia M"
-      ],
-      "journal": "Neurol Sci",
-      "pubdate": "2026 Oct 9",
-      "url": "https://doi.org/10.1007/s10072-026-09452-z",
-      "doi": "10.1007/s10072-026-09452-z",
-      "source_api": "PubMed",
-      "pmid": "42850455"
-    },
-    {
-      "title": "Frailty and risk of common chronic diseases among cancer survivors: a prospective cohort study",
-      "authors": [
-        "Li W",
-        "Zhang Z",
-        "Lu C",
-        "Xu Y",
-        "Han S",
-        "Zhan Y",
-        "Ge G",
-        "Wang Z",
-        "Lan X",
-        "Zhang X",
-        "Lu H",
-        "Guo J"
-      ],
-      "journal": "J Cancer Surviv",
-      "pubdate": "2026 Oct 9",
-      "url": "https://doi.org/10.1007/s11764-026-02118-x",
-      "doi": "10.1007/s11764-026-02118-x",
-      "source_api": "PubMed",
-      "pmid": "42850428"
-    },
-    {
-      "title": "Prevalence and appropriateness of solid oral dosage form manipulation in long-term care facilities",
-      "authors": [
-        "Malara A",
-        "Zucchelli A",
-        "Trevisan C",
-        "Borselli G",
-        "Antonelli Incalzi R",
-        "Onder G",
-        "Cherubini A",
-        "Cignarella A",
-        "Marengoni A",
-        "Morandi A",
-        "Castaldo A",
-        "Testa GD",
-        "Leosco D",
-        "Ungar A",
-        "Prescription Day LTCFs Workgroup"
-      ],
-      "journal": "Eur Geriatr Med",
-      "pubdate": "2026 Oct 8",
-      "url": "https://doi.org/10.1007/s41999-026-01618-4",
-      "doi": "10.1007/s41999-026-01618-4",
-      "source_api": "PubMed",
-      "pmid": "42850398"
-    },
-    {
-      "title": "Multidimensional Management of Degenerative Scoliosis: A Comprehensive Narrative Review Integrating Diagnostic Assessment, Surgical Decision-Making, and Patient-Centered Outcomes",
-      "authors": [
-        "Wang Y",
-        "Zhao X",
-        "Wang K",
-        "Liu Z",
-        "Zhang L",
-        "Jia S",
-        "Wang H",
-        "Zhang W",
-        "Yang Y",
-        "Xu T",
-        "Wu H"
-      ],
-      "journal": "Orthop Surg",
-      "pubdate": "2026 Oct 8",
-      "url": "https://doi.org/10.1111/os.70451",
-      "doi": "10.1111/os.70451",
-      "source_api": "PubMed",
-      "pmid": "42849905"
-    },
-    {
       "title": "\"He has no children\": maternita, sterilita e fertilita nel Macbeth e in tre adattamenti cinematografici",
       "authors": [
         "GIULIA ARGENTIERI FEDERZONI"
@@ -1212,6 +819,56 @@
       "openalex_id": "https://openalex.org/W7220979471"
     },
     {
+      "title": "Frailty and risk of common chronic diseases among cancer survivors: a prospective cohort study",
+      "authors": [
+        "Wei Li",
+        "Zenghui Zhang",
+        "Can Lu",
+        "Yinuo Xu",
+        "Shaojie Han",
+        "Yufei Zhan",
+        "Guo Ge",
+        "Ziwen Wang",
+        "Xianwu Lan",
+        "Xiaoshen Zhang",
+        "Hua Lu",
+        "Jun Guo"
+      ],
+      "journal": "Journal of Cancer Survivorship",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.1007/s11764-026-02118-x",
+      "doi": "10.1007/s11764-026-02118-x",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221002539"
+    },
+    {
+      "title": "Organizing healthcare delivery in the era of disease-modifying therapies for Alzheimer’s Disease: an Italian RAND/UCLA consensus",
+      "authors": [
+        "Alessandro Padovani",
+        "Mattia Altini",
+        "Giuseppe Bellelli",
+        "Marco Bozzali",
+        "Ovidio Brignoli",
+        "Annachiara Cagnin",
+        "Antonio Cherubini",
+        "Manuele Iannacci",
+        "Raffaele Lodi",
+        "Giancarlo Logroscino",
+        "Camillo Marra",
+        "Carlo Nicora",
+        "Simone Parretti",
+        "Anna Sacco",
+        "Patrizia Spadin",
+        "Mario Zappia"
+      ],
+      "journal": "Neurological Sciences",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.1007/s10072-026-09452-z",
+      "doi": "10.1007/s10072-026-09452-z",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221019819"
+    },
+    {
       "title": "The skin microbiome in aging from ecological dysbiosis to molecular therapeutics",
       "authors": [
         "Yu Lei",
@@ -1239,6 +896,54 @@
       "doi": "10.17632/67phfrkhsr",
       "source_api": "OpenAlex",
       "openalex_id": "https://openalex.org/W7221065393"
+    },
+    {
+      "title": "Intrinsic Capacity in a Nationally Representative US Population",
+      "authors": [
+        "Stephanie Denise M. Sison",
+        "Lan Luo",
+        "Sunyoung Kim",
+        "Kevin Pritchard",
+        "Dae Hyun Kim",
+        "Sandra Shi"
+      ],
+      "journal": "The Journals of Gerontology Series A",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.1093/gerona/glag247",
+      "doi": "10.1093/gerona/glag247",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221066310"
+    },
+    {
+      "title": "Geriatric Assessment–Based Stratification to Evaluate Treatment Intensity, Quality of Life, and Survival in Older Patients With Metastatic Colorectal Cancer: Protocol for a Prospective Observational Study",
+      "authors": [
+        "Takako Hiramatsu",
+        "Izumi Okazaki",
+        "Kyoko Hosokawa",
+        "Kazuhiko Yoshimatsu",
+        "Takeshi Nagasaka"
+      ],
+      "journal": "JMIR Research Protocols",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.2196/94561",
+      "doi": "10.2196/94561",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221066984"
+    },
+    {
+      "title": "Shared genetic architecture between constipation and aging-related phenotypes",
+      "authors": [
+        "Yixuan Liao",
+        "Wei Liu",
+        "Xiaojin Liu",
+        "Yingying Xiao"
+      ],
+      "journal": "Medicine",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.1097/md.0000000000051036",
+      "doi": "10.1097/md.0000000000051036",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221067549"
     },
     {
       "title": "Obesidad sarcopénica e indicadores cardiometabólicos en adultos mayores de América Latina: revisión sistemática actualizada, 2015-2026",
@@ -1270,6 +975,37 @@
       "doi": "10.3389/fphar.2026.1917340",
       "source_api": "OpenAlex",
       "openalex_id": "https://openalex.org/W7221075034"
+    },
+    {
+      "title": "Use of Anticoagulation Among Patients With Atrial Fibrillation or Atrial Flutter in the United States",
+      "authors": [
+        "Pishoy Gouda",
+        "Josephine Harrington",
+        "Kelly E Arps",
+        "Gretchen Sanders",
+        "Angel Marks",
+        "Karen Chiswell",
+        "Paul B Hofmann",
+        "Keith A. Marsolo",
+        "Kirubel Asfaw",
+        "Rosa Coppolecchia",
+        "John Hunter Alexander",
+        "Jonathan Paul Piccini",
+        "Christopher Bull Granger",
+        "Heidi Thomas May",
+        "Elizabeth A. Chrischilles",
+        "Benjamin Adam Steinberg",
+        "Alanna M. Chamberlain",
+        "Jeffrey J. VanWormer",
+        "W. Schuyler Jones",
+        "Manesh R. Patel"
+      ],
+      "journal": "Circulation Population Health and Outcomes",
+      "pubdate": "2026-10-09",
+      "url": "https://doi.org/10.1161/circoutcomes.126.013494",
+      "doi": "10.1161/circoutcomes.126.013494",
+      "source_api": "OpenAlex",
+      "openalex_id": "https://openalex.org/W7221077295"
     },
     {
       "title": "Exploring the participation of people with lower limb absence or amputation: a mixed methods study",
