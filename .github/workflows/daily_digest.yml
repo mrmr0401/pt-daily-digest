@@ -50,7 +50,8 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "auto: update PT daily digest data and HTML [skip ci]"
-            git push
+            git pull --rebase origin main
+            git push origin main
           fi
 
       - name: GitHub Pages 用アーティファクトのアップロード
