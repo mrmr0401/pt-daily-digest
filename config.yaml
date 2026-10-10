@@ -2,5 +2,19 @@ keywords:
   - "stroke rehabilitation"
   - "frailty"
   - "physical therapy"
-days_back: 7
+
+policy_keywords:
+  - "リハビリ"
+  - "疾患別リハビリテーション"
+  - "診療報酬"
+  - "疑義解釈"
+  - "理学療法"
+  - "介護報酬"
+  - "介護保険"
+  - "医療"
+  - "地域包括"
+  - "報酬"
+  - "通知"
+
+days_back: 14
 max_results_per_keyword: 20

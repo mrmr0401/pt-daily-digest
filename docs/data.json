@@ -1,11 +1,144 @@
 {
-  "generated_at": "2026-10-10 13:23:48",
+  "generated_at": "2026-10-10 22:39:19",
   "keywords": [
     "stroke rehabilitation",
     "frailty",
     "physical therapy"
   ],
-  "count": 108,
+  "policy_keywords": [
+    "リハビリ",
+    "疾患別リハビリテーション",
+    "診療報酬",
+    "疑義解釈",
+    "理学療法",
+    "介護報酬",
+    "介護保険",
+    "医療",
+    "地域包括",
+    "報酬",
+    "通知"
+  ],
+  "policy_news_count": 13,
+  "papers_count": 108,
+  "policy_news": [
+    {
+      "title": "令和８年度（令和７年度からの繰越分）医療施設等施設整備費補助金の交付額の３回目内示について（２次募集分）",
+      "url": "https://www.mhlw.go.jp/stf/newpage_76647.html",
+      "pubdate": "2026-10-09",
+      "matched_keywords": [
+        "医療"
+      ],
+      "source": "厚生労働省"
+    },
+    {
+      "title": "薬事審議会　再生医療等製品・生物由来技術部会を開催します",
+      "url": "https://www.mhlw.go.jp/stf/newpage_76385.html",
+      "pubdate": "2026-10-08",
+      "matched_keywords": [
+        "医療"
+      ],
+      "source": "厚生労働省"
+    },
+    {
+      "title": "関係法令、その他関係通知等",
+      "url": "https://www.mhlw.go.jp/stf/newpage_76430.html",
+      "pubdate": "2026-10-05",
+      "matched_keywords": [
+        "通知"
+      ],
+      "source": "厚生労働省"
+    },
+    {
+      "title": "最近の調剤医療費（電算処理分）の動向　令和8年度4～5月号",
+      "url": "https://www.mhlw.go.jp/topics/medias/c-med/2026/05/",
+      "pubdate": "2026-09-30",
+      "matched_keywords": [
+        "医療"
+      ],
+      "source": "厚生労働省"
+    },
+    {
+      "title": "最近の歯科医療費（電算処理分）の動向　令和8年度4～5月号",
+      "url": "https://www.mhlw.go.jp/topics/medias/shika_iryou/2026/05/",
+      "pubdate": "2026-09-30",
+      "matched_keywords": [
+        "医療"
+      ],
+      "source": "厚生労働省"
+    },
+    {
+      "title": "最近の医科医療費（電算処理分）の動向　令和8年度4～5月号",
+      "url": "https://www.mhlw.go.jp/topics/medias/ika_iryou/2026/05/",
+      "pubdate": "2026-09-30",
+      "matched_keywords": [
+        "医療"
+      ],
+      "source": "厚生労働省"
+    },
+    {
+      "title": "最近の医療費の動向-MEDIAS-令和8年度4～5月号",
+      "url": "https://www.mhlw.go.jp/topics/medias/month/26/04-05.html",
+      "pubdate": "2026-09-30",
+      "matched_keywords": [
+        "医療"
+      ],
+      "source": "厚生労働省"
+    },
+    {
+      "title": "医療施設動態調査（令和8(2026)年7月末概数）",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/iryosd/m26/is2607.html",
+      "pubdate": "2026-09-30",
+      "matched_keywords": [
+        "医療"
+      ],
+      "source": "厚生労働省"
+    },
+    {
+      "title": "第217回社会保障審議会医療保険部会（ペーパーレス）の開催について",
+      "url": "https://www.mhlw.go.jp/stf/newpage_76382.html",
+      "pubdate": "2026-09-29",
+      "matched_keywords": [
+        "医療"
+      ],
+      "source": "厚生労働省"
+    },
+    {
+      "title": "令和７（2025）年医療施設（動態）調査・病院報告の概況",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/iryosd/25/",
+      "pubdate": "2026-09-29",
+      "matched_keywords": [
+        "医療"
+      ],
+      "source": "厚生労働省"
+    },
+    {
+      "title": "第４回介護保険制度における預貯金等の把握等に係る検討の場の資料について",
+      "url": "https://www.mhlw.go.jp/stf/newpage_76407.html",
+      "pubdate": "2026-09-28",
+      "matched_keywords": [
+        "介護保険"
+      ],
+      "source": "厚生労働省"
+    },
+    {
+      "title": "第４回介護保険制度における預貯金等の把握等に係る検討の場の開催について",
+      "url": "https://www.mhlw.go.jp/stf/newpage_76380.html",
+      "pubdate": "2026-09-25",
+      "matched_keywords": [
+        "介護保険"
+      ],
+      "source": "厚生労働省"
+    },
+    {
+      "title": "かかりつけ医機能に関する情報の医療情報ネット（ナビイ）での提供について",
+      "url": "https://www.mhlw.go.jp/stf/houdou/newpage_75698.html",
+      "pubdate": "2026-09-25",
+      "matched_keywords": [
+        "医療"
+      ],
+      "source": "厚生労働省"
+    }
+  ],
   "papers": [
     {
       "title": "Case Report: Botulinum Toxin Type A Injection for Bruxism Following Left Basal Ganglia Hemorrhage",

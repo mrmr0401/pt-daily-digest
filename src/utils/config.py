@@ -8,7 +8,8 @@ def _simple_yaml_parse(content: str) -> Dict[str, Any]:
     """外部ライブラリ不使用の簡易YAMLパーサー (config.yaml専用)"""
     config: Dict[str, Any] = {
         "keywords": [],
-        "days_back": 7,
+        "policy_keywords": [],
+        "days_back": 14,
         "max_results_per_keyword": 20
     }
     
@@ -51,7 +52,8 @@ def load_config(config_path: str = DEFAULT_CONFIG_PATH) -> Dict[str, Any]:
     """config.yaml から設定情報を読み込む (PyYAML不要・標準ライブラリのみで動作)"""
     default_res = {
         "keywords": ["stroke rehabilitation", "frailty", "physical therapy"],
-        "days_back": 7,
+        "policy_keywords": ["リハビリ", "疾患別リハビリテーション", "診療報酬", "疑義解釈", "理学療法", "介護報酬"],
+        "days_back": 14,
         "max_results_per_keyword": 20
     }
     
@@ -59,15 +61,17 @@ def load_config(config_path: str = DEFAULT_CONFIG_PATH) -> Dict[str, Any]:
         return default_res
         
     try:
-        # PyYAMLが使える場合はPyYAMLを使用
         import yaml
         with open(config_path, "r", encoding="utf-8") as f:
-            return yaml.safe_load(f)
+            cfg = yaml.safe_load(f)
+            if cfg:
+                return cfg
     except Exception:
-        # PyYAMLがない場合やエラー時は自前の簡易パーサーを使用
-        try:
-            with open(config_path, "r", encoding="utf-8") as f:
-                content = f.read()
-                return _simple_yaml_parse(content)
-        except Exception:
-            return default_res
+        pass
+
+    try:
+        with open(config_path, "r", encoding="utf-8") as f:
+            content = f.read()
+            return _simple_yaml_parse(content)
+    except Exception:
+        return default_res
