@@ -4,6 +4,8 @@ on:
   schedule:
     # 毎朝 06:00 JST (日本時間) = 前日 21:00 UTC
     - cron: '0 21 * * *'
+  push:
+    branches: [ main ] # リポジトリ更新時にも即座に自動実行
   workflow_dispatch: # GitHub UIからの手動実行用
 
 permissions:
@@ -35,7 +37,6 @@ jobs:
 
       - name: main.py の実行 (データ取得＆HTML生成)
         env:
-          # 必要に応じて外部APIキーなどをSecretsから読み込む構成
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python main.py
