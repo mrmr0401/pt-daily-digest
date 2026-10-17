@@ -805,9 +805,33 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
 
                 const authorsStr = (item.authors || []).slice(0, 3).join(', ') + ((item.authors || []).length > 3 ? '...' : '');
 
+                // タイトル表示（翻訳タイトルがある場合は日本語をメイン、原題をサブに）
+                let titleHtml = '';
+                if (item.translated_title) {{
+                    titleHtml = `
+                    <div style="margin-bottom: 8px;">
+                        <h3 class="news-title" style="margin-bottom: 4px;">
+                            <a href="${{item.url}}" target="_blank" rel="noopener noreferrer">${{escapeHtml(item.translated_title)}}</a>
+                        </h3>
+                        <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
+                            <span class="meta-label">原題:</span> <em>${{escapeHtml(item.title)}}</em>
+                        </div>
+                    </div>
+                    `;
+                }} else {{
+                    titleHtml = `
+                    <h3 class="news-title" style="margin-bottom: 6px;">
+                        <a href="${{item.url}}" target="_blank" rel="noopener noreferrer">${{escapeHtml(item.title)}}</a>
+                    </h3>
+                    `;
+                }}
+
                 // AI要約ブロックの有無判定
                 let aiSummaryHtml = '';
                 if (item.ai_summary) {{
+                    const disclaimerText = item.translated_title 
+                        ? '⚠️ AI要約・翻訳のため原文で確認してください'
+                        : '⚠️ AI要約のため原文で確認してください';
                     aiSummaryHtml = `
                     <div class="ai-summary-box">
                         <div class="ai-summary-label">
@@ -816,7 +840,7 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
                         </div>
                         <p class="ai-summary-text">${{escapeHtml(item.ai_summary)}}</p>
                         <div class="ai-disclaimer">
-                            ⚠️ AI要約のため原文で確認してください
+                            ${{disclaimerText}}
                         </div>
                     </div>
                     `;
@@ -834,9 +858,7 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
                             ${{highlightTags}}
                         </div>
                     </div>
-                    <h3 class="news-title" style="margin-bottom: 6px;">
-                        <a href="${{item.url}}" target="_blank" rel="noopener noreferrer">${{escapeHtml(item.title)}}</a>
-                    </h3>
+                    ${{titleHtml}}
                     ${{!isPolicy ? `
                     <div class="paper-meta" style="margin-bottom: 6px;">
                         <div><span class="meta-label">著者:</span> ${{escapeHtml(authorsStr || '情報なし')}}</div>

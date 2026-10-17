@@ -38,9 +38,14 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: main.py の実行 (データ取得＆HTML生成)
+      - name: main.py の実行 (データ取得＆HTML生成＆メール配信)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST || 'smtp.gmail.com' }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT || '587' }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
         run: |
           python main.py
 

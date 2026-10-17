@@ -5,6 +5,7 @@ from src.fetcher.mhlw_news import fetch_mhlw_news
 from src.recommender.scoring import select_top_recommendations
 from src.recommender.summarizer import attach_ai_summaries
 from src.generator.html_builder import generate_docs
+from src.notifier.mailer import send_digest_email
 
 logging.basicConfig(
     level=logging.INFO,
@@ -31,15 +32,19 @@ def main():
     logger.info("Fetching research papers...")
     papers = fetch_all_papers(keywords=keywords, days_back=7, max_per_keyword=max_results)
     
-    # 4. 「今日のおすすめ5件」の選定 & Gemini AI要約の付加
+    # 4. 「今日のおすすめ5件」の選定 & Gemini AI要約・タイトル翻訳の付加
     logger.info("Selecting Top 5 Recommendations...")
     recommended = select_top_recommendations(papers=papers, policy_news=policy_news, config=config, top_n=5)
-    logger.info("Checking and generating AI summaries for recommendations...")
+    logger.info("Checking and generating AI summaries & translations for recommendations...")
     recommended = attach_ai_summaries(recommended)
     
     # 5. docs/data.json と docs/index.html の生成 (おすすめ + 2セクション構造)
     logger.info("Generating docs/data.json and docs/index.html...")
     generate_docs(papers=papers, policy_news=policy_news, recommended=recommended, config=config, docs_dir="docs")
+    
+    # 6. メール配信 (環境変数 MAIL_TO, SMTP_USER, SMTP_PASSWORD 設定時)
+    logger.info("Checking email notification settings...")
+    send_digest_email(recommended=recommended, policy_news=policy_news, papers=papers)
     
     logger.info(f"Successfully generated digest with {len(recommended)} recommended items, {len(policy_news)} policy news items, and {len(papers)} research papers.")
     logger.info("=== Finished Successfully ===")
