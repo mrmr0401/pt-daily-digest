@@ -630,6 +630,276 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
             color: #ffffff;
         }}
 
+        /* 設定ボタン */
+        .settings-btn {{
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 0.775rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }}
+        .settings-btn:hover {{
+            background: rgba(255, 255, 255, 0.16);
+            border-color: var(--accent-primary);
+        }}
+
+        /* モーダル */
+        .modal-overlay {{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 16px;
+        }}
+        .modal-content {{
+            background: #1e293b;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            max-width: 580px;
+            width: 100%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            animation: modalFadeIn 0.25s ease-out;
+        }}
+        @keyframes modalFadeIn {{
+            from {{ opacity: 0; transform: scale(0.96); }}
+            to {{ opacity: 1; transform: scale(1); }}
+        }}
+        .modal-header {{
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }}
+        .modal-title {{
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }}
+        .modal-close-btn {{
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+        }}
+        .modal-close-btn:hover {{
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.1);
+        }}
+        .modal-body {{
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+        }}
+        .modal-desc {{
+            font-size: 0.825rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 16px;
+            background: rgba(15, 23, 42, 0.4);
+            padding: 10px 12px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-primary);
+        }}
+        .keyword-section {{
+            margin-bottom: 18px;
+        }}
+        .keyword-section-title {{
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }}
+        .keyword-tags-container {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 8px;
+            min-height: 32px;
+            padding: 6px;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 8px;
+            border: 1px dashed var(--card-border);
+        }}
+        .keyword-tag-badge {{
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            color: var(--accent-primary);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.775rem;
+            font-weight: 600;
+        }}
+        .keyword-tag-badge.policy {{
+            background: rgba(245, 158, 11, 0.15);
+            border-color: rgba(245, 158, 11, 0.35);
+            color: #fbbf24;
+        }}
+        .tag-remove-btn {{
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: inherit;
+            opacity: 0.7;
+            padding: 0 2px;
+            line-height: 1;
+        }}
+        .tag-remove-btn:hover {{
+            opacity: 1;
+            color: #ef4444;
+        }}
+        .keyword-input-row {{
+            display: flex;
+            gap: 6px;
+        }}
+        .keyword-input {{
+            flex: 1;
+            padding: 8px 12px;
+            background: #0f172a;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            outline: none;
+        }}
+        .keyword-input:focus {{
+            border-color: var(--accent-primary);
+        }}
+        .btn-add {{
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.825rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+        }}
+        .btn-add:hover {{
+            background: rgba(255, 255, 255, 0.1);
+        }}
+        .github-sync-section {{
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+            margin-top: 20px;
+        }}
+        .github-sync-title {{
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #fbbf24;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }}
+        .btn-save-token {{
+            background: #334155;
+            border: 1px solid var(--card-border);
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }}
+        .btn-save-token:hover {{
+            background: #475569;
+        }}
+        .modal-footer {{
+            padding: 14px 20px;
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            background: rgba(15, 23, 42, 0.4);
+        }}
+        .btn-primary {{
+            background: linear-gradient(90deg, #f59e0b, #0284c7);
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }}
+        .btn-primary:hover {{
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }}
+        .btn-secondary {{
+            background: transparent;
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+        }}
+        .btn-secondary:hover {{
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+        }}
+
+        /* トースト通知 */
+        .toast-notification {{
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e293b;
+            color: #f8fafc;
+            border: 1px solid var(--accent-primary);
+            padding: 12px 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 10000;
+            animation: toastIn 0.3s ease-out;
+        }}
+        @keyframes toastIn {{
+            from {{ transform: translate(-50%, 20px); opacity: 0; }}
+            to {{ transform: translate(-50%, 0); opacity: 1; }}
+        }}
+
         footer {{
             text-align: center;
             margin-top: 32px;
@@ -641,12 +911,75 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
 <body>
     <div class="app-container">
         <header>
-            <div class="header-title">📋 PT情報ダイジェスト</div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <div class="header-title" style="margin-bottom: 0;">📋 PT情報ダイジェスト</div>
+                <button class="settings-btn" onclick="openKeywordModal()">⚙️ 検索用語設定</button>
+            </div>
             <div class="header-meta">
                 <span>更新: {today_date}</span>
                 <span>理学療法士管理職向け</span>
             </div>
         </header>
+
+        <!-- 検索用語設定モーダル -->
+        <div id="keywordModal" class="modal-overlay" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">⚙️ 検索対象用語の設定</div>
+                    <button class="modal-close-btn" onclick="closeKeywordModal()">✕</button>
+                </div>
+                
+                <div class="modal-body">
+                    <p class="modal-desc">
+                        対象とするキーワードを自由に追加・削除できます。<br/>
+                        設定したキーワードは即座に画面上で絞り込みに使えるほか、GitHubと自動同期して毎朝の自動収集対象（config.yaml）を更新できます。
+                    </p>
+
+                    <!-- 英語論文キーワード -->
+                    <div class="keyword-section">
+                        <div class="keyword-section-title">📚 学術論文 検索キーワード (英語)</div>
+                        <div id="paperKeywordTags" class="keyword-tags-container"></div>
+                        <div class="keyword-input-row">
+                            <input type="text" id="newPaperKwInput" class="keyword-input" placeholder="例: cardiac rehabilitation, dysphagia..." onkeydown="if(event.key==='Enter') addKeyword('paper')">
+                            <button class="btn-add" onclick="addKeyword('paper')">＋ 追加</button>
+                        </div>
+                    </div>
+
+                    <!-- 制度・診療報酬キーワード -->
+                    <div class="keyword-section">
+                        <div class="keyword-section-title">🏛️ 制度・診療報酬 検索キーワード (日本語)</div>
+                        <div id="policyKeywordTags" class="keyword-tags-container"></div>
+                        <div class="keyword-input-row">
+                            <input type="text" id="newPolicyKwInput" class="keyword-input" placeholder="例: 訪問リハビリ, 摂食嚥下, 回復期..." onkeydown="if(event.key==='Enter') addKeyword('policy')">
+                            <button class="btn-add" onclick="addKeyword('policy')">＋ 追加</button>
+                        </div>
+                    </div>
+
+                    <!-- GitHub自動同期設定 -->
+                    <div class="github-sync-section">
+                        <div class="github-sync-title">🔄 GitHub 自動同期 (config.yaml 更新＆即時再ビルド)</div>
+                        <p style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 8px;">
+                            変更を毎朝の自動収集（config.yaml）に反映するには、初回のみ GitHub Personal Access Token を設定してください（ブラウザ内に安全に保存されます）。
+                        </p>
+                        <div style="display: flex; gap: 6px; margin-bottom: 6px;">
+                            <input type="password" id="githubTokenInput" class="keyword-input" placeholder="ghp_xxxxxxxxxxxx (GitHub PAT)" style="font-family: monospace;">
+                            <button class="btn-save-token" onclick="saveGithubToken()">保存</button>
+                        </div>
+                        <div id="tokenStatus" style="font-size: 0.725rem; color: #10b981; margin-bottom: 8px;"></div>
+                        <div style="font-size: 0.7rem; color: #94a3b8;">
+                            👉 <a href="https://github.com/settings/tokens/new?scopes=repo,workflow&description=PT-Daily-Digest" target="_blank" style="color: var(--accent-primary);">ここからトークンを作成 (repo, workflow 権限)</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn-secondary" onclick="closeKeywordModal()">キャンセル</button>
+                    <button class="btn-primary" onclick="applyAndSyncKeywords()">
+                        🚀 設定を保存してGitHubと自動同期
+                    </button>
+                </div>
+            </div>
+        </div>
 
         <!-- 画面最上部: 今日の注目おすすめ 5選 セクション -->
         <section id="recommendSection" class="recommend-section">
@@ -711,6 +1044,202 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
         const POLICY_PAGE_SIZE = 20;
         let currentPaperDate = 'ALL';
         let searchQuery = '';
+
+        // ユーザー設定キーワード (LocalStorage または APP_DATA から初期化)
+        let userPaperKeywords = [];
+        let userPolicyKeywords = [];
+        try {{
+            const savedPaper = localStorage.getItem('pt_user_keywords_paper');
+            const savedPolicy = localStorage.getItem('pt_user_keywords_policy');
+            userPaperKeywords = savedPaper ? JSON.parse(savedPaper) : (APP_DATA.keywords || []);
+            userPolicyKeywords = savedPolicy ? JSON.parse(savedPolicy) : (APP_DATA.policy_keywords || []);
+        }} catch(e) {{
+            userPaperKeywords = APP_DATA.keywords || [];
+            userPolicyKeywords = APP_DATA.policy_keywords || [];
+        }}
+
+        // トースト通知
+        function showToast(message) {{
+            const existing = document.querySelector('.toast-notification');
+            if (existing) existing.remove();
+            
+            const toast = document.createElement('div');
+            toast.className = 'toast-notification';
+            toast.innerText = message;
+            document.body.appendChild(toast);
+            setTimeout(() => {{
+                toast.style.transition = 'opacity 0.4s ease';
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 400);
+            }}, 3500);
+        }}
+
+        // モーダル開閉
+        function openKeywordModal() {{
+            renderKeywordTags();
+            updateTokenStatus();
+            document.getElementById('keywordModal').style.display = 'flex';
+        }}
+
+        function closeKeywordModal() {{
+            document.getElementById('keywordModal').style.display = 'none';
+        }}
+
+        function updateTokenStatus() {{
+            const token = localStorage.getItem('pt_github_token');
+            const statusEl = document.getElementById('tokenStatus');
+            const inputEl = document.getElementById('githubTokenInput');
+            if (token) {{
+                statusEl.innerText = '✅ GitHub Tokenが保存されています（自動同期が有効です）';
+                inputEl.value = token;
+            }} else {{
+                statusEl.innerText = '※ Token未設定: ブラウザ内保存のみ動作します';
+            }}
+        }}
+
+        function saveGithubToken() {{
+            const input = document.getElementById('githubTokenInput');
+            const token = input.value.trim();
+            if (token) {{
+                localStorage.setItem('pt_github_token', token);
+                updateTokenStatus();
+                showToast('GitHub Tokenをブラウザに保存しました');
+            }} else {{
+                localStorage.removeItem('pt_github_token');
+                updateTokenStatus();
+                showToast('GitHub Tokenを解除しました');
+            }}
+        }}
+
+        // タグのレンダリング
+        function renderKeywordTags() {{
+            const paperContainer = document.getElementById('paperKeywordTags');
+            const policyContainer = document.getElementById('policyKeywordTags');
+
+            paperContainer.innerHTML = userPaperKeywords.map((kw, idx) => `
+                <span class="keyword-tag-badge">
+                    <span style="cursor:pointer;" onclick="setSearchFilter('${{escapeHtml(kw)}}')">${{escapeHtml(kw)}}</span>
+                    <span class="tag-remove-btn" onclick="removeKeyword('paper', ${{idx}})">✕</span>
+                </span>
+            `).join('') || '<span style="font-size:0.75rem; color:var(--text-secondary);">キーワードがありません</span>';
+
+            policyContainer.innerHTML = userPolicyKeywords.map((kw, idx) => `
+                <span class="keyword-tag-badge policy">
+                    <span style="cursor:pointer;" onclick="setSearchFilter('${{escapeHtml(kw)}}')">${{escapeHtml(kw)}}</span>
+                    <span class="tag-remove-btn" onclick="removeKeyword('policy', ${{idx}})">✕</span>
+                </span>
+            `).join('') || '<span style="font-size:0.75rem; color:var(--text-secondary);">キーワードがありません</span>';
+        }}
+
+        function addKeyword(type) {{
+            const inputId = type === 'paper' ? 'newPaperKwInput' : 'newPolicyKwInput';
+            const input = document.getElementById(inputId);
+            const val = input.value.trim();
+            if (!val) return;
+
+            const targetList = type === 'paper' ? userPaperKeywords : userPolicyKeywords;
+            if (!targetList.includes(val)) {{
+                targetList.push(val);
+                renderKeywordTags();
+            }}
+            input.value = '';
+        }}
+
+        function removeKeyword(type, index) {{
+            const targetList = type === 'paper' ? userPaperKeywords : userPolicyKeywords;
+            targetList.splice(index, 1);
+            renderKeywordTags();
+        }}
+
+        function setSearchFilter(keyword) {{
+            closeKeywordModal();
+            const input = document.getElementById('searchInput');
+            input.value = keyword;
+            searchQuery = keyword.toLowerCase();
+            render();
+            window.scrollTo({{ top: 0, behavior: 'smooth' }});
+        }}
+
+        // 設定の保存 & GitHub自動同期
+        async function applyAndSyncKeywords() {{
+            // 1. LocalStorageへ保存
+            localStorage.setItem('pt_user_keywords_paper', JSON.stringify(userPaperKeywords));
+            localStorage.setItem('pt_user_keywords_policy', JSON.stringify(userPolicyKeywords));
+
+            const token = localStorage.getItem('pt_github_token');
+            const saveBtn = document.querySelector('.modal-footer .btn-primary');
+
+            if (!token) {{
+                showToast('💾 キーワードを保存しました (GitHub同期用Tokenは未設定です)');
+                closeKeywordModal();
+                render();
+                return;
+            }}
+
+            // 2. GitHub REST API で config.yaml を自動コミット
+            saveBtn.disabled = true;
+            saveBtn.innerText = '⏳ GitHub同期中...';
+
+            const owner = 'mrmr0401';
+            const repo = 'pt-daily-digest';
+            const filePath = 'config.yaml';
+            const apiUrl = `https://api.github.com/repos/${{owner}}/${{repo}}/contents/${{filePath}}`;
+
+            try {{
+                // 現在のファイルのSHAを取得
+                const getRes = await fetch(apiUrl, {{
+                    headers: {{
+                        'Authorization': `token ${{token}}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }}
+                }});
+
+                if (!getRes.ok) {{
+                    throw new Error(`config.yamlの取得に失敗しました (${{getRes.status}}) - Tokenの権限をご確認ください`);
+                }}
+
+                const fileData = await getRes.json();
+                const currentSha = fileData.sha;
+
+                // 新しい YAML 内容の生成
+                const yamlContent = `keywords:\n${{userPaperKeywords.map(k => `  - "${{k}}"`).join('\n')}}\n\npolicy_keywords:\n${{userPolicyKeywords.map(k => `  - "${{k}}"`).join('\n')}}\n\ndays_back: 14\nmax_results_per_keyword: 20\n`;
+                
+                // Base64エンコード (UTF-8安全)
+                const utf8Bytes = new TextEncoder().encode(yamlContent);
+                let binaryStr = '';
+                utf8Bytes.forEach(b => binaryStr += String.fromCharCode(b));
+                const base64Content = btoa(binaryStr);
+
+                // PUT リクエストでコミット
+                const putRes = await fetch(apiUrl, {{
+                    method: 'PUT',
+                    headers: {{
+                        'Authorization': `token ${{token}}`,
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Content-Type': 'application/json'
+                    }},
+                    body: JSON.stringify({{
+                        message: 'chore: update search keywords from website',
+                        content: base64Content,
+                        sha: currentSha
+                    }})
+                }});
+
+                if (!putRes.ok) {{
+                    throw new Error(`config.yamlの更新に失敗しました (${{putRes.status}})`);
+                }}
+
+                showToast('🚀 config.yamlを更新しました！GitHub Actionsの自動再取得が開始されます。');
+                closeKeywordModal();
+                render();
+            }} catch (err) {{
+                console.error(err);
+                alert(`GitHub自動同期エラー: ${{err.message}}`);
+            }} finally {{
+                saveBtn.disabled = false;
+                saveBtn.innerText = '🚀 設定を保存してGitHubと自動同期';
+            }}
+        }}
 
         // 初期化
         document.addEventListener('DOMContentLoaded', () => {{
