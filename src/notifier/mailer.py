@@ -1,5 +1,6 @@
 import os
 import smtplib
+import urllib.parse
 import logging
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -69,6 +70,12 @@ def _build_html_email(recommended: List[Dict[str, Any]], policy_news: List[Dict[
             </div>
             '''
             
+        # PDFボタン
+        pdf_btn_html = ""
+        if item.get("pdf_url"):
+            pdf_link = urllib.parse.urljoin(SITE_URL, item.get("pdf_url"))
+            pdf_btn_html = f'<a href="{pdf_link}" target="_blank" style="display:inline-block; font-size:12px; font-weight:bold; color:#7c3aed; background-color:#f5f3ff; border:1px solid #ddd6fe; padding:4px 10px; border-radius:4px; text-decoration:none; margin-right:6px;">📄 日本語PDF ↗</a>'
+
         rec_cards_html += f'''
         <div style="background-color:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:12px; margin-bottom:12px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
             <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px;">
@@ -83,6 +90,7 @@ def _build_html_email(recommended: List[Dict[str, Any]], policy_news: List[Dict[
             {meta_html}
             {summary_html}
             <div style="text-align:right; margin-top:8px;">
+                {pdf_btn_html}
                 <a href="{item_url}" target="_blank" style="display:inline-block; font-size:12px; font-weight:bold; color:#0284c7; background-color:#e0f2fe; padding:4px 10px; border-radius:4px; text-decoration:none;">原文を見る ↗</a>
             </div>
         </div>
@@ -119,7 +127,10 @@ def _build_html_email(recommended: List[Dict[str, Any]], policy_news: List[Dict[
             
             <!-- 今日の注目おすすめ 5選 -->
             <div style="background-color:#fffbeb; border:1px solid #fef3c7; border-radius:8px; padding:12px; margin-bottom:20px;">
-                <div style="font-size:16px; font-weight:bold; color:#b45309; margin-bottom:2px;">🌟 本日の注目おすすめ 5選</div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                    <div style="font-size:16px; font-weight:bold; color:#b45309;">🌟 本日の注目おすすめ 5選</div>
+                    <a href="{urllib.parse.urljoin(SITE_URL, 'pdf/pt_digest_top5.pdf')}" target="_blank" style="font-size:11px; font-weight:bold; color:#b45309; text-decoration:none; background-color:#fef3c7; border:1px solid #fcd34d; padding:3px 8px; border-radius:4px;">📄 5選まとめPDF ↗</a>
+                </div>
                 <div style="font-size:11px; color:#78350f; margin-bottom:12px;">重要キーワード一致・最新度・被引用数より厳選（Gemini翻訳・要約付き）</div>
                 {rec_cards_html}
             </div>
@@ -180,10 +191,13 @@ def _build_text_email(recommended: List[Dict[str, Any]], policy_news: List[Dict[
             lines.append(f"🤖 要約: {item.get('ai_summary')}")
             lines.append("※AI要約・翻訳のため原文でご確認ください。")
             
+        if item.get("pdf_url"):
+            lines.append(f"📄 日本語PDF: {urllib.parse.urljoin(SITE_URL, item.get('pdf_url'))}")
         lines.append(f"URL: {item.get('url', '')}")
         lines.append("")
         
     lines.append("-----------------------------------------")
+    lines.append(f"📄 今日の5選まとめPDF: {urllib.parse.urljoin(SITE_URL, 'pdf/pt_digest_top5.pdf')}")
     lines.append(f"🏛️ 厚生労働省 新着ニュース: 全{len(policy_news)}件")
     lines.append(f"📚 学術論文 (PubMed/OpenAlex): 全{len(papers)}件")
     lines.append("-----------------------------------------")

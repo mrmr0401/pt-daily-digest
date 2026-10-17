@@ -32,6 +32,7 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
         "recommended_count": len(recommended),
         "policy_news_count": len(policy_news),
         "papers_count": len(papers),
+        "combined_pdf_url": config.get("combined_pdf_url", "pdf/pt_digest_top5.pdf"),
         "recommended": recommended,
         "policy_news": policy_news,
         "papers": papers
@@ -598,6 +599,37 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
             background-color: rgba(251, 191, 36, 0.25) !important;
         }}
 
+        .link-btn-pdf {{
+            background-color: rgba(139, 92, 246, 0.15) !important;
+            color: #c084fc !important;
+            border-color: rgba(139, 92, 246, 0.35) !important;
+        }}
+
+        .link-btn-pdf:hover {{
+            background-color: rgba(139, 92, 246, 0.25) !important;
+        }}
+
+        .combined-pdf-btn {{
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.22) 0%, rgba(217, 119, 6, 0.18) 100%);
+            border: 1px solid rgba(251, 191, 36, 0.5);
+            color: #fbbf24;
+            padding: 5px 11px;
+            border-radius: 8px;
+            font-size: 0.775rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }}
+
+        .combined-pdf-btn:hover {{
+            background: rgba(245, 158, 11, 0.35);
+            box-shadow: 0 0 10px rgba(251, 191, 36, 0.25);
+            color: #ffffff;
+        }}
+
         footer {{
             text-align: center;
             margin-top: 32px;
@@ -623,9 +655,14 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
                     <div class="recommend-heading">
                         <span>🌟 今日の注目おすすめ 5選</span>
                     </div>
-                    <div class="recommend-sub">重要キーワード一致・最新度・被引用数より厳選 / AI要約付き</div>
+                    <div class="recommend-sub">重要キーワード一致・最新度・被引用数より厳選 / AI日本語要約・翻訳付き</div>
                 </div>
-                <button id="toggleRecommendBtn" class="recommend-toggle-btn" onclick="toggleRecommendSection()">折りたたむ ▲</button>
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <a id="combinedPdfBtn" href="{config.get('combined_pdf_url', 'pdf/pt_digest_top5.pdf')}" target="_blank" download class="combined-pdf-btn">
+                        📄 5選まとめPDF
+                    </a>
+                    <button id="toggleRecommendBtn" class="recommend-toggle-btn" onclick="toggleRecommendSection()">折りたたむ ▲</button>
+                </div>
             </div>
             <div id="recommendCardList"></div>
         </section>
@@ -868,9 +905,16 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
                     ${{aiSummaryHtml}}
                     <div class="card-footer" style="margin-top: 8px;">
                         <span class="pub-date">${{item.pubdate || ''}}</span>
-                        <a href="${{item.url}}" target="_blank" rel="noopener noreferrer" class="link-btn link-btn-recommend">
-                            原文を見る <svg viewBox="0 0 24 24" width="12" height="12"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
-                        </a>
+                        <div style="display:flex; gap:6px; align-items:center;">
+                            ${{item.pdf_url ? `
+                            <a href="${{item.pdf_url}}" target="_blank" download class="link-btn link-btn-pdf">
+                                📄 日本語PDF <svg viewBox="0 0 24 24" width="12" height="12"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                            </a>
+                            ` : ''}}
+                            <a href="${{item.url}}" target="_blank" rel="noopener noreferrer" class="link-btn link-btn-recommend">
+                                原文を見る <svg viewBox="0 0 24 24" width="12" height="12"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                            </a>
+                        </div>
                     </div>
                 </article>
                 `;
