@@ -65,6 +65,9 @@ def fetch_openalex_papers(query: str, days_back: int = 7, max_results: int = 20)
                 # URL
                 paper_url = raw_doi if raw_doi else item.get("id", "")
                 
+                # 被引用数
+                cited_by_count = item.get("cited_by_count", 0) or 0
+
                 papers.append({
                     "title": title,
                     "authors": authors,
@@ -73,7 +76,8 @@ def fetch_openalex_papers(query: str, days_back: int = 7, max_results: int = 20)
                     "url": paper_url,
                     "doi": doi.lower() if doi else None,
                     "source_api": "OpenAlex",
-                    "openalex_id": item.get("id")
+                    "openalex_id": item.get("id"),
+                    "cited_by_count": cited_by_count
                 })
                 
     except Exception as e:

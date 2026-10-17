@@ -88,7 +88,8 @@ def fetch_pubmed_papers(query: str, days_back: int = 7, max_results: int = 20) -
                     "url": url,
                     "doi": doi.lower() if doi else None,
                     "source_api": "PubMed",
-                    "pmid": pmid
+                    "pmid": pmid,
+                    "cited_by_count": 0
                 })
                 
     except Exception as e:

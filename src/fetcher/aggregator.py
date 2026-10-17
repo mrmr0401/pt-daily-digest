@@ -21,32 +21,37 @@ def fetch_all_papers(keywords: List[str], days_back: int = 7, max_per_keyword: i
         pubmed_res = fetch_pubmed_papers(kw, days_back=days_back, max_results=max_per_keyword)
         openalex_res = fetch_openalex_papers(kw, days_back=days_back, max_results=max_per_keyword)
         
+        for p in pubmed_res:
+            p["matched_keywords"] = [kw]
+        for p in openalex_res:
+            p["matched_keywords"] = [kw]
+            
         all_raw_papers.extend(pubmed_res)
         all_raw_papers.extend(openalex_res)
     
-    # 重複除去ロジック
-    unique_papers = []
-    seen_dois = set()
-    seen_titles = set()
+    # 重複除去および情報マージロジック
+    unique_papers_dict = {} # key -> paper
     
     for paper in all_raw_papers:
         doi = paper.get("doi")
         title_norm = _normalize_title(paper.get("title", ""))
         
-        # 1. DOIによる重複チェック
-        if doi and doi in seen_dois:
-            continue
-            
-        # 2. DOIがない場合のタイトル正規化による重複チェック
-        if title_norm in seen_titles:
-            continue
-            
-        if doi:
-            seen_dois.add(doi)
-        if title_norm:
-            seen_titles.add(title_norm)
-            
-        unique_papers.append(paper)
+        key = f"doi:{doi}" if doi else f"title:{title_norm}"
         
+        if key in unique_papers_dict:
+            existing = unique_papers_dict[key]
+            # matched_keywords の統合
+            for kw in paper.get("matched_keywords", []):
+                if kw not in existing.get("matched_keywords", []):
+                    existing.setdefault("matched_keywords", []).append(kw)
+            # cited_by_count の大きい方を採用
+            curr_c = paper.get("cited_by_count", 0)
+            ex_c = existing.get("cited_by_count", 0)
+            if curr_c > ex_c:
+                existing["cited_by_count"] = curr_c
+        else:
+            unique_papers_dict[key] = paper
+            
+    unique_papers = list(unique_papers_dict.values())
     logger.info(f"Total raw papers fetched: {len(all_raw_papers)}, Unique papers: {len(unique_papers)}")
     return unique_papers

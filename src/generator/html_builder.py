@@ -3,9 +3,10 @@ import json
 from datetime import datetime
 from typing import List, Dict, Any
 
-def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]], config: Dict[str, Any], docs_dir: str = "docs"):
+def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]], recommended: List[Dict[str, Any]] = None, config: Dict[str, Any] = None, docs_dir: str = "docs"):
     """
     docs/data.json と docs/index.html を生成する。
+    - 画面最上部: 「今日のおすすめ 5件」 (Gemini AI要約・原文リンク・注記付き)
     - メインタブ切り替え (制度ニュース / 新着論文)
     - 制度ニュース: 20件ごとのページ分割タブ
     - 新着論文: 日付ごとのグループ分けタブ
@@ -13,6 +14,11 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
     """
     os.makedirs(docs_dir, exist_ok=True)
     
+    if recommended is None:
+        recommended = []
+    if config is None:
+        config = {}
+        
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     today_date = datetime.now().strftime("%Y年%m月%d日")
     
@@ -23,8 +29,10 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
         "generated_at": now_str,
         "keywords": keywords,
         "policy_keywords": policy_keywords,
+        "recommended_count": len(recommended),
         "policy_news_count": len(policy_news),
         "papers_count": len(papers),
+        "recommended": recommended,
         "policy_news": policy_news,
         "papers": papers
     }
@@ -56,6 +64,8 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
             --text-secondary: #94a3b8;
             --accent-primary: #38bdf8;
             --accent-policy: #f59e0b;
+            --accent-recommend: #a855f7;
+            --accent-gold: #fbbf24;
             --container-max-width: 680px;
         }}
 
@@ -405,6 +415,189 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
             border-color: var(--accent-policy);
         }}
 
+        /* 今日の注目おすすめ 5選 セクション */
+        .recommend-section {{
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
+            border: 1px solid rgba(251, 191, 36, 0.35);
+            border-radius: 16px;
+            padding: 16px 14px;
+            box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+        }}
+
+        .recommend-top-bar {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }}
+
+        .recommend-heading {{
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #fbbf24;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }}
+
+        .recommend-sub {{
+            font-size: 0.725rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }}
+
+        .recommend-toggle-btn {{
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }}
+
+        .recommend-toggle-btn:hover {{
+            background: rgba(255, 255, 255, 0.12);
+            color: var(--text-primary);
+        }}
+
+        .recommend-card {{
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 12px;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+        }}
+
+        .recommend-card:hover {{
+            border-color: rgba(251, 191, 36, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+        }}
+
+        .recommend-card:last-child {{
+            margin-bottom: 0;
+        }}
+
+        .recommend-card-header {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 6px;
+        }}
+
+        .recommend-badges {{
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }}
+
+        .rank-badge {{
+            font-size: 0.725rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+        }}
+
+        .rank-1 {{ background: linear-gradient(135deg, #f59e0b, #d97706); color: #ffffff; }}
+        .rank-2 {{ background: linear-gradient(135deg, #94a3b8, #64748b); color: #ffffff; }}
+        .rank-3 {{ background: linear-gradient(135deg, #b45309, #78350f); color: #ffffff; }}
+        .rank-other {{ background: rgba(56, 189, 248, 0.15); color: var(--accent-primary); border: 1px solid rgba(56, 189, 248, 0.3); }}
+
+        .score-pill {{
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 1px 7px;
+            border-radius: 12px;
+            background: rgba(251, 191, 36, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }}
+
+        .highlight-tag {{
+            font-size: 0.675rem;
+            font-weight: 600;
+            padding: 1px 6px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-secondary);
+        }}
+
+        .highlight-tag.hot {{
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }}
+
+        .highlight-tag.new {{
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }}
+
+        /* AI要約ボックス */
+        .ai-summary-box {{
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(139, 92, 246, 0.08) 100%);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-left: 3px solid #8b5cf6;
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin: 10px 0;
+        }}
+
+        .ai-summary-label {{
+            font-size: 0.725rem;
+            font-weight: 700;
+            color: #c084fc;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 5px;
+            letter-spacing: 0.02em;
+        }}
+
+        .ai-summary-text {{
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #f1f5f9;
+            margin-bottom: 8px;
+        }}
+
+        .ai-disclaimer {{
+            font-size: 0.7rem;
+            color: #fbbf24;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 500;
+            background: rgba(245, 158, 11, 0.1);
+            padding: 2px 7px;
+            border-radius: 4px;
+            border: 1px solid rgba(245, 158, 11, 0.25);
+        }}
+
+        .link-btn-recommend {{
+            background-color: rgba(251, 191, 36, 0.15) !important;
+            color: #fbbf24 !important;
+            border-color: rgba(251, 191, 36, 0.35) !important;
+        }}
+
+        .link-btn-recommend:hover {{
+            background-color: rgba(251, 191, 36, 0.25) !important;
+        }}
+
         footer {{
             text-align: center;
             margin-top: 32px;
@@ -422,6 +615,20 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
                 <span>理学療法士管理職向け</span>
             </div>
         </header>
+
+        <!-- 画面最上部: 今日の注目おすすめ 5選 セクション -->
+        <section id="recommendSection" class="recommend-section">
+            <div class="recommend-top-bar">
+                <div>
+                    <div class="recommend-heading">
+                        <span>🌟 今日の注目おすすめ 5選</span>
+                    </div>
+                    <div class="recommend-sub">重要キーワード一致・最新度・被引用数より厳選 / AI要約付き</div>
+                </div>
+                <button id="toggleRecommendBtn" class="recommend-toggle-btn" onclick="toggleRecommendSection()">折りたたむ ▲</button>
+            </div>
+            <div id="recommendCardList"></div>
+        </section>
 
         <!-- 用語リアルタイム検索窓 -->
         <div class="search-box-container">
@@ -523,7 +730,135 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
             }});
         }}
 
+        let isRecommendCollapsed = false;
+
+        function toggleRecommendSection() {{
+            isRecommendCollapsed = !isRecommendCollapsed;
+            const cardList = document.getElementById('recommendCardList');
+            const btn = document.getElementById('toggleRecommendBtn');
+            if (isRecommendCollapsed) {{
+                cardList.style.display = 'none';
+                btn.innerText = '展開する ▼';
+            }} else {{
+                cardList.style.display = 'block';
+                btn.innerText = '折りたたむ ▲';
+            }}
+        }}
+
+        function escapeHtml(str) {{
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }}
+
+        // おすすめセクションの描画
+        function renderRecommendations() {{
+            const recSection = document.getElementById('recommendSection');
+            const recContainer = document.getElementById('recommendCardList');
+            const items = APP_DATA.recommended || [];
+
+            if (items.length === 0) {{
+                recSection.style.display = 'none';
+                return;
+            }}
+            recSection.style.display = 'block';
+
+            // 検索クエリがある場合はおすすめ内も絞り込み
+            const filteredItems = items.filter(item => {{
+                if (!searchQuery) return true;
+                const title = (item.title || '').toLowerCase();
+                const authors = (item.authors || []).join(' ').toLowerCase();
+                const kws = (item.matched_keywords || []).join(' ').toLowerCase();
+                const summary = (item.ai_summary || '').toLowerCase();
+                return title.includes(searchQuery) || authors.includes(searchQuery) || kws.includes(searchQuery) || summary.includes(searchQuery);
+            }});
+
+            if (filteredItems.length === 0) {{
+                recContainer.innerHTML = '<div class="empty-state" style="padding: 16px; margin-top: 8px;">検索条件に一致するおすすめはありません。</div>';
+                return;
+            }}
+
+            let html = '';
+            filteredItems.forEach((item, index) => {{
+                const rankNum = index + 1;
+                let rankClass = 'rank-other';
+                let rankText = `#${{rankNum}}`;
+                if (rankNum === 1) {{ rankClass = 'rank-1'; rankText = '🥇 #1'; }}
+                else if (rankNum === 2) {{ rankClass = 'rank-2'; rankText = '🥈 #2'; }}
+                else if (rankNum === 3) {{ rankClass = 'rank-3'; rankText = '🥉 #3'; }}
+
+                const isPolicy = item.item_type === 'policy';
+                const sourceBadge = isPolicy
+                    ? '<span class="source-badge badge-mhlw">厚生労働省</span>'
+                    : `<span class="source-badge ${{item.source_api === 'PubMed' ? 'badge-pubmed' : 'badge-openalex'}}">${{item.source_api || 'Paper'}}</span>`;
+
+                const highlightTags = (item.highlights || []).map(h => {{
+                    let tagClass = 'highlight-tag';
+                    if (h.includes('新着')) tagClass += ' new';
+                    if (h.includes('被引用')) tagClass += ' hot';
+                    return `<span class="${{tagClass}}">${{escapeHtml(h)}}</span>`;
+                }}).join('');
+
+                const authorsStr = (item.authors || []).slice(0, 3).join(', ') + ((item.authors || []).length > 3 ? '...' : '');
+
+                // AI要約ブロックの有無判定
+                let aiSummaryHtml = '';
+                if (item.ai_summary) {{
+                    aiSummaryHtml = `
+                    <div class="ai-summary-box">
+                        <div class="ai-summary-label">
+                            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
+                            AIによる要約 (Gemini)
+                        </div>
+                        <p class="ai-summary-text">${{escapeHtml(item.ai_summary)}}</p>
+                        <div class="ai-disclaimer">
+                            ⚠️ AI要約のため原文で確認してください
+                        </div>
+                    </div>
+                    `;
+                }}
+
+                html += `
+                <article class="recommend-card">
+                    <div class="recommend-card-header">
+                        <div class="recommend-badges">
+                            <span class="rank-badge ${{rankClass}}">${{rankText}}</span>
+                            ${{sourceBadge}}
+                            <span class="score-pill">⭐ ${{item.total_score || 0}}pt</span>
+                        </div>
+                        <div style="display:flex; gap:4px; flex-wrap:wrap;">
+                            ${{highlightTags}}
+                        </div>
+                    </div>
+                    <h3 class="news-title" style="margin-bottom: 6px;">
+                        <a href="${{item.url}}" target="_blank" rel="noopener noreferrer">${{escapeHtml(item.title)}}</a>
+                    </h3>
+                    ${{!isPolicy ? `
+                    <div class="paper-meta" style="margin-bottom: 6px;">
+                        <div><span class="meta-label">著者:</span> ${{escapeHtml(authorsStr || '情報なし')}}</div>
+                        <div><span class="meta-label">雑誌:</span> <em>${{escapeHtml(item.journal || '掲載誌不明')}}</em></div>
+                    </div>
+                    ` : ''}}
+                    ${{aiSummaryHtml}}
+                    <div class="card-footer" style="margin-top: 8px;">
+                        <span class="pub-date">${{item.pubdate || ''}}</span>
+                        <a href="${{item.url}}" target="_blank" rel="noopener noreferrer" class="link-btn link-btn-recommend">
+                            原文を見る <svg viewBox="0 0 24 24" width="12" height="12"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                        </a>
+                    </div>
+                </article>
+                `;
+            }});
+            recContainer.innerHTML = html;
+        }}
+
         function render() {{
+            renderRecommendations();
+
             const filteredPolicy = getFilteredPolicyNews();
             const filteredPaperAll = APP_DATA.papers.filter(item => {{
                 if (!searchQuery) return true;
