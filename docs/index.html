@@ -10,16 +10,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0f172a;
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
             --card-bg: #1e293b;
             --card-border: #334155;
             --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
             --accent-primary: #38bdf8;
-            --accent-policy: #f59e0b;
-            --accent-recommend: #a855f7;
-            --accent-gold: #fbbf24;
-            --container-max-width: 680px;
+            --accent-policy: #fbbf24;
+            --accent-jstage: #f43f5e;
+            --accent-openalex: #34d399;
+            --accent-pubmed: #38bdf8;
+            --font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
         }
 
         * {
@@ -29,557 +31,46 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-color);
+            font-family: var(--font-family);
+            background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
-            padding: 12px 10px 40px;
-            display: flex;
-            justify-content: center;
+            padding: 16px 12px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .app-container {
-            width: 100%;
-            max-width: var(--container-max-width);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
+        /* ヘッダー */
         header {
-            margin-bottom: 16px;
-            padding: 16px 14px;
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             border: 1px solid var(--card-border);
-            border-radius: 14px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 16px;
+            padding: 16px 20px;
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
         }
 
         .header-title {
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            background: linear-gradient(90deg, #f59e0b, #38bdf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 4px;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .header-meta {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* 検索ボックス */
-        .search-box-container {
-            margin-bottom: 16px;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 12px 16px 12px 42px;
-            background-color: #1e293b;
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            color: var(--text-primary);
-            font-size: 0.95rem;
-            outline: none;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .search-input:focus {
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-secondary);
-            pointer-events: none;
-        }
-
-        /* メインタブ */
-        .main-tabs {
-            display: flex;
-            background-color: #1e293b;
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 4px;
-            margin-bottom: 16px;
-            gap: 4px;
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 10px 8px;
-            border: none;
-            background: transparent;
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            font-weight: 700;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .tab-btn.active-policy {
-            background-color: rgba(245, 158, 11, 0.18);
-            color: #fbbf24;
-            border: 1px solid rgba(245, 158, 11, 0.4);
-        }
-
-        .tab-btn.active-paper {
-            background-color: rgba(56, 189, 248, 0.18);
-            color: var(--accent-primary);
-            border: 1px solid rgba(56, 189, 248, 0.4);
-        }
-
-        .tab-count {
             font-size: 0.75rem;
-            padding: 1px 6px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* サブナビ・フィルター・ページネーション */
-        .sub-nav-container {
-            margin-bottom: 16px;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding-bottom: 4px;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .sub-pills {
-            display: inline-flex;
-            gap: 6px;
-        }
-
-        .pill-btn {
-            padding: 6px 12px;
-            background-color: #1e293b;
-            border: 1px solid var(--card-border);
             color: var(--text-secondary);
-            font-size: 0.8rem;
-            font-weight: 600;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .pill-btn.active {
-            background-color: var(--accent-primary);
-            color: #0f172a;
-            border-color: var(--accent-primary);
-        }
-
-        .pill-btn.active-policy {
-            background-color: var(--accent-policy);
-            color: #0f172a;
-            border-color: var(--accent-policy);
-        }
-
-        /* コンテンツ領域 */
-        .card-list {
+            margin-top: 4px;
             display: flex;
-            flex-direction: column;
             gap: 12px;
-        }
-
-        /* ニュースカード (制度情報) */
-        .news-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-left: 4px solid var(--accent-policy);
-            border-radius: 12px;
-            padding: 14px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        .news-title {
-            font-size: 1rem;
-            font-weight: 700;
-            line-height: 1.45;
-            margin-bottom: 10px;
-        }
-
-        .news-title a {
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .news-title a:hover {
-            color: var(--accent-policy);
-            text-decoration: underline;
-        }
-
-        /* 論文カード */
-        .paper-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-left: 4px solid var(--accent-primary);
-            border-radius: 12px;
-            padding: 14px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        .paper-title {
-            font-size: 1rem;
-            font-weight: 700;
-            line-height: 1.45;
-            margin-bottom: 8px;
-        }
-
-        .paper-title a {
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .paper-title a:hover {
-            color: var(--accent-primary);
-            text-decoration: underline;
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .source-badge {
-            font-size: 0.675rem;
-            font-weight: 700;
-            padding: 2px 7px;
-            border-radius: 6px;
-            color: #ffffff;
-            text-transform: uppercase;
-        }
-
-        .badge-mhlw { background-color: #d97706; }
-        .badge-pubmed { background-color: #0369a1; }
-        .badge-openalex { background-color: #047857; }
-
-        .pub-date {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-        }
-
-        .paper-meta {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            margin-bottom: 10px;
-            background: rgba(15, 23, 42, 0.4);
-            padding: 6px 10px;
-            border-radius: 6px;
-        }
-
-        .meta-label {
-            color: #64748b;
-            font-weight: 600;
-            margin-right: 4px;
-        }
-
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .tags-group {
-            display: flex;
-            gap: 4px;
-            flex-wrap: wrap;
-        }
-
-        .tag-policy {
-            font-size: 0.675rem;
-            background: rgba(245, 158, 11, 0.15);
-            color: var(--accent-policy);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            padding: 1px 5px;
-            border-radius: 4px;
-        }
-
-        .link-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            background-color: rgba(56, 189, 248, 0.15);
-            color: var(--accent-primary);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            padding: 5px 10px;
-            border-radius: 6px;
-            font-size: 0.775rem;
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .news-card .link-btn {
-            background-color: rgba(245, 158, 11, 0.15);
-            color: var(--accent-policy);
-            border-color: rgba(245, 158, 11, 0.3);
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 30px 16px;
-            color: var(--text-secondary);
-            background: var(--card-bg);
-            border-radius: 12px;
-            border: 1px dashed var(--card-border);
-            font-size: 0.875rem;
-        }
-
-        /* ページネーションコントロール */
-        .pagination-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 6px;
-            margin-top: 16px;
-            flex-wrap: wrap;
-        }
-
-        .page-btn {
-            padding: 6px 12px;
-            background: #1e293b;
-            border: 1px solid var(--card-border);
-            color: var(--text-secondary);
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .page-btn.active {
-            background: var(--accent-policy);
-            color: #0f172a;
-            border-color: var(--accent-policy);
-        }
-
-        /* 今日の注目おすすめ 5選 セクション */
-        .recommend-section {
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
-            border: 1px solid rgba(251, 191, 36, 0.35);
-            border-radius: 16px;
-            padding: 16px 14px;
-            box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
-        }
-
-        .recommend-top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .recommend-heading {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: #fbbf24;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .recommend-sub {
-            font-size: 0.725rem;
-            color: var(--text-secondary);
-            margin-top: 2px;
-        }
-
-        .recommend-toggle-btn {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--card-border);
-            color: var(--text-secondary);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .recommend-toggle-btn:hover {
-            background: rgba(255, 255, 255, 0.12);
-            color: var(--text-primary);
-        }
-
-        .recommend-card {
-            background: rgba(30, 41, 59, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 14px;
-            margin-bottom: 12px;
-            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-            position: relative;
-        }
-
-        .recommend-card:hover {
-            border-color: rgba(251, 191, 36, 0.4);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
-        }
-
-        .recommend-card:last-child {
-            margin-bottom: 0;
-        }
-
-        .recommend-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .recommend-badges {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .rank-badge {
-            font-size: 0.725rem;
-            font-weight: 800;
-            padding: 2px 8px;
-            border-radius: 6px;
-            display: inline-flex;
-            align-items: center;
-            gap: 3px;
-        }
-
-        .rank-1 { background: linear-gradient(135deg, #f59e0b, #d97706); color: #ffffff; }
-        .rank-2 { background: linear-gradient(135deg, #94a3b8, #64748b); color: #ffffff; }
-        .rank-3 { background: linear-gradient(135deg, #b45309, #78350f); color: #ffffff; }
-        .rank-other { background: rgba(56, 189, 248, 0.15); color: var(--accent-primary); border: 1px solid rgba(56, 189, 248, 0.3); }
-
-        .score-pill {
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 1px 7px;
-            border-radius: 12px;
-            background: rgba(251, 191, 36, 0.15);
-            color: #fbbf24;
-            border: 1px solid rgba(251, 191, 36, 0.3);
-        }
-
-        .highlight-tag {
-            font-size: 0.675rem;
-            font-weight: 600;
-            padding: 1px 6px;
-            border-radius: 4px;
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--text-secondary);
-        }
-
-        .highlight-tag.hot {
-            background: rgba(239, 68, 68, 0.15);
-            color: #f87171;
-            border: 1px solid rgba(239, 68, 68, 0.3);
-        }
-
-        .highlight-tag.new {
-            background: rgba(16, 185, 129, 0.15);
-            color: #34d399;
-            border: 1px solid rgba(16, 185, 129, 0.3);
-        }
-
-        /* AI要約ボックス */
-        .ai-summary-box {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(139, 92, 246, 0.08) 100%);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            border-left: 3px solid #8b5cf6;
-            border-radius: 8px;
-            padding: 10px 12px;
-            margin: 10px 0;
-        }
-
-        .ai-summary-label {
-            font-size: 0.725rem;
-            font-weight: 700;
-            color: #c084fc;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-bottom: 5px;
-            letter-spacing: 0.02em;
-        }
-
-        .ai-summary-text {
-            font-size: 0.85rem;
-            line-height: 1.6;
-            color: #f1f5f9;
-            margin-bottom: 8px;
-        }
-
-        .ai-disclaimer {
-            font-size: 0.7rem;
-            color: #fbbf24;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            font-weight: 500;
-            background: rgba(245, 158, 11, 0.1);
-            padding: 2px 7px;
-            border-radius: 4px;
-            border: 1px solid rgba(245, 158, 11, 0.25);
-        }
-
-        .link-btn-recommend {
-            background-color: rgba(251, 191, 36, 0.15) !important;
-            color: #fbbf24 !important;
-            border-color: rgba(251, 191, 36, 0.35) !important;
-        }
-
-        .link-btn-recommend:hover {
-            background-color: rgba(251, 191, 36, 0.25) !important;
-        }
-
-        .link-btn-pdf {
-            background-color: rgba(139, 92, 246, 0.15) !important;
-            color: #c084fc !important;
-            border-color: rgba(139, 92, 246, 0.35) !important;
-        }
-
-        .link-btn-pdf:hover {
-            background-color: rgba(139, 92, 246, 0.25) !important;
-        }
-
-        .combined-pdf-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.22) 0%, rgba(217, 119, 6, 0.18) 100%);
-            border: 1px solid rgba(251, 191, 36, 0.5);
-            color: #fbbf24;
-            padding: 5px 11px;
-            border-radius: 8px;
-            font-size: 0.775rem;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .combined-pdf-btn:hover {
-            background: rgba(245, 158, 11, 0.35);
-            box-shadow: 0 0 10px rgba(251, 191, 36, 0.25);
-            color: #ffffff;
         }
 
         /* 設定ボタン */
@@ -621,7 +112,7 @@
             background: #1e293b;
             border: 1px solid var(--card-border);
             border-radius: 16px;
-            max-width: 580px;
+            max-width: 620px;
             width: 100%;
             max-height: 90vh;
             display: flex;
@@ -665,12 +156,12 @@
             flex: 1;
         }
         .modal-desc {
-            font-size: 0.825rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
-            line-height: 1.5;
+            line-height: 1.6;
             margin-bottom: 16px;
-            background: rgba(15, 23, 42, 0.4);
-            padding: 10px 12px;
+            background: rgba(15, 23, 42, 0.5);
+            padding: 10px 14px;
             border-radius: 8px;
             border-left: 3px solid var(--accent-primary);
         }
@@ -686,46 +177,51 @@
             align-items: center;
             gap: 6px;
         }
-        .keyword-tags-container {
+
+        /* キーワードペア表示行 */
+        .kw-pair-list {
             display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 8px;
-            min-height: 32px;
-            padding: 6px;
-            background: rgba(15, 23, 42, 0.5);
-            border-radius: 8px;
-            border: 1px dashed var(--card-border);
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 10px;
         }
-        .keyword-tag-badge {
-            display: inline-flex;
+        .kw-pair-row {
+            display: flex;
             align-items: center;
-            gap: 4px;
-            background: rgba(56, 189, 248, 0.15);
-            border: 1px solid rgba(56, 189, 248, 0.35);
+            justify-content: space-between;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 6px 12px;
+            gap: 8px;
+            font-size: 0.825rem;
+        }
+        .kw-pair-main {
+            font-weight: 700;
             color: var(--accent-primary);
-            padding: 3px 8px;
-            border-radius: 6px;
+            min-width: 90px;
+        }
+        .kw-pair-en {
+            flex: 1;
             font-size: 0.775rem;
-            font-weight: 600;
+            color: var(--text-secondary);
+            font-style: italic;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
-        .keyword-tag-badge.policy {
-            background: rgba(245, 158, 11, 0.15);
-            border-color: rgba(245, 158, 11, 0.35);
-            color: #fbbf24;
-        }
-        .tag-remove-btn {
+        .kw-pair-del {
             cursor: pointer;
-            font-size: 0.85rem;
-            color: inherit;
-            opacity: 0.7;
-            padding: 0 2px;
-            line-height: 1;
-        }
-        .tag-remove-btn:hover {
-            opacity: 1;
             color: #ef4444;
+            opacity: 0.7;
+            padding: 2px 6px;
+            border-radius: 4px;
         }
+        .kw-pair-del:hover {
+            opacity: 1;
+            background: rgba(239, 68, 68, 0.15);
+        }
+
         .keyword-input-row {
             display: flex;
             gap: 6px;
@@ -757,15 +253,53 @@
         .btn-add:hover {
             background: rgba(255, 255, 255, 0.1);
         }
-        .github-sync-section {
+
+        .keyword-tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 8px;
+            min-height: 32px;
+            padding: 6px;
             background: rgba(15, 23, 42, 0.5);
+            border-radius: 8px;
+            border: 1px dashed var(--card-border);
+        }
+        .keyword-tag-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            color: #fbbf24;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.775rem;
+            font-weight: 600;
+        }
+        .tag-remove-btn {
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: inherit;
+            opacity: 0.7;
+            padding: 0 2px;
+            line-height: 1;
+        }
+        .tag-remove-btn:hover {
+            opacity: 1;
+            color: #ef4444;
+        }
+
+        /* config.yaml エクスポートセクション */
+        .config-export-section {
+            background: rgba(15, 23, 42, 0.6);
             border: 1px solid rgba(251, 191, 36, 0.3);
             border-radius: 10px;
-            padding: 12px;
+            padding: 14px;
             margin-top: 20px;
         }
-        .github-sync-title {
-            font-size: 0.85rem;
+        .config-export-title {
+            font-size: 0.875rem;
             font-weight: 700;
             color: #fbbf24;
             margin-bottom: 6px;
@@ -773,18 +307,22 @@
             align-items: center;
             gap: 6px;
         }
-        .btn-save-token {
-            background: #334155;
-            border: 1px solid var(--card-border);
-            color: #fff;
-            padding: 8px 12px;
+        .btn-copy-yaml, .btn-download-yaml {
+            background: #1e293b;
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            color: #f8fafc;
+            padding: 8px 14px;
             border-radius: 8px;
             font-size: 0.8rem;
+            font-weight: 600;
             cursor: pointer;
+            transition: all 0.2s ease;
         }
-        .btn-save-token:hover {
-            background: #475569;
+        .btn-copy-yaml:hover, .btn-download-yaml:hover {
+            background: rgba(251, 191, 36, 0.15);
+            border-color: #fbbf24;
         }
+
         .modal-footer {
             padding: 14px 20px;
             border-top: 1px solid var(--card-border);
@@ -825,6 +363,449 @@
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.05);
             color: var(--text-primary);
+        }
+
+        /* 検索ボックス */
+        .search-box-container {
+            position: relative;
+            margin-bottom: 4px;
+        }
+        .search-input {
+            width: 100%;
+            padding: 10px 16px 10px 38px;
+            background: #1e293b;
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+        .search-input:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+        }
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        /* タブ */
+        .main-tabs {
+            display: flex;
+            gap: 8px;
+            background: #0f172a;
+            padding: 4px;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 10px 14px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .tab-btn.active-policy {
+            background: var(--accent-policy);
+            color: #0f172a;
+            box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+        }
+        .tab-btn.active-paper {
+            background: var(--accent-primary);
+            color: #0f172a;
+            box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+        }
+        .tab-count {
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        /* サブナビ・ピル */
+        .sub-nav-container {
+            display: flex;
+            align-items: center;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+        .sub-pills {
+            display: flex;
+            gap: 6px;
+        }
+        .pill-btn {
+            padding: 5px 12px;
+            background: #1e293b;
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            border-radius: 20px;
+            font-size: 0.775rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+        .pill-btn.active {
+            background: rgba(56, 189, 248, 0.2);
+            color: var(--accent-primary);
+            border-color: var(--accent-primary);
+        }
+
+        /* カードリスト */
+        .card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* 政策ニュースカード */
+        .policy-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--accent-policy);
+            border-radius: 12px;
+            padding: 14px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        .news-title {
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.45;
+            margin-bottom: 10px;
+        }
+        .news-title a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .news-title a:hover {
+            color: var(--accent-policy);
+            text-decoration: underline;
+        }
+
+        /* 論文カード */
+        .paper-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--accent-primary);
+            border-radius: 12px;
+            padding: 14px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        .paper-card.jstage {
+            border-left-color: var(--accent-jstage);
+        }
+        .paper-title {
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.45;
+            margin-bottom: 8px;
+        }
+        .paper-title a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .paper-title a:hover {
+            color: var(--accent-primary);
+            text-decoration: underline;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .source-badge {
+            font-size: 0.675rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 6px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .badge-mhlw { background-color: #d97706; }
+        .badge-pubmed { background-color: #0369a1; }
+        .badge-openalex { background-color: #047857; }
+        .badge-jstage { background-color: #b91c1c; }
+
+        .pub-date {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .paper-meta {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .meta-label {
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 8px;
+            margin-top: 6px;
+        }
+
+        .matched-kw-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--accent-primary);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+        }
+
+        .tag-policy {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(245, 158, 11, 0.12);
+            color: var(--accent-policy);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            margin-right: 4px;
+        }
+
+        .link-btn {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            transition: all 0.2s ease;
+        }
+        .link-btn:hover {
+            background: rgba(56, 189, 248, 0.2);
+        }
+
+        /* ページネーション */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 16px;
+        }
+        .page-btn {
+            padding: 6px 12px;
+            background: #1e293b;
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .page-btn.active {
+            background: var(--accent-policy);
+            color: #0f172a;
+            border-color: var(--accent-policy);
+        }
+
+        /* おすすめ5選 セクション */
+        .recommend-section {
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
+            border: 1px solid rgba(251, 191, 36, 0.35);
+            border-radius: 16px;
+            padding: 16px 14px;
+            box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+        }
+        .recommend-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .recommend-heading {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #fbbf24;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .recommend-sub {
+            font-size: 0.725rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+        .recommend-toggle-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .recommend-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: var(--text-primary);
+        }
+        .combined-pdf-btn {
+            background: linear-gradient(90deg, #d97706, #b45309);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+        .combined-pdf-btn:hover {
+            filter: brightness(1.1);
+        }
+
+        .recommend-card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 12px;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+        }
+        .recommend-card:hover {
+            border-color: rgba(251, 191, 36, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+        }
+        .recommend-rank {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #0f172a;
+            background: #fbbf24;
+            padding: 2px 8px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 6px;
+        }
+        .recommend-score {
+            font-size: 0.7rem;
+            color: #94a3b8;
+            margin-left: 6px;
+        }
+        .highlight-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+        .highlight-tag {
+            font-size: 0.675rem;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-secondary);
+        }
+        .highlight-tag.citation {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        .highlight-tag.new {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .ai-summary-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(139, 92, 246, 0.08) 100%);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-left: 3px solid #8b5cf6;
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin: 10px 0;
+        }
+        .ai-summary-label {
+            font-size: 0.725rem;
+            font-weight: 700;
+            color: #c084fc;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+        .ai-summary-text {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #f1f5f9;
+            margin-bottom: 8px;
+        }
+        .ai-disclaimer {
+            font-size: 0.7rem;
+            color: #fbbf24;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 500;
+            background: rgba(245, 158, 11, 0.1);
+            padding: 2px 7px;
+            border-radius: 4px;
+            border: 1px solid rgba(245, 158, 11, 0.25);
+        }
+
+        .pdf-download-btn {
+            background-color: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.35);
+            text-decoration: none;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s ease;
+        }
+        .pdf-download-btn:hover {
+            background-color: rgba(239, 68, 68, 0.25);
         }
 
         /* トースト通知 */
@@ -883,51 +864,49 @@
                 
                 <div class="modal-body">
                     <p class="modal-desc">
-                        対象とするキーワードを自由に追加・削除できます。<br/>
-                        設定したキーワードは即座に画面上で絞り込みに使えるほか、GitHubと自動同期して毎朝の自動収集対象（config.yaml）を更新できます。
+                        対象とするキーワードを追加・編集できます。<br/>
+                        <strong>【学術論文キーワード】</strong>は日本語で登録すると、<strong>J-STAGE（国内学会誌）</strong>で直接検索されるとともに、<strong>英語（PubMed / OpenAlex）</strong>へ自動展開されます（英語候補の編集も可能です）。<br/>
+                        設定内容は即座に画面上の絞り込みに反映されるほか、下のボタンから <strong>config.yaml をコピー／ダウンロード</strong> してリポジトリに push することで、毎朝の自動収集にも反映できます。
                     </p>
 
-                    <!-- 英語論文キーワード -->
+                    <!-- 学術論文キーワード (日本語 ➔ 英語) -->
                     <div class="keyword-section">
-                        <div class="keyword-section-title">📚 学術論文 検索キーワード (英語)</div>
-                        <div id="paperKeywordTags" class="keyword-tags-container"></div>
+                        <div class="keyword-section-title">📚 学術論文 検索キーワード (J-STAGE / PubMed / OpenAlex)</div>
+                        <div id="paperKeywordPairList" class="kw-pair-list"></div>
                         <div class="keyword-input-row">
-                            <input type="text" id="newPaperKwInput" class="keyword-input" placeholder="例: cardiac rehabilitation, dysphagia..." onkeydown="if(event.key==='Enter') addKeyword('paper')">
-                            <button class="btn-add" onclick="addKeyword('paper')">＋ 追加</button>
+                            <input type="text" id="newPaperKwInput" class="keyword-input" placeholder="日本語キーワード (例: 呼吸理学療法, 訪問リハビリ...)">
+                            <input type="text" id="newPaperEnInput" class="keyword-input" placeholder="英語候補 (任意・カンマ区切り: chest physical therapy)">
+                            <button class="btn-add" onclick="addPaperKeyword()">＋ 追加</button>
                         </div>
                     </div>
 
                     <!-- 制度・診療報酬キーワード -->
                     <div class="keyword-section">
-                        <div class="keyword-section-title">🏛️ 制度・診療報酬 検索キーワード (日本語)</div>
+                        <div class="keyword-section-title">🏛️ 制度・診療報酬 検索キーワード (厚労省ニュース)</div>
                         <div id="policyKeywordTags" class="keyword-tags-container"></div>
                         <div class="keyword-input-row">
-                            <input type="text" id="newPolicyKwInput" class="keyword-input" placeholder="例: 訪問リハビリ, 摂食嚥下, 回復期..." onkeydown="if(event.key==='Enter') addKeyword('policy')">
-                            <button class="btn-add" onclick="addKeyword('policy')">＋ 追加</button>
+                            <input type="text" id="newPolicyKwInput" class="keyword-input" placeholder="例: 疾患別リハビリテーション, 疑義解釈..." onkeydown="if(event.key==='Enter') addPolicyKeyword()">
+                            <button class="btn-add" onclick="addPolicyKeyword()">＋ 追加</button>
                         </div>
                     </div>
 
-                    <!-- GitHub自動同期設定 -->
-                    <div class="github-sync-section">
-                        <div class="github-sync-title">🔄 GitHub 自動同期 (config.yaml 更新＆即時再ビルド)</div>
-                        <p style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 8px;">
-                            変更を毎朝の自動収集（config.yaml）に反映するには、初回のみ GitHub Personal Access Token を設定してください（ブラウザ内に安全に保存されます）。
+                    <!-- config.yaml 反映・出力セクション -->
+                    <div class="config-export-section">
+                        <div class="config-export-title">📋 毎朝の自動収集（config.yaml）への反映手順</div>
+                        <p style="font-size: 0.775rem; color: var(--text-secondary); margin-bottom: 10px; line-height: 1.5;">
+                            画面上で編集した内容はブラウザ内に即時保存されます。毎朝の自動収集（GitHub Actions）にも反映したい場合は、以下のボタンで設定内容を取得し、リポジトリの <code>config.yaml</code> に貼り付けて push してください。
                         </p>
-                        <div style="display: flex; gap: 6px; margin-bottom: 6px;">
-                            <input type="password" id="githubTokenInput" class="keyword-input" placeholder="ghp_xxxxxxxxxxxx (GitHub PAT)" style="font-family: monospace;">
-                            <button class="btn-save-token" onclick="saveGithubToken()">保存</button>
-                        </div>
-                        <div id="tokenStatus" style="font-size: 0.725rem; color: #10b981; margin-bottom: 8px;"></div>
-                        <div style="font-size: 0.7rem; color: #94a3b8;">
-                            👉 <a href="https://github.com/settings/tokens/new?scopes=repo,workflow&description=PT-Daily-Digest" target="_blank" style="color: var(--accent-primary);">ここからトークンを作成 (repo, workflow 権限)</a>
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <button class="btn-copy-yaml" onclick="copyConfigYaml()">📋 YAMLをコピー</button>
+                            <button class="btn-download-yaml" onclick="downloadConfigYaml()">💾 config.yamlをダウンロード</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="modal-footer">
-                    <button class="btn-secondary" onclick="closeKeywordModal()">キャンセル</button>
-                    <button class="btn-primary" onclick="applyAndSyncKeywords()">
-                        🚀 設定を保存してGitHubと自動同期
+                    <button class="btn-secondary" onclick="closeKeywordModal()">閉じる</button>
+                    <button class="btn-primary" onclick="saveKeywords()">
+                        💾 画面に適用して保存
                     </button>
                 </div>
             </div>
@@ -984,12 +963,15 @@
 
         <footer>
             <p>PT Daily Digest &copy; 2026 | 毎朝自動更新</p>
+            <p style="margin-top: 6px; font-size: 0.725rem; color: #64748b;">
+                学術情報提供元: <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-pubmed);">PubMed</a> / <a href="https://openalex.org/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-openalex);">OpenAlex</a> / <a href="https://www.jstage.jst.go.jp/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-jstage);">J-STAGE (JST)</a> | 行政情報: <a href="https://www.mhlw.go.jp/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-policy);">厚生労働省</a>
+            </p>
         </footer>
     </div>
 
     <!-- データ埋め込み＆フロントエンドJavaScript -->
     <script>
-        const APP_DATA = {"generated_at": "2026-10-25 17:16:04", "keywords": ["stroke rehabilitation", "frailty", "physical therapy"], "policy_keywords": ["リハビリ", "疾患別リハビリテーション", "診療報酬", "疑義解釈", "理学療法", "介護報酬", "介護保険", "医療", "地域包括", "報酬", "通知"], "recommended_count": 5, "policy_news_count": 8, "papers_count": 113, "combined_pdf_url": "pdf/pt_digest_top5.pdf", "recommended": [{"title": "The design of soft-actuated upper-body exoskeletons for movement assistance and physical therapy", "authors": ["Daniel George"], "journal": "CentAUR (University of Reading)", "pubdate": "2029-01-01", "url": "https://doi.org/10.48683/1926.00129237", "doi": "10.48683/1926.00129237", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7151411061", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation", "physical therapy"], "item_type": "paper", "total_score": 44, "recency_score": 20, "kw_score": 24, "citation_score": 0, "days_ago": -807, "highlights": ["🆕 新着", "🎯 複数キーワード一致 (2)"], "translated_title": null, "ai_summary": null, "full_text": null, "abstract_text": "This thesis presents the design, implementation, andvalidationof novel soft-actuatedexoskeletons formovementassistanceandrehabilita tion.Motivatedbytheneedtoenhancequalityoflifeforindividualswith neurologicalimpairments,suchasstrokesurvivorsandspinal-cord-injured individuals, thisworkexploreshybridassistivedevices thatmerge the comfort,compliance,andweightofsoftactuatorswiththestability,relia bility,andalignmentprovidedbyrigidstructures.Twokeysystemswere introduced: (1)ahighdegree-of-freedom(DOF) soft-actuatedarmand spineexoskeletonthatuseslightweightpolyethylenepneumaticactuators integrated intoa3D-printed frame, achievingover sevenDOFs includ ingforearmandshouldersupination/pronationmovements,easilycarried andmobile, capableof 3-dimensionalmovement. Experimental evalua tionsdemonstrate that theorigami-inspiredsystemdelivers torquesup to4.46Nm, supports full 3Darticulation, andeffectivelyredistributes loadthroughasegmentedelasticspine, enablingwearablegravitycom pensationevenforuserswithlimitedstrength. (2)elastic-tensegrityjoints inspiredbybiologicaltensegritytounlockmulti-axisflexibilitywhilepre servingmechanical reliabilityanduser comfort. Byunlocking the full rangeof soft-actuatormotionandeliminating the rigidityand friction of traditional joints, thesedesigns substantiallyenhance comfort, flex ibility, andpassivestabilitythatdemonstrate intelligentphysicaldesign canoutperformcontrol-basedcompensation.Theelastic-tensegrityjoints, whencombinedwithelectromyography(EMG)andelectroencephalogra phy(EEG) control, achieve smooth, adaptivemotion, passivedamping of tremors, andaccurate intentdetection(EMGaccuracy100%; EEG upto82%, intentpredictionis improvedbyzero-crossingmethods),val idatingthe feasibilityofbi-manual rehabilitationandbrain–machine in terfacingwithout theelectromagnetic interferenceassociatedwithrigid actuators.Beyondhardwareinnovations,supportingstudiesincludemul timodal feedbackexperimentsthatenhancethesenseofownership(SoO) overvirtuallimbs,suggestingsynergisticpotentialforimmersivetherapies andaligningwiththebroaderthemeofreconnectingthebrain–bodyloop. Together,thesecontributionsaddressimportantgapsincurrentassistive technologiesandthehuman-machineinterface(HMI);affordability,acces sibility,comfort,andadaptability,aswellasopeningupanewwholenew generationofexoskeletondesignsforclinicalandat-homerehabilitation.", "is_oa": true, "content_type": "abstract", "detailed_report": "## 1. 論文・ニュース概要\n\nNone\n\n## 2. 公開ステータス\n\n- オープンアクセス区分: オープンアクセス (全文閲覧可能)\n- 掲載誌: CentAUR (University of Reading)\n- 出版日: 2029-01-01\n\n## 3. 英文アブストラクト (原文抄録)\n\nThis thesis presents the design, implementation, andvalidationof novel soft-actuatedexoskeletons formovementassistanceandrehabilita tion.Motivatedbytheneedtoenhancequalityoflifeforindividualswith neurologicalimpairments,suchasstrokesurvivorsandspinal-cord-injured individuals, thisworkexploreshybridassistivedevices thatmerge the comfort,compliance,andweightofsoftactuatorswiththestability,relia bility,andalignmentprovidedbyrigidstructures.Twokeysystemswere introduced: (1)ahighdegree-of-freedom(DOF) soft-actuatedarmand spineexoskeletonthatuseslightweightpolyethylenepneumaticactuators integrated intoa3D-printed frame, achievingover sevenDOFs includ ingforearmandshouldersupination/pronationmovements,easilycarried andmobile, capableof 3-dimensionalmovement. Experimental evalua tionsdemonstrate that theorigami-inspiredsystemdelivers torquesup to4.46Nm, supports full 3Darticulation, andeffectivelyredistributes loadthroughasegmentedelasticspine, enablingwearablegravitycom pensationevenforuserswithlimitedstrength. (2)elastic-tensegrityjoints inspiredbybiologicaltensegritytounlockmulti-axisflexibilitywhilepre servingmechanical reliabilityanduser comfort. Byunlocking the full rangeof soft-actuatormotionandeliminating the rigidityand friction of traditional joints, thesedesigns substantiallyenhance comfort, flex ibility, andpassivestabilitythatdemonstrate intelligentphysicaldesign canoutperformcontrol-basedcompensation.Theelastic-tensegrityjoints, whencombinedwithelectromyography(EMG)andelectroencephalogra phy(EEG) control, achieve smooth, adaptivemotion, passivedamping of tremors, andaccurate intentdetection(EMGaccuracy100%; EEG upto82%, intentpredictionis improvedbyzero-crossingmethods),val idatingthe feasibilityofbi-manual rehabilitationandbrain–machine in terfacingwithout theelectromagnetic interferenceassociatedwithrigid actuators.Beyondhardwareinnovations,supportingstudiesincludemul timodal feedbackexperimentsthatenhancethesenseofownership(SoO) overvirtuallimbs,suggestingsynergisticpotentialforimmersivetherapies andaligningwiththebroaderthemeofreconnectingthebrain–bodyloop. Together,thesecontributionsaddressimportantgapsincurrentassistive technologiesandthehuman-machineinterface(HMI);affordability,acces sibility,comfort,andadaptability,aswellasopeningupanewwholenew generationofexoskeletondesignsforclinicalandat-homerehabilitation.\n\n## 4. 原文確認のご案内\n\n研究の詳細データや査読全文については、必ず上記原文URLよりご確認ください。\n", "pdf_url": "pdf/recommend_1.pdf"}, {"title": "A Systemic Observational Framework Integrating Physiotherapy-Derived Functional, Physiological, And Behavioral Indicators In Predicting Pharmacological Response", "authors": ["Dr. Kanchan Kholiya, Dr. Shalini dixit, Ram Sihag (PT), Dr. Samarpita Senapati (PT), Dr. Harish Sharma (PT), Dr. Gurpreet Kaur (PT)), Dr. Harshika Gupta (PT)."], "journal": "Cultura", "pubdate": "2026-11-10", "url": "https://doi.org/10.5281/zenodo.18309329", "doi": "10.5281/zenodo.18309329", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7124911714", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation", "physical therapy"], "item_type": "paper", "total_score": 44, "recency_score": 20, "kw_score": 24, "citation_score": 0, "days_ago": -24, "highlights": ["🆕 新着", "🎯 複数キーワード一致 (2)"], "translated_title": null, "ai_summary": null, "full_text": null, "abstract_text": "Background: Inter-individual variability in pharmacological response remains a persistent challenge in clinical rehabilitation. While pharmacokinetic and molecular mechanisms are well established, they account for only a proportion of observed outcome variability. Functional performance, physiological regulation, and behavioral engagement—core domains of physiotherapy—are increasingly recognized as influential determinants of therapeutic response. Aim: To develop and describe a systemic observational framework integrating physiotherapy-derived functional, physiological, and behavioral indicators with pharmacological response, supported by descriptive statistical reasoning. Methodology: A conceptual observational methodology was adopted. Peer-reviewed literature was synthesized, and commonly reported trends, proportions, and associations were interpreted using descriptive and inferential statistical logic (e.g., variability, correlation strength, explained variance), without primary data collection. Results: Evidence across rehabilitation and pharmacological literature consistently indicates that functional and behavioral variables account for a substantial proportion of outcome variability unexplained by pharmacological parameters alone. Descriptive trends suggest moderate-to-strong associations between autonomic regulation, movement efficiency, behavioral engagement, and therapeutic stability. Conclusion: Incorporating physiotherapy-derived indicators into pharmacological interpretation enhances explanatory power and clinical relevance. A systemic, statistically informed observational framework supports personalized, interdisciplinary healthcare.", "is_oa": true, "content_type": "abstract", "detailed_report": "## 1. 論文・ニュース概要\n\nNone\n\n## 2. 公開ステータス\n\n- オープンアクセス区分: オープンアクセス (全文閲覧可能)\n- 掲載誌: Cultura\n- 出版日: 2026-11-10\n\n## 3. 英文アブストラクト (原文抄録)\n\nBackground: Inter-individual variability in pharmacological response remains a persistent challenge in clinical rehabilitation. While pharmacokinetic and molecular mechanisms are well established, they account for only a proportion of observed outcome variability. Functional performance, physiological regulation, and behavioral engagement—core domains of physiotherapy—are increasingly recognized as influential determinants of therapeutic response. Aim: To develop and describe a systemic observational framework integrating physiotherapy-derived functional, physiological, and behavioral indicators with pharmacological response, supported by descriptive statistical reasoning. Methodology: A conceptual observational methodology was adopted. Peer-reviewed literature was synthesized, and commonly reported trends, proportions, and associations were interpreted using descriptive and inferential statistical logic (e.g., variability, correlation strength, explained variance), without primary data collection. Results: Evidence across rehabilitation and pharmacological literature consistently indicates that functional and behavioral variables account for a substantial proportion of outcome variability unexplained by pharmacological parameters alone. Descriptive trends suggest moderate-to-strong associations between autonomic regulation, movement efficiency, behavioral engagement, and therapeutic stability. Conclusion: Incorporating physiotherapy-derived indicators into pharmacological interpretation enhances explanatory power and clinical relevance. A systemic, statistically informed observational framework supports personalized, interdisciplinary healthcare.\n\n## 4. 原文確認のご案内\n\n研究の詳細データや査読全文については、必ず上記原文URLよりご確認ください。\n", "pdf_url": "pdf/recommend_2.pdf"}, {"title": "Effects of Single-Session High-Definition Transcranial Alternating Current Stimulation (HD-tACS) Combined with Robot-Assisted Hand Exercises on Corticospinal Excitability in Chronic Stroke", "authors": ["Meng H", "Houston M", "Rao AZ", "Rho J", "Francisco GE", "Li S"], "journal": "Am J Phys Med Rehabil", "pubdate": "2026 Nov 1", "url": "https://doi.org/10.1097/PHM.0000000000003108", "doi": "10.1097/phm.0000000000003108", "source_api": "PubMed", "pmid": "42886513", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation", "physical therapy"], "item_type": "paper", "total_score": 44, "recency_score": 20, "kw_score": 24, "citation_score": 0, "days_ago": -15, "highlights": ["🆕 新着", "🎯 複数キーワード一致 (2)"], "translated_title": null, "ai_summary": null, "full_text": null, "abstract_text": "OBJECTIVE: This preliminary study investigated whether a single session of high-definition transcranial alternating current stimulation (HD-tACS) could improve corticospinal tract (CST) excitability compared with sham stimulation in healthy individuals and individuals with chronic stroke.\n\nDESIGN: Twelve healthy adults and 7 individuals with chronic stroke received active and sham HD-tACS over the primary motor cortex (M1) flexor digitorum superficialis (FDS) hotspot, ipsilesional in stroke subjects, for 30 minutes at 2mA and 21 Hz in a randomized crossover design. All subjects performed robot-assisted grasp-and-open hand exercises during active and sham stimulation.\n\nRESULTS: HD-tACS significantly increased FDS MEP amplitudes in the healthy group (15.3%). In the stroke group, FDS MEP amplitudes were increased by ∼22.3% after HD-tACS, but this change was not statistically significant. When MEP amplitudes were normalized as percentage change, HD-tACS significantly increased FDS MEP amplitudes in both groups compared with the sham condition. No significant extensor digitorum communis (EDC) modulation was observed in either group.\n\nCONCLUSION: HD-tACS combined with robot-assisted hand exercises may enhance CST excitability compared with robot-assisted hand exercises alone after a single session in both healthy and stroke subjects. However, larger studies are needed to confirm these findings.", "is_oa": false, "content_type": "abstract", "detailed_report": "## 1. 論文・ニュース概要\n\nNone\n\n## 2. 公開ステータス\n\n- オープンアクセス区分: 有料購読・抄録公開\n- 掲載誌: Am J Phys Med Rehabil\n- 出版日: 2026 Nov 1\n\n## 3. 英文アブストラクト (原文抄録)\n\nOBJECTIVE: This preliminary study investigated whether a single session of high-definition transcranial alternating current stimulation (HD-tACS) could improve corticospinal tract (CST) excitability compared with sham stimulation in healthy individuals and individuals with chronic stroke.\n\nDESIGN: Twelve healthy adults and 7 individuals with chronic stroke received active and sham HD-tACS over the primary motor cortex (M1) flexor digitorum superficialis (FDS) hotspot, ipsilesional in stroke subjects, for 30 minutes at 2mA and 21 Hz in a randomized crossover design. All subjects performed robot-assisted grasp-and-open hand exercises during active and sham stimulation.\n\nRESULTS: HD-tACS significantly increased FDS MEP amplitudes in the healthy group (15.3%). In the stroke group, FDS MEP amplitudes were increased by ∼22.3% after HD-tACS, but this change was not statistically significant. When MEP amplitudes were normalized as percentage change, HD-tACS significantly increased FDS MEP amplitudes in both groups compared with the sham condition. No significant extensor digitorum communis (EDC) modulation was observed in either group.\n\nCONCLUSION: HD-tACS combined with robot-assisted hand exercises may enhance CST excitability compared with robot-assisted hand exercises alone after a single session in both healthy and stroke subjects. However, larger studies are needed to confirm these findings.\n\n## 4. 原文確認のご案内\n\n研究の詳細データや査読全文については、必ず上記原文URLよりご確認ください。\n", "pdf_url": "pdf/recommend_3.pdf"}, {"title": "Self-reported difficulty reading small print and in-hospital behavioral change in older adults with cardiovascular disease: Implications for post-discharge cardiovascular outcomes", "authors": ["Ogura A", "Izawa KP", "Kanejima Y", "Kitamura M", "Ishihara K", "Kubo I", "Nagashima H", "Tawa H", "Matsumoto D", "Shimizu I"], "journal": "Geriatr Nurs", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1016/j.gerinurse.2026.104390", "doi": "10.1016/j.gerinurse.2026.104390", "source_api": "PubMed", "pmid": "42887362", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation", "physical therapy"], "item_type": "paper", "total_score": 41, "recency_score": 17, "kw_score": 24, "citation_score": 0, "days_ago": 1, "highlights": ["🆕 新着", "🎯 複数キーワード一致 (2)"], "translated_title": null, "ai_summary": null, "full_text": null, "abstract_text": "OBJECTIVES: Visual dysfunction may hinder patient education and self-care in older patients with cardiovascular disease (CVD); however, its association with behavioral change during hospitalization and subsequent cardiovascular prognosis remains unclear. This study investigated whether self-reported difficulty reading small print is associated with transtheoretical model (TTM) stage progression during hospitalization and whether such change predicts post-discharge outcomes.\n\nMETHODS: This prospective multicenter cohort study enrolled older patients who underwent cardiac rehabilitation during hospitalization. Visual dysfunction was assessed by self-reporting of difficulty reading small print. Behavioral change was evaluated using the TTM. The primary outcome was unplanned rehospitalization due to major adverse cardiovascular and cerebrovascular events (MACCE) within one year. Multivariable logistic regression identified factors associated with TTM improvement, and Cox proportional hazards models were applied to examine the association between TTM improvement and MACCE rehospitalization.\n\nRESULTS: Among 351 included patients, 31.9% had difficulty reading small print. After multivariable adjustment, difficulty reading small print was independently associated with lower odds of TTM improvement (odds ratio, 0.31; p=0.006). Patients achieving TTM improvement had a significantly lower risk of MACCE rehospitalization after adjustment for age, sex, institution, heart failure, renal disease, and TTM stage at discharge (hazard ratio, 0.37; p = 0.042).\n\nCONCLUSIONS: Self-reported difficulty reading small print was independently associated with reduced TTM stage improvement during hospitalization, and TTM stage improvement predicted a lower risk of MACCE rehospitalization. These findings highlight the importance of focusing on the behavioral change process during hospitalization and incorporating visual considerations into behavioral support strategies for secondary prevention in older CVD patients.", "is_oa": false, "content_type": "abstract", "detailed_report": "## 1. 論文・ニュース概要\n\nNone\n\n## 2. 公開ステータス\n\n- オープンアクセス区分: 有料購読・抄録公開\n- 掲載誌: Geriatr Nurs\n- 出版日: 2026 Oct 16\n\n## 3. 英文アブストラクト (原文抄録)\n\nOBJECTIVES: Visual dysfunction may hinder patient education and self-care in older patients with cardiovascular disease (CVD); however, its association with behavioral change during hospitalization and subsequent cardiovascular prognosis remains unclear. This study investigated whether self-reported difficulty reading small print is associated with transtheoretical model (TTM) stage progression during hospitalization and whether such change predicts post-discharge outcomes.\n\nMETHODS: This prospective multicenter cohort study enrolled older patients who underwent cardiac rehabilitation during hospitalization. Visual dysfunction was assessed by self-reporting of difficulty reading small print. Behavioral change was evaluated using the TTM. The primary outcome was unplanned rehospitalization due to major adverse cardiovascular and cerebrovascular events (MACCE) within one year. Multivariable logistic regression identified factors associated with TTM improvement, and Cox proportional hazards models were applied to examine the association between TTM improvement and MACCE rehospitalization.\n\nRESULTS: Among 351 included patients, 31.9% had difficulty reading small print. After multivariable adjustment, difficulty reading small print was independently associated with lower odds of TTM improvement (odds ratio, 0.31; p=0.006). Patients achieving TTM improvement had a significantly lower risk of MACCE rehospitalization after adjustment for age, sex, institution, heart failure, renal disease, and TTM stage at discharge (hazard ratio, 0.37; p = 0.042).\n\nCONCLUSIONS: Self-reported difficulty reading small print was independently associated with reduced TTM stage improvement during hospitalization, and TTM stage improvement predicted a lower risk of MACCE rehospitalization. These findings highlight the importance of focusing on the behavioral change process during hospitalization and incorporating visual considerations into behavioral support strategies for secondary prevention in older CVD patients.\n\n## 4. 原文確認のご案内\n\n研究の詳細データや査読全文については、必ず上記原文URLよりご確認ください。\n", "pdf_url": "pdf/recommend_4.pdf"}, {"title": "薬事審議会　医療機器・体外診断薬部会を開催します", "url": "https://www.mhlw.go.jp/stf/newpage_76766.html", "pubdate": "2026-10-16", "matched_keywords": ["医療"], "source": "厚生労働省", "item_type": "policy", "total_score": 39, "recency_score": 17, "kw_score": 12, "citation_score": 0, "days_ago": 1, "highlights": ["🆕 新着", "🎯 医療", "🏛️ 厚労省公式"], "translated_title": null, "ai_summary": null, "detailed_report": "## 1. 論文・ニュース概要\n\nNone\n\n## 2. 公開ステータス\n\n- オープンアクセス区分: 有料購読・抄録公開\n- 掲載誌: 情報なし\n- 出版日: 2026-10-16\n\n## 4. 原文確認のご案内\n\n研究の詳細データや査読全文については、必ず上記原文URLよりご確認ください。\n", "pdf_url": "pdf/recommend_5.pdf"}], "policy_news": [{"title": "薬事審議会　医療機器・体外診断薬部会を開催します", "url": "https://www.mhlw.go.jp/stf/newpage_76766.html", "pubdate": "2026-10-16", "matched_keywords": ["医療"], "source": "厚生労働省"}, {"title": "地域医療介護総合確保基金（介護施設等の整備に関する事業分）", "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/fukushi/shisetsu_seibi_00004.html", "pubdate": "2026-10-14", "matched_keywords": ["医療"], "source": "厚生労働省"}, {"title": "第218回社会保障審議会医療保険部会（ペーパーレス）の開催について", "url": "https://www.mhlw.go.jp/stf/newpage_76677.html", "pubdate": "2026-10-14", "matched_keywords": ["医療"], "source": "厚生労働省"}, {"title": "令和８年度（令和７年度からの繰越分）医療施設等施設整備費補助金の交付額の３回目内示について（２次募集分）", "url": "https://www.mhlw.go.jp/stf/newpage_76647.html", "pubdate": "2026-10-09", "matched_keywords": ["医療"], "source": "厚生労働省"}, {"title": "薬事審議会　再生医療等製品・生物由来技術部会を開催します", "url": "https://www.mhlw.go.jp/stf/newpage_76385.html", "pubdate": "2026-10-08", "matched_keywords": ["医療"], "source": "厚生労働省"}, {"title": "第2回精神医療に関する地域医療構想検討ワーキンググループの開催について：開催案内", "url": "https://www.mhlw.go.jp/stf/newpage_76595.html", "pubdate": "2026-10-06", "matched_keywords": ["医療"], "source": "厚生労働省"}, {"title": "関係法令、その他関係通知等", "url": "https://www.mhlw.go.jp/stf/newpage_76430.html", "pubdate": "2026-10-05", "matched_keywords": ["通知"], "source": "厚生労働省"}, {"title": "健康・医療・介護情報利活用検討会 医療等情報利活用ワーキンググループ 第１回歯科情報に関する技術作業班の開催案内", "url": "https://www.mhlw.go.jp/stf/shingi/0001210262_00104.html", "pubdate": "2026-10-02", "matched_keywords": ["医療"], "source": "厚生労働省"}], "papers": [{"title": "Self-reported difficulty reading small print and in-hospital behavioral change in older adults with cardiovascular disease: Implications for post-discharge cardiovascular outcomes", "authors": ["Ogura A", "Izawa KP", "Kanejima Y", "Kitamura M", "Ishihara K", "Kubo I", "Nagashima H", "Tawa H", "Matsumoto D", "Shimizu I"], "journal": "Geriatr Nurs", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1016/j.gerinurse.2026.104390", "doi": "10.1016/j.gerinurse.2026.104390", "source_api": "PubMed", "pmid": "42887362", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation", "physical therapy"]}, {"title": "Effects of Single-Session High-Definition Transcranial Alternating Current Stimulation (HD-tACS) Combined with Robot-Assisted Hand Exercises on Corticospinal Excitability in Chronic Stroke", "authors": ["Meng H", "Houston M", "Rao AZ", "Rho J", "Francisco GE", "Li S"], "journal": "Am J Phys Med Rehabil", "pubdate": "2026 Nov 1", "url": "https://doi.org/10.1097/PHM.0000000000003108", "doi": "10.1097/phm.0000000000003108", "source_api": "PubMed", "pmid": "42886513", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation", "physical therapy"]}, {"title": "Design and assessment of the feasibility of a diagnostic and rehabilitation device for gait re-education", "authors": ["Drużbicki M", "Kordos A", "Kordos D", "Guzik A"], "journal": "Acta Bioeng Biomech", "pubdate": "2026 Jan 1", "url": "https://doi.org/10.37190/abb/224359", "doi": "10.37190/abb/224359", "source_api": "PubMed", "pmid": "42885871", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Exercise and Thoracic Aortic Aneurysms: A Paradigm Shift Toward Informed, Personalized Activity Guidelines", "authors": ["Jabagi H", "Imperatore G", "Nantsios A", "Sun LY", "Lewis A", "Boodhwani M", "Mir H", "Takayama H", "Patel H", "Burns P", "Grau JB"], "journal": "J Am Heart Assoc", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1161/JAHA.125.046671", "doi": "10.1161/jaha.125.046671", "source_api": "PubMed", "pmid": "42885774", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Updated Italian intersocietal recommendations for the appropriate use of anti-amyloid monoclonal antibodies in Alzheimer's disease", "authors": ["Benussi A", "Agosta F", "Agnello L", "Alfano AR", "Altini M", "Antico A", "Basilico S", "Bellelli G", "Bonanni L", "Bottini G", "Bozzali M", "Brignoli O", "Bruno G", "Cagnin A", "Calloni SF", "Cappa SF", "Caraci F", "Cecchin D", "Ciaccio M", "Cocozza S", "Cosottini M", "De Leo D", "Falini A", "Gaetani L", "Gandolfo N", "Gotta F", "Lodi R", "Logroscino G", "Marcello E", "Marra C", "Marrocco W", "Morbelli S", "Mecocci P", "Mossello E", "Palleschi L", "Palumbo P", "Pantoni L", "Parnetti L", "Roccatagliata L", "Sorbi S", "Spadin P", "Splendiani A", "Tessitore A", "Ungar A", "Zappalà G", "Padovani A"], "journal": "J Prev Alzheimers Dis", "pubdate": "2026 Oct 15", "url": "https://doi.org/10.1016/j.tjpad.2026.100685", "doi": "10.1016/j.tjpad.2026.100685", "source_api": "PubMed", "pmid": "42880054", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation", "frailty"]}, {"title": "Intracerebral Hemorrhage Expansion in Late Presenters: Proposed Target Expansion Criteria", "authors": ["Morotti A", "Pensato U", "Nawabi J", "Dell'Orco A", "Mazzacane F", "Li Q", "Busto G", "Cavallini A", "Ornello R", "Valente M", "Merlino G", "Baronchelli G", "Berinato F", "Olivieri E", "Giacomozzi S", "Magni E", "Gentile M", "Paolucci M", "Forlivesi S", "Paciaroni M", "Laudisi M", "Sacco S", "Romoli M", "Casetta I", "Fainardi E", "Zini A", "Padovani A"], "journal": "Neurology", "pubdate": "2026 Nov 10", "url": "https://doi.org/10.1212/WNL.0000000000218675", "doi": "10.1212/wnl.0000000000218675", "source_api": "PubMed", "pmid": "42879724", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "C/EBPβ Drives Ischemia-Induced Microglial Inflammatory Reprogramming Through Transcriptional Activation of ATF3 and Exacerbates Brain Injury", "authors": ["Zhang Z", "Zhuo F", "Ouyang H", "Chi C", "Zhang F", "Chi Y", "Lin Z"], "journal": "Mol Neurobiol", "pubdate": "2026 Oct 15", "url": "https://doi.org/10.1007/s12035-026-06256-2", "doi": "10.1007/s12035-026-06256-2", "source_api": "PubMed", "pmid": "42879054", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Baroreflex control of heart rate at rest and during exercise in microgravity conditions", "authors": ["Perrone MA", "Caminiti G", "Aracri M", "Volterrani M", "Iellamo F"], "journal": "J Sports Med Phys Fitness", "pubdate": "2026 Oct 15", "url": "https://doi.org/10.23736/S0022-4707.26.17955-9", "doi": "10.23736/s0022-4707.26.17955-9", "source_api": "PubMed", "pmid": "42878676", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "\"It's important, but at a cost…\": healthcare professionals and people with aphasia describe what influences use of a novel, digital communication aid", "authors": ["Lamborn E", "O'Halloran R", "Carragher M", "Rose ML"], "journal": "Disabil Rehabil", "pubdate": "2026 Oct 15", "url": "https://doi.org/10.1080/09638288.2026.2742538", "doi": "10.1080/09638288.2026.2742538", "source_api": "PubMed", "pmid": "42878599", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Early detection of oropharyngeal dysphagia in rehabilitation and long-term care sectors: the EDOR-Care cross-sectional study protocol", "authors": ["Krethlow G", "Oestreicher V", "Leuchter I", "Burgniard L", "Ménétré E", "Graf C", "Roulin MJ"], "journal": "BMJ Public Health", "pubdate": "2026", "url": "https://doi.org/10.1136/bmjph-2025-004740", "doi": "10.1136/bmjph-2025-004740", "source_api": "PubMed", "pmid": "42877172", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "How do neurorehabilitation patients perceive their fundamental care needs? Findings from a qualitative study", "authors": ["Camuccio CA", "Cacciante L", "Pozzo ED", "Burgio F", "Diamanti O", "Veronese M", "Danielis M"], "journal": "PM R", "pubdate": "2026 Oct 15", "url": "https://doi.org/10.1002/pmrj.70236", "doi": "10.1002/pmrj.70236", "source_api": "PubMed", "pmid": "42876390", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Systematic CRS-R-based Evaluation of Disorders of Consciousness in the ICU: Development and Evolution of a Multidisciplinary Program", "authors": ["Gaibrois PA", "Feenstra SL", "Rondon AS", "Cormier JE", "Jaffa MN"], "journal": "Am J Phys Med Rehabil", "pubdate": "2026 Oct 15", "url": "https://doi.org/10.1097/PHM.0000000000003185", "doi": "10.1097/phm.0000000000003185", "source_api": "PubMed", "pmid": "42875877", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Correction: Characteristics of plantar pressure during walking in stroke patients with hemiplegia of different brunnstrom stages: a study based on five-region smart insoles", "authors": ["Mu J", "Liu X", "Yuan Y", "Wang S", "Dou X", "Hao S", "Zhang C", "Fei W", "Hu B", "Wang Y"], "journal": "J Neuroeng Rehabil", "pubdate": "2026 Oct 14", "url": "https://doi.org/10.1186/s12984-026-02163-8", "doi": "10.1186/s12984-026-02163-8", "source_api": "PubMed", "pmid": "42875779", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Effectiveness of Gamified Rehabilitation Interventions in Patients with Post-Stroke Dysphagia: A Meta-Analysis", "authors": ["Cao Y", "Liu X", "Zhao J", "Zhao J", "Chang H"], "journal": "Dysphagia", "pubdate": "2026 Oct 15", "url": "https://doi.org/10.1007/s00455-026-11014-6", "doi": "10.1007/s00455-026-11014-6", "source_api": "PubMed", "pmid": "42875641", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Semantic working memory supports phrasal planning: Evidence from acute stroke", "authors": ["Zahn R", "Dial H", "Schnur T", "Martin R"], "journal": "Neuropsychologia", "pubdate": "2026 Oct 14", "url": "https://doi.org/10.1016/j.neuropsychologia.2026.109608", "doi": "10.1016/j.neuropsychologia.2026.109608", "source_api": "PubMed", "pmid": "42874853", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "High-frequency rTMS attenuates cerebral ischemia/reperfusion injury and modulates mTOR-related signaling and brain-gut-immune phenotypes in MCAO/R rats", "authors": ["Xue H", "Wang J", "Hua X", "He K", "Jin X", "Liu L", "Hu J"], "journal": "Brain Res Bull", "pubdate": "2026 Oct 14", "url": "https://doi.org/10.1016/j.brainresbull.2026.112168", "doi": "10.1016/j.brainresbull.2026.112168", "source_api": "PubMed", "pmid": "42874723", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Reframing traumatic brain injury and spinal cord injury as chronic multisystem disorders: toward integrated, long-term care", "authors": ["Marini S", "Schneider ALC", "Alshaya A", "Bragge P", "Corrigan JD", "Dams-O'Connor K", "Giacino JT", "Halabi C", "Hendrick K", "Hutchinson PJA", "Khan T", "Khattak AF", "Kirshblum S", "Lala T", "Løvstad M", "Manley GT", "Mediratta S", "Nagayama M", "Newcombe VFJ", "Pugh MJ", "Rosseau G", "Tenovuo O", "Venturini S", "Wilson F", "Wilson L", "Menon DK", "Hammond FM", "Zafonte R", "Izzy S", "Global Coalition for TBI as a Notifiable and Chronic Condition"], "journal": "Lancet Neurol", "pubdate": "2026 Nov", "url": "https://doi.org/10.1016/S1474-4422(26)00297-8", "doi": "10.1016/s1474-4422(26)00297-8", "source_api": "PubMed", "pmid": "42874605", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Development of Enhanced Reviews of Psychological Changes After Stroke (ENRICH): A complex Intervention to Monitor and Support Self-Management of Post-Stroke Psychological Changes Within a Matched Care Model", "authors": ["Hobden G", "Demeyere N"], "journal": "Clin Rehabil", "pubdate": "2026 Oct 14", "url": "https://doi.org/10.1177/02692155261488767", "doi": "10.1177/02692155261488767", "source_api": "PubMed", "pmid": "42873962", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Inconsistent definitions and outcome measurement: A systematic review of impairments following transient ischaemic attack and minor stroke", "authors": ["Ebessen BH", "Crow J", "Hodson T", "Finch E", "Modrau B", "Crowfoot G", "Kontou E", "Mackie P", "Krubbeltrang C", "Kettlewell J", "Turner G"], "journal": "Clin Rehabil", "pubdate": "2026 Oct 14", "url": "https://doi.org/10.1177/02692155261490502", "doi": "10.1177/02692155261490502", "source_api": "PubMed", "pmid": "42873670", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Limited sex-specific structural alterations across common epilepsies: A worldwide ENIGMA study", "authors": ["Wen H", "Wan B", "Gholipour T", "Xie K", "Chen J", "Serio B", "Hettwer MD", "Alvim MKM", "Arienzo D", "João RB", "Bauer T", "Bernasconi A", "Bernasconi N", "Bonanni P", "Caligiuri ME", "Cendes F", "Christin R", "Concha L", "Dascal A", "Boyd ED", "Devinsky O", "Focke NKN", "Fortunato F", "Galovic M", "Gambardella A", "Guerrini R", "Hatton SN", "Iliza M", "Inati S", "Ives-Deliperi V", "Juster RP", "Kleen JK", "Koubeissi MZ", "Labate A", "Larivière S", "Law M", "Lenge M", "Meletti S", "Moloney PB", "Naish M", "Ngo A", "O'Brien TJ", "Pana R", "Panzeri S", "Pardoe H", "Rauf EHU", "Riva A", "Rodríguez-Cruces R", "Royer J", "Rüber T", "Sahlas E", "Scárdua-Silva L", "Schubert KM", "Sepeta LN", "Severino M", "Sinclair B", "Soltanian-Zadeh H", "Stoub T", "Striano P", "Thomopoulos SI", "Valientes NV", "Vaudano AE", "Vivash L", "Yasuda CL", "Thompson PM", "Sisodiya SM", "McDonald CR", "Bernhardt BC", "Valk SL"], "journal": "Epilepsia", "pubdate": "2026 Oct 14", "url": "https://doi.org/10.1002/epi.70515", "doi": "10.1002/epi.70515", "source_api": "PubMed", "pmid": "42873626", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "The design of soft-actuated upper-body exoskeletons for movement assistance and physical therapy", "authors": ["Daniel George"], "journal": "CentAUR (University of Reading)", "pubdate": "2029-01-01", "url": "https://doi.org/10.48683/1926.00129237", "doi": "10.48683/1926.00129237", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7151411061", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation", "physical therapy"]}, {"title": "Brain-based digital twins for skilled interceptive movements: computational frameworks for neural-kinematic integration", "authors": ["D Pathak"], "journal": "Research Space", "pubdate": "2028-01-01", "url": "https://doi.org/10.17870/bathspa.00017805", "doi": "10.17870/bathspa.00017805", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7162566981", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Learning to adapt : neurophysiological insights into split-belt treadmill walking following a stroke", "authors": ["Kaya Yoshida"], "journal": "cIRcle (University of British Columbia)", "pubdate": "2027-01-01", "url": "https://doi.org/10.14288/1.0451727", "doi": "10.14288/1.0451727", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7141648330", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Инсульт остаётся одной из наиболее актуальных медико-социальных проблем современности. По статистике Всемирной организации здравоохранения, ежегодно инсульт переносят более 15 миллионов человек, и около 5 миллионов из них остаются с тяжёлыми двигательными нарушениями. Полноценное восстановление после инсульта — сложный и длительный процесс, требующий комплексного подхода, где всё большую роль играет применение современных технологий, в частности робототехнических систем.", "authors": ["Мохигуль Атоева"], "journal": "Zenodo (CERN European Organization for Nuclear Research)", "pubdate": "2026-11-12", "url": "https://doi.org/10.5281/zenodo.21874928", "doi": "10.5281/zenodo.21874928", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7202137828", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "A Systemic Observational Framework Integrating Physiotherapy-Derived Functional, Physiological, And Behavioral Indicators In Predicting Pharmacological Response", "authors": ["Dr. Kanchan Kholiya, Dr. Shalini dixit, Ram Sihag (PT), Dr. Samarpita Senapati (PT), Dr. Harish Sharma (PT), Dr. Gurpreet Kaur (PT)), Dr. Harshika Gupta (PT)."], "journal": "Cultura", "pubdate": "2026-11-10", "url": "https://doi.org/10.5281/zenodo.18309329", "doi": "10.5281/zenodo.18309329", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7124911714", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation", "physical therapy"]}, {"title": "Finite element analysis of the mechanical structure of an hybrid orthosis", "authors": ["Francielle Aparecida da Paz", "Arthur Torres Caetano", "Matheus Carvalho Barbosa Costa", "João Paulo Fernandes Bonfim", "Guilherme de Paula Rúbio", "Fernanda Ferreira", "Lucas Oliveira da Fonseca", "Henrique Resende Martins", "Claysson Bruno Santos Vimieiro"], "journal": "Synapse Editora eBooks", "pubdate": "2026-10-16", "url": "https://doi.org/10.63951/synapse978-65-88890-66-0_4", "doi": "10.63951/synapse978-65-88890-66-0_4", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221930529", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Effectiveness of Multimodal Exercise and Technology-Assisted Interventions for Post-Stroke Motor Recovery : A Systematic Review", "authors": ["Dian Hasliani", "Hana Milatieka"], "journal": "The International Journal of Medical Science and Health Research", "pubdate": "2026-10-16", "url": "https://doi.org/10.70070/jj54e294", "doi": "10.70070/jj54e294", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7222007210", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Design of Actuators Applied to a Upper Limb Orthosis", "authors": ["Guilherme de Paula Rúbio", "Fernanda Ferreira", "Fabrício Henrique de Lisboa Brandão", "Victor Flausino Machado", "Leandro Gonzaga Tonelli", "Renan Fernandes Kozan", "Claysson Bruno Santos Vimieiro"], "journal": "Synapse Editora eBooks", "pubdate": "2026-10-16", "url": "https://doi.org/10.63951/synapse978-65-88890-66-0_2", "doi": "10.63951/synapse978-65-88890-66-0_2", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7222159004", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Elbow module validation of a robotic orthosis for stroke rehabilitation", "authors": ["Guilherme de Paula Rúbio", "Fernanda Ferreira", "Rina Mariane Alves Dutra", "Arthur Mazzini da Mata", "João Paulo Fernandes Bonfim", "Claysson Bruno Santos Vimieiro"], "journal": "Synapse Editora eBooks", "pubdate": "2026-10-16", "url": "https://doi.org/10.63951/synapse978-65-88890-66-0_3", "doi": "10.63951/synapse978-65-88890-66-0_3", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7222234459", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Promoting arm movement practice with a novel wheelchair armrest early after stroke: a randomized controlled trial", "authors": ["Sangjoon Jonathan Kim", "Vicky Chan", "Niko H. Fullmer", "Emily Rose Rosario", "Christine Kim", "Charles Yu Liu", "M. Comellas", "Daniel K. Zondervan", "David J. Reinkensmeyer", "An H. Do"], "journal": "Journal of NeuroEngineering and Rehabilitation", "pubdate": "2026-10-15", "url": "https://doi.org/10.1186/s12984-026-02111-6", "doi": "10.1186/s12984-026-02111-6", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W4414818909", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "A Remotely Delivered Exercise-Based Rehabilitation Program for Patients with Persistent Chemotherapy-Induced Peripheral Neuropathy (EX-CIPN): A Phase I Feasibility Trial", "authors": ["Eric Antonen", "Michelle B. Nadler", "David Michael Langelier", "Kristin L. Campbell", "David Flamer", "Jang Hyuk Cho", "Scott J. Capozza", "Lisa M. Avery", "Kelcey A. Bland", "Scott Leatherdale", "Jackie Manthorne", "Muna Al-Khaifi", "Jennifer Michelle Jones"], "journal": "Current Oncology", "pubdate": "2026-10-15", "url": "https://doi.org/10.3390/curroncol33100621", "doi": "10.3390/curroncol33100621", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7133002764", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "One-Handed and Two-Handed Backhand and Tennis Elbow Prevalence in Adult Tennis Players", "authors": ["Ahmad Ramdoni Chusnanto"], "journal": "Jurnal Indonesia Sosial Sains", "pubdate": "2026-10-15", "url": "https://doi.org/10.59141/jiss.v7i9.2593", "doi": "10.59141/jiss.v7i9.2593", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221755412", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "De-identified pilot analysis dataset for three-view markerless 3D hand-landmark reconstruction after stroke", "authors": ["Tobishima Hideto"], "journal": "Zenodo (CERN European Organization for Nuclear Research)", "pubdate": "2026-10-15", "url": "https://doi.org/10.5281/zenodo.23339797", "doi": "10.5281/zenodo.23339797", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221775437", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Association of Poor Mental Health and Cardiovascular Events Among Middle-Aged and older people's: A population-based case control study", "authors": ["Amin Moradi", "Mehdi Norouzi", "Ehsan Mosafarkhani"], "journal": "Research Square", "pubdate": "2026-10-15", "url": "https://doi.org/10.21203/rs.3.rs-11162241/v1", "doi": "10.21203/rs.3.rs-11162241/v1", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221847647", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Self-reported memory strategy use following acquired brain injury", "authors": ["Edo Grevers", "Nikita L. Frankenmolen", "Michelle G. Jansen", "Joukje M. Oosterman", "Roy P. C. Kessels", "Dirk Bertens"], "journal": "Journal of Clinical and Experimental Neuropsychology", "pubdate": "2026-10-15", "url": "https://doi.org/10.1080/13803395.2026.2743147", "doi": "10.1080/13803395.2026.2743147", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221883325", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Association between rehabilitation-related changes in upper-limb muscle synergies and clinical outcomes in adults with stroke: a systematic review", "authors": ["Maryam Shafa Shareef"], "journal": "Open Science Framework", "pubdate": "2026-10-15", "url": "https://doi.org/10.17605/osf.io/ch7xm", "doi": "10.17605/osf.io/ch7xm", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221889506", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Core Stability Exercises Versus Tai Chi Exercises on Dynamic Balance After Colo–Rectal Surgeries", "authors": [], "journal": "International Journal of Drug Delivery Technology", "pubdate": "2026-10-15", "url": "https://doi.org/10.25258/ijddt.16.69s.44", "doi": "10.25258/ijddt.16.69s.44", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221894867", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Trends in Primary Incidence of Ischemic Stroke in the Kyrgyz Republic (2017-2025)", "authors": ["A. Samaganova", "A. Makhmadiev"], "journal": "Bulletin of Science and Practice", "pubdate": "2026-10-15", "url": "https://doi.org/10.33619/2414-2948/131/23", "doi": "10.33619/2414-2948/131/23", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221929334", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "DIRETRIZES DE DESIGN DE INTERAÇÃO CORPORIFICADA E VALIDAÇÃO DE USABILIDADE DO SERIOUS GAME LUDS", "authors": ["Maria Goretti Fernandes", "Michell Angelo Santos Lima", "Izabela Souza da Silva"], "journal": "Revista Sistemática", "pubdate": "2026-10-15", "url": "https://doi.org/10.56238/rcsv14n21-003", "doi": "10.56238/rcsv14n21-003", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221934838", "cited_by_count": 0, "matched_keywords": ["stroke rehabilitation"]}, {"title": "Socioeconomic position and preoperative characteristics in Perioperative Quality Improvement Programme participants: a UK national observational study", "authors": ["Durrand J", "Hou B", "Hunt A", "Lusby E", "Warwick E", "Wagstaff D", "Weerasuriya S", "PQIP delivery team", "Moonesinghe SR", "PQIP collaborative"], "journal": "Br J Anaesth", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1016/j.bja.2026.09.002", "doi": "10.1016/j.bja.2026.09.002", "source_api": "PubMed", "pmid": "42888145", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Physical Activity and Frailty in patients with Advanced Chronic Liver Disease: A prospective study", "authors": ["Williams FR", "Quinlan JI", "Dhaliwal A", "Nicholson T", "Breen L", "Greig C", "Elsharkawy AM", "Lord JM", "Rowlands AV", "Armstrong MJ"], "journal": "JHEP Rep", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1016/j.jhepr.2026.102072", "doi": "10.1016/j.jhepr.2026.102072", "source_api": "PubMed", "pmid": "42887647", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Frailty index predicts hearing loss in middle-aged and older adults: A triangulated analysis of global, cohort, and genetic data", "authors": ["Ren L", "Jiang X", "Wang M", "Zhang X"], "journal": "Braz J Otorhinolaryngol", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1016/j.bjorl.2026.101919", "doi": "10.1016/j.bjorl.2026.101919", "source_api": "PubMed", "pmid": "42887367", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Beyond injury severity: Why frailty matters after cycling injury in older adults", "authors": ["Goydos C", "Shaikh FA", "Anthony AE", "Shahbaz H", "Curran T", "Charles EJ", "DiFazio LT", "Nemeth ZH"], "journal": "Am J Surg", "pubdate": "2026 Oct 13", "url": "https://doi.org/10.1016/j.amjsurg.2026.117308", "doi": "10.1016/j.amjsurg.2026.117308", "source_api": "PubMed", "pmid": "42887101", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Vitamin D deficiency is associated with higher frailty risk among middle-aged and older adults: a national population-based analysis of NHANES 2007-2018", "authors": ["Zheng J", "Yang Q", "Dou L", "Zeng B"], "journal": "Aging Male", "pubdate": "2026 Dec 31", "url": "https://doi.org/10.1080/13685538.2026.2749894", "doi": "10.1080/13685538.2026.2749894", "source_api": "PubMed", "pmid": "42886648", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Multidimensional oral health and frailty in older adults: A sex-stratified cross-sectional study", "authors": ["Yang JE", "Moon S"], "journal": "PLoS One", "pubdate": "2026", "url": "https://doi.org/10.1371/journal.pone.0360682", "doi": "10.1371/journal.pone.0360682", "source_api": "PubMed", "pmid": "42886645", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Osteoporosis in the Oldest Old - From Diagnosis to Treatment: A Narrative Review", "authors": ["Dimai HP", "Obermayer-Pietsch B"], "journal": "Gerontology", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1159/ger/acxag010", "doi": "10.1159/ger/acxag010", "source_api": "PubMed", "pmid": "42886608", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Surgical Indications and Planning in Cervical Spine Oncology: A NOMS-Informed Framework for Metastatic and Primary Tumors of the Cervical Spine", "authors": ["Winston GM", "Sykes D", "Newman WC", "Bilsky M"], "journal": "Clin Spine Surg", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1097/BSD.0000000000002192", "doi": "10.1097/bsd.0000000000002192", "source_api": "PubMed", "pmid": "42886589", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Influence of Perioperative Variables on Surgical Site Infection in Patients With Frailty and Prefrailty Undergoing Coronary Artery Bypass Grafting: Retrospective Multicenter Study", "authors": ["Guerrieri M", "Mejia O", "Meneghini B", "Rodrigues N", "Burato W", "Barros M", "Wernsbach D", "Bartelega L", "Hueb A", "Jatene F"], "journal": "JMIR Cardio", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.2196/79408", "doi": "10.2196/79408", "source_api": "PubMed", "pmid": "42886572", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Ferroptosis-related hub genes and immune infiltration characteristics in Duchenne muscular dystrophy: a molecular framework with implications for aging-related muscle degeneration", "authors": ["Peng J", "Hu J", "Wu M", "Xu H"], "journal": "Aging (Albany NY)", "pubdate": "2026 Oct 14", "url": "https://doi.org/10.18632/aging.206429", "doi": "10.18632/aging.206429", "source_api": "PubMed", "pmid": "42886052", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Long-Term Clinical Outcomes and Factors Associated With Response in Older Adults With Massive Irreparable Rotator Cuff Tears: A Four-Year Prospective Cohort Study", "authors": ["Gutiérrez-Espinoza H", "Ríos-Riquelme M", "Valenzuela-Fuenzalida J", "Araya-Quintanilla F", "Conaire EÓ", "Ramírez-Vélez R"], "journal": "Phys Ther", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1093/ptj/pzag113", "doi": "10.1093/ptj/pzag113", "source_api": "PubMed", "pmid": "42886022", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Editorial: How Can We Best Detect Frailty in Older Patients With Inflammatory Bowel Disease? Authors'Reply", "authors": ["Carballo-Folgoso L", "Duque Alcorta JM", "Varela P", "Suárez A", "Riestra S"], "journal": "Aliment Pharmacol Ther", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1111/apt.71054", "doi": "10.1111/apt.71054", "source_api": "PubMed", "pmid": "42885997", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Dapagliflozin After Transcatheter Aortic Valve Implantation According to Frailty in DapaTAVI Trial", "authors": ["Gonzalez-Manzanares R", "Ojeda S", "Amat-Santos I", "Ariza-Solé A", "Romaguera R", "López Otero D", "Nombela-Franco L", "Gheorge L", "Sanz-Sánchez J", "Baladrón Zorita C", "Gallo I", "Cobas Paz R", "Muñoz García AJ", "Vilalta V", "Veiga Fernández G", "Córdoba Soriano JG", "Cepas-Gillén P", "Sandín Rollán M", "Flores Ríos X", "Palma-Carbajal R", "Martín Reyes R", "Avanzas P", "García Blas S", "Franco-Peláez JA", "Martín Moreiras J", "Gonzalez Juanatey JR", "Gonzalo N", "Calle G", "Díez JL", "Santos-Martínez S", "González Ferreiro R", "Muñoz García E", "Fernandez-Nofrerias E", "Sanmartín X", "Tirado G", "Gutierrez Barri A", "González Bermúdez I", "Rosselló X", "Fuster V", "Ibáñez B", "Raposeiras Roubín S"], "journal": "J Am Heart Assoc", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1161/JAHA.126.051379", "doi": "10.1161/jaha.126.051379", "source_api": "PubMed", "pmid": "42885795", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Prospectively collected functional vs. self-reported frailty measures and postoperative outcomes after radical cystectomy in older adults with bladder cancer", "authors": ["Sheldon J", "Holt S", "Brewer E", "Gore JL", "Garcia JM", "Reed M", "Bentov I", "Berry D", "Master VA", "Kirschenbaum MP", "Yano M", "Jun G", "Li C", "Psutka SP"], "journal": "Urol Oncol", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1016/j.urolonc.2026.09.010", "doi": "10.1016/j.urolonc.2026.09.010", "source_api": "PubMed", "pmid": "42881095", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Frailty assessment in older people with HIV: A narrative review", "authors": ["Morales IPA", "Santillán JPH", "Ortuño RR", "Avila-Funes JA", "Hernandez-Ruiz V"], "journal": "Rev Invest Clin", "pubdate": "2026 Oct 15", "url": "https://doi.org/10.1016/j.ric.2026.100061", "doi": "10.1016/j.ric.2026.100061", "source_api": "PubMed", "pmid": "42881086", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Redox resilience in skeletal muscle aging: cellular adaptations and exercise-mediated homeostasis", "authors": ["Tamayo-Torres E", "Martinez-Canton M", "Soto-Rodriguez S", "Gorgori-Gonzalez A", "Carretero J", "Cervera-Miguel JI", "Laosa O", "Rodriguez-Mañas L", "Gomez-Cabrera MC"], "journal": "Free Radic Biol Med", "pubdate": "2026 Oct 15", "url": "https://doi.org/10.1016/j.freeradbiomed.2026.10.023", "doi": "10.1016/j.freeradbiomed.2026.10.023", "source_api": "PubMed", "pmid": "42880511", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Frailty and quality of life in a real-world multiple myeloma population", "authors": ["Rydahl KFK", "Möller S", "Horsbøl TA", "Høyer BB", "Jensen BA", "Helleberg C", "Klostergaard A", "Gregersen H", "Farmer S", "Frederiksen M", "Mylin AK", "Steffensen MS", "Pedersen PT", "Kristensen IB", "Abildgaard N", "Nielsen LK"], "journal": "Br J Haematol", "pubdate": "2026 Oct 15", "url": "https://doi.org/10.1111/bjh.70870", "doi": "10.1111/bjh.70870", "source_api": "PubMed", "pmid": "42880361", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Frailty score, sarcopenia, and myosteatosis: Stratifying risk and outcomes in non-transplant eligible patients with multiple myeloma treated with daratumumab-based dose-adjusted combination therapies", "authors": ["Terlizzi S", "Falcone T", "Frittoli B", "Ribolla R", "Crippa C", "Ferrari S", "Bianchetti N", "Bottelli C", "Vietti E", "Avenoso D", "Ravanelli M", "Grazioli L", "Tucci A", "Belotti A"], "journal": "J Geriatr Oncol", "pubdate": "2026 Oct 15", "url": "https://doi.org/10.1016/j.jgo.2026.104640", "doi": "10.1016/j.jgo.2026.104640", "source_api": "PubMed", "pmid": "42880159", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Can frailty screening be used to inform clinical decision-making for older persons in the emergency department? A systematic review", "authors": ["Wolf LA", "Delao A", "Lo A", "Chary A", "Sri-On J", "Shankar K", "Sano E", "Lydston M", "Mowbray F", "Liu SW"], "journal": "Geriatr Nurs", "pubdate": "2026 Oct 15", "url": "https://doi.org/10.1016/j.gerinurse.2026.104388", "doi": "10.1016/j.gerinurse.2026.104388", "source_api": "PubMed", "pmid": "42880006", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "\"He has no children\": maternita, sterilita e fertilita nel Macbeth e in tre adattamenti cinematografici", "authors": ["Giulia Argentieri Federzoni"], "journal": "Cineca Institutional Research Information System (Tor Vergata University)", "pubdate": "2026-10-28", "url": "https://openalex.org/W7219475334", "doi": null, "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7219475334", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Identifying which patients with metastatic hormone-sensitive prostate cancer benefit most from androgen receptor pathway inhibitors: STOPCAP systematic review and meta-analysis of individual participant data", "authors": ["David J. Fisher", "Larysa H. M. Rydzewska", "Peter John Godolphin", "Claire Louise Vale", "Sarah Burdett", "Neeraj Agarwal", "Gerhardt Attard", "Kim N Chi", "Noel William Clarke", "Ian D. Davis", "Karim Fizazi", "Stéphanie Foulon", "Silke Gillessen", "Nicholas David James", "David Matheson", "L.R. Murphy", "Robert Oldroyd", "Mahesh Parmar", "Vinod Vijay Subhash", "Christopher J. Sweeney", "Catherine M. Tangen", "Bertrand F. TOMBAL", "Ian R. White", "Jayne F. Tierney"], "journal": "UCL Discovery (University College London)", "pubdate": "2026-10-16", "url": "https://openalex.org/W7220010108", "doi": null, "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7220010108", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Nut consumption and musculoskeletal health: a systematic review", "authors": ["Lisa Aschenberg", "Randah Shrouro", "Shanil Juma"], "journal": "Exploration of Musculoskeletal Diseases", "pubdate": "2026-10-15", "url": "https://doi.org/10.37349/emd.2026.1007138", "doi": "10.37349/emd.2026.1007138", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7161810793", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Home-based geriatric rehabilitation after shortened inpatient rehabilitation: cost-effectiveness analysis of the “Better@Home” multicentre prospective cohort study with a matched historical control group", "authors": ["Chris J. Gamble", "Wim G Groen", "M. Vaz", "Margot W. M. de Waal", "M.C. Pol", "Eléonore F van Dam van Isselt", "Mickaël Hiligsmann", "Andrea Gabrio", "S.M.G Zwakhalen", "Jolanda C. M. van Haastregt"], "journal": "The European Journal of Health Economics", "pubdate": "2026-10-15", "url": "https://doi.org/10.1007/s10198-026-02002-6", "doi": "10.1007/s10198-026-02002-6", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7166701790", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Platelet reactivity in frail older women: integrating phenomic and proteomic analysis", "authors": ["Magdelena Sepulveda", "Hector Montecina-Garrido", "Iván Palomo", "Neline Kriek", "Joanne L. Dunster", "Maria Diaz Alonso", "Tanya Sage", "Angel Garcia", "Jaime Pereira", "Jonathan M. Gibbins", "Eduardo Fuentes Q"], "journal": "npj Aging", "pubdate": "2026-10-15", "url": "https://doi.org/10.1038/s41514-026-00538-8", "doi": "10.1038/s41514-026-00538-8", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7219257408", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Acute decompensated aortic stenosis: the final common pathway of a failing system", "authors": ["Jonathan Vibhishanan", "ADRIAN P BANNING", "Thomas J. Cahill"], "journal": "European Heart Journal - Valvular and Structural Heart Disease", "pubdate": "2026-10-15", "url": "https://doi.org/10.1093/ehjvshd/xwag084", "doi": "10.1093/ehjvshd/xwag084", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221848596", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Mapping the diverse trajectories of intrinsic capacity and their key drivers in China’s aging population", "authors": ["Ziyi Liang", "Zhirou Liang", "Linlin Xie", "Keqing Liang", "Jianxiong Hu", "Sujuan Chen", "Tao Liu", "Jiagui Liang", "Guanhao He", "Fan Wu", "Wenjun Ma"], "journal": "Frontiers in Public Health", "pubdate": "2026-10-15", "url": "https://doi.org/10.3389/fpubh.2026.1923924", "doi": "10.3389/fpubh.2026.1923924", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221897777", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Rethinking immunotherapy sequencing in multiple myeloma: a conceptual adaptive immunotherapy sequencing model", "authors": ["Aliaa Khalili"], "journal": "Frontiers in Immunology", "pubdate": "2026-10-15", "url": "https://doi.org/10.3389/fimmu.2026.1897153", "doi": "10.3389/fimmu.2026.1897153", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221928812", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Rule-Out yield of the European society of cardiology 0/1-Hour troponin protocol in frail and non-frail octogenarians", "authors": ["Uğur Durmuş", "Şebnem Zeynep Eke Kurt", "Mustafa Sefa Isin", "Asım Bedri Erdem", "Erdem Kurt", "Suphi Bahadırlı"], "journal": "Irish Journal of Medical Science (1971 -)", "pubdate": "2026-10-15", "url": "https://doi.org/10.1007/s11845-026-04688-2", "doi": "10.1007/s11845-026-04688-2", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221929366", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Lifestyle-Associated Biomarkers of Cellular and Whole-Organism Aging: A Practical Roadmap for Human Geroscience Trials", "authors": ["Stephen A. Rose", "Albert Anatolyevich Rizvanov", "Donald David Haines", "Fred M. Cowan", "Robert H. Silverstein", "Fadia Fouad Mahmoud", "Valeriya V. Solovyeva", "Kristina Viktorovna Kitaeva", "Hyo-Seok Seo", "Árpád Tósaki"], "journal": "Biomolecules", "pubdate": "2026-10-15", "url": "https://doi.org/10.3390/biom16101504", "doi": "10.3390/biom16101504", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221936845", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Measuring Creativity as a Gateway to Innovation", "authors": ["Elżbieta Jędrych", "Jan Fazlagić"], "journal": "Routledge eBooks", "pubdate": "2026-10-15", "url": "https://doi.org/10.4324/9781003785545-6", "doi": "10.4324/9781003785545-6", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221957931", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Protocol for \"Shared Decision-Making and Goals-of-Care Interventions in Older Adults with Gastrointestinal and Hepatopancreatobiliary Malignancies Undergoing Surgery: A Scoping Review\"", "authors": ["Michelle R. Demetres"], "journal": "Open Science Framework", "pubdate": "2026-10-15", "url": "https://doi.org/10.17605/osf.io/dwju3", "doi": "10.17605/osf.io/dwju3", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221978039", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "МЕДИЧНА СЕСТРА-КООРДИНАТОР У СИСТЕМІ ДОВГОТРИВАЛОГО ДОГЛЯДУ: ЗАРУБІЖНІ МОДЕЛІ ТА ПЕРЕДУМОВИ ВПРОВАДЖЕННЯ В УКРАЇНІ", "authors": ["I. V. Ilyin", "Vasyl Kupriychuk"], "journal": "Scientific Notes of Taurida V I Vernadsky University series Public Administration", "pubdate": "2026-10-15", "url": "https://doi.org/10.32782/tnu-2663-6468/2026.4/08", "doi": "10.32782/tnu-2663-6468/2026.4/08", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221991383", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Development of a Short Form of the Life Functioning Scale for Older Adults in the Korea National Health and Nutrition Examination Survey", "authors": ["Eunsaem Kim", "Jinhee Kim", "이윤환", "Jihye Yun", "Jaewon Choi", "Miji Kim", "Kyungwon Oh", "양하 김"], "journal": "Research Square", "pubdate": "2026-10-15", "url": "https://doi.org/10.21203/rs.3.rs-11201544/v1", "doi": "10.21203/rs.3.rs-11201544/v1", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221993629", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Perioperative nutrition-related laboratory profiles predict outcomes after digestive procedures in patients with gastrointestinal cancer", "authors": ["MengHui Zhang", "Liangliang Hui", "Jialing Zhang", "Chengran Wang", "Fan Xu", "Guoquan Tao", "Honggang Wang"], "journal": "Frontiers in Nutrition", "pubdate": "2026-10-15", "url": "https://doi.org/10.3389/fnut.2026.1927720", "doi": "10.3389/fnut.2026.1927720", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7222018101", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Transjugular implantation of a leadless pacemaker in a 97-year-old patient with severe kyphosis and tortuous femoral veins: a case report", "authors": ["Minghuan Fu", "Xue-Fei Tao", "Jie Gao", "Yong Shi", "Biao Cheng", "Wei Zhang", "Xiao-Han Chen"], "journal": "Frontiers in Cardiovascular Medicine", "pubdate": "2026-10-15", "url": "https://doi.org/10.3389/fcvm.2026.1932808", "doi": "10.3389/fcvm.2026.1932808", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7222019348", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Social frailty as a pathway linking material precarity to cognitive impairment among older adults in Sweden, Germany and Spain: a structural equation modelling approach", "authors": ["Sitta Fiakhsani Taqwim", "Sara Castel-Feced", "Julia Schröders"], "journal": "Aging & Mental Health", "pubdate": "2026-10-15", "url": "https://doi.org/10.1080/13607863.2026.2740031", "doi": "10.1080/13607863.2026.2740031", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7222026606", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Factors influencing frailty in older persons with vision impairment visiting the outpatient department: a cross-sectional study", "authors": ["Phicharat Nuairaksa", "Prangtip Chayaput", "Virapun Wirojratana", "Suksri Chotikavanich"], "journal": "BMC Geriatrics", "pubdate": "2026-10-15", "url": "https://doi.org/10.1186/s12877-026-08464-w", "doi": "10.1186/s12877-026-08464-w", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7222039072", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "What preoperative assessments are recommended for fall risk in patients scheduled for neurosurgery?", "authors": ["Tripdatabase"], "journal": "Zenodo (CERN European Organization for Nuclear Research)", "pubdate": "2026-10-15", "url": "https://doi.org/10.5281/zenodo.23397944", "doi": "10.5281/zenodo.23397944", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7222039898", "cited_by_count": 0, "matched_keywords": ["frailty"]}, {"title": "Association between knee extensor muscle strength and locomotive syndrome in adults undergoing health screening: A cross-sectional study", "authors": ["Morita Y", "Arai T", "Tobita K", "Miura K", "Amari T", "Arita N", "Koroku H", "Shimizu M"], "journal": "J Orthop Sci", "pubdate": "2026 Oct 17", "url": "https://doi.org/10.1016/j.jos.2026.10.004", "doi": "10.1016/j.jos.2026.10.004", "source_api": "PubMed", "pmid": "42888140", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Early achieved ambulation is associated with reduced venous thromboembolism among hospitalised medicine patients", "authors": ["Hoyer EH", "Brotman DJ", "Young D", "Lau BD", "Colantuoni E", "Funk K", "Haut ER", "Li X", "Streiff MB"], "journal": "BMJ Qual Saf", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1136/bmjqs-2026-020720", "doi": "10.1136/bmjqs-2026-020720", "source_api": "PubMed", "pmid": "42888038", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Short-term decline in weaker-side handgrip strength is associated with shorter survival in patients with advanced cancer admitted to a palliative care unit: a prospective cohort study", "authors": ["Kowata O", "Watanabe T", "Sato T", "Nagae T", "Sekine M", "Onuki K", "Aita T", "Suzuki H", "Yamamoto Y", "Oyamada A", "Sasaki A", "Morishita S"], "journal": "BMJ Support Palliat Care", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1136/spcare-2026-006645", "doi": "10.1136/spcare-2026-006645", "source_api": "PubMed", "pmid": "42888018", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Probing bacteriophage-induced membrane perturbation in Aeromonas salmonicida subsp. salmonicida by in-cell solid-state NMR", "authors": ["Moussaoui R", "Beauclercq S", "Paquet VE", "Arnold AA", "Charette SJ", "Marcotte I"], "journal": "Biochim Biophys Acta Biomembr", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1016/j.bbamem.2026.184582", "doi": "10.1016/j.bbamem.2026.184582", "source_api": "PubMed", "pmid": "42887633", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Composite material homogenization for shear wave elastography of muscle-like fiber-laden viscoelastic waveguides under prestress", "authors": ["Nammari L", "Klatt D", "Ludvig D", "Shull KR", "Perreault EJ", "Royston TJ"], "journal": "J Mech Behav Biomed Mater", "pubdate": "2026 Oct 13", "url": "https://doi.org/10.1016/j.jmbbm.2026.107682", "doi": "10.1016/j.jmbbm.2026.107682", "source_api": "PubMed", "pmid": "42887261", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Assessment of functional exercise capacity, muscle strength, fatigue, body balance, and quality of life in women with neoplasms receiving chemotherapy: Comparisons between breast and gynecological cancers", "authors": ["da Silva MJR", "da Fonseca Reis LF", "de Oliveira Ribeiro C", "Machado Júnior FE", "Lopes AJ"], "journal": "Clin Biomech (Bristol)", "pubdate": "2026 Oct 14", "url": "https://doi.org/10.1016/j.clinbiomech.2026.106997", "doi": "10.1016/j.clinbiomech.2026.106997", "source_api": "PubMed", "pmid": "42887211", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Developmental vulnerability in infants and toddlers following esophageal atresia repair: A parent-reported functional assessment using WIDEA-FS", "authors": ["Coronado J", "Doucet KM", "Zurakowski D", "Zendejas B", "Bajic D"], "journal": "Early Hum Dev", "pubdate": "2026 Oct 11", "url": "https://doi.org/10.1016/j.earlhumdev.2026.106696", "doi": "10.1016/j.earlhumdev.2026.106696", "source_api": "PubMed", "pmid": "42887094", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Water-Soluble Chlorophyll Proteins as Biocompatible Photosensitizers for Photodynamic Therapy to Combat Antibiotic Resistance and Biofilm Through Disrupting Bacterial Membranes", "authors": ["Wu Y", "Ou Y", "Chu H", "Wu ZC", "Sun F", "Yao H", "Tong R"], "journal": "ACS Appl Bio Mater", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1021/acsabm.6c01477", "doi": "10.1021/acsabm.6c01477", "source_api": "PubMed", "pmid": "42886893", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Therapeutic-scale CAR-NK microrobots with programmable swarm navigation for targeted solid tumor therapy", "authors": ["Wu Z", "Wang Y", "Zhang H", "Fan X", "Li M", "Li Z", "Zhang G", "Wang J", "Lu Y", "Wang H", "Jia Y", "Gu H", "Tan H", "Tian J", "Sun X", "Xie H", "Zhang L", "Sitti M", "Zhao J"], "journal": "Sci Adv", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1126/sciadv.aef9412", "doi": "10.1126/sciadv.aef9412", "source_api": "PubMed", "pmid": "42886800", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Rates of nonproliferative diabetic retinopathy (NPDR) regression among patients with very mild or mild NPDR in an Indian Health Service teleophthalmology program, 2015 - 2020", "authors": ["Bursell SE", "Fonda SJ", "Borik K", "Stainback J", "Shahon D"], "journal": "PLoS One", "pubdate": "2026", "url": "https://doi.org/10.1371/journal.pone.0361052", "doi": "10.1371/journal.pone.0361052", "source_api": "PubMed", "pmid": "42886725", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Patient Perspectives on Their Home Peritoneal Dialysis Experience: A Qualitative Study", "authors": ["Hsu CM", "Lovell T", "Ladin K", "Meyer L", "Harford A", "Schmidt D", "Meyer K", "Richardson MM", "Weiner DE"], "journal": "Kidney360", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.34067/KID.0000001437", "doi": "10.34067/kid.0000001437", "source_api": "PubMed", "pmid": "42886540", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Calf Injuries: Anatomy, Pathology, and Treatment", "authors": ["Hauer TM", "Arner JW", "Mauro CS", "Bradley JP"], "journal": "J Am Acad Orthop Surg", "pubdate": "2026 Nov 1", "url": "https://doi.org/10.5435/JAAOS-D-25-01090", "doi": "10.5435/jaaos-d-25-01090", "source_api": "PubMed", "pmid": "42886539", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "The pathophysiology of wild-type transthyretin amyloidosis: implications for exercise intolerance", "authors": ["Iacovelli JJ", "Carter SJ", "Wray DW"], "journal": "Am J Physiol Heart Circ Physiol", "pubdate": "2026 Nov 1", "url": "https://doi.org/10.1152/ajpheart.00430.2026", "doi": "10.1152/ajpheart.00430.2026", "source_api": "PubMed", "pmid": "42886507", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Reliability and quality of YouTube exercise videos for people living with lung cancer: a cross-sectional content analysis", "authors": ["Ergan M", "Keskin T", "Ünüvar BS", "Başkurt Z"], "journal": "J Cancer Surviv", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1007/s11764-026-02144-9", "doi": "10.1007/s11764-026-02144-9", "source_api": "PubMed", "pmid": "42886464", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Precision gene editing in infant neuroblastoma: a review of nanoparticle: enabled CRISPR/Cas9 therapies", "authors": ["Kaknale S", "Ranjan A", "Enoch IVMV", "Vyas A", "Manikantan V"], "journal": "Mol Biol Rep", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1007/s11033-026-12916-2", "doi": "10.1007/s11033-026-12916-2", "source_api": "PubMed", "pmid": "42886411", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Long-term effects of voice training and swallowing function exercises on postoperative functional recovery in laryngeal cancer patients: a retrospective cohort study", "authors": ["Liu J", "Fan G", "Li W"], "journal": "Support Care Cancer", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1007/s00520-026-11302-9", "doi": "10.1007/s00520-026-11302-9", "source_api": "PubMed", "pmid": "42886344", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Perspectives on physical therapy in advanced cancer care from those who give, receive, and refer: a qualitative interview study", "authors": ["Gauchez L", "Beernaert K", "Decoster L", "Deliens T", "Van Ginderdeuren F", "Adriaenssens N", "Scherrens AL"], "journal": "Support Care Cancer", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1007/s00520-026-11352-z", "doi": "10.1007/s00520-026-11352-z", "source_api": "PubMed", "pmid": "42886262", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Clinical and ultrasonographic effects of extracorporeal shock wave therapy in patients with lipedema: A prospective study", "authors": ["Özyiğit E", "Ün Oğuzhanasıltürk D", "Özyiğit Ö", "Zure M"], "journal": "Phlebology", "pubdate": "2026 Oct 16", "url": "https://doi.org/10.1177/02683555261499797", "doi": "10.1177/02683555261499797", "source_api": "PubMed", "pmid": "42886234", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Cardiac rehabilitation: A potential pathway for patients with peripheral artery disease", "authors": ["Krist Feka"], "journal": "University of the Sunshine Coast", "pubdate": "2027-07-08", "url": "https://doi.org/10.25907/01071", "doi": "10.25907/01071", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7167918322", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Investigating the effects of vaping on lung structure and function with pulmonary imaging", "authors": ["Schmidt, Alexandra"], "journal": "cIRcle (University of British Columbia)", "pubdate": "2027-01-01", "url": "https://doi.org/10.14288/1.0451822", "doi": "10.14288/1.0451822", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7153078620", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Quantifying cell-cycle decisions and their impact on single-cell and population behaviour", "authors": ["Mattia Corigliano"], "journal": "Open Research Online (The Open University)", "pubdate": "2027-01-01", "url": "https://doi.org/10.21954/ou.ro.00110446", "doi": "10.21954/ou.ro.00110446", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7165952245", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "The Nexus of Thought, Health, And Disease: A Comprehensive Review of Cognitive Influences on Mental and Physical Well-Being and the Efficacy of Adaptive Management Strategies", "authors": ["Athalia Tiffany Harwanto", "Budi Harwanto"], "journal": "International Journal of Social Science and Human Research", "pubdate": "2026-12-31", "url": "https://doi.org/10.5281/zenodo.18113457", "doi": "10.5281/zenodo.18113457", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7118009900", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Video and digital games: Historical controversies, benefits, and risks for children and adolescents", "authors": ["Hanna David"], "journal": "Journal of Child Development, Exceptionality and Education", "pubdate": "2026-12-30", "url": "https://doi.org/10.5281/zenodo.22768009", "doi": "10.5281/zenodo.22768009", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7213265892", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "EFFECT OF PHONOPHORESIS WITH DICLOFENAC SODIUM AND THERAPEUTIC ULTRASOUND WITH TRADITIONAL PHYSIOTHERAPY IN KNEE OSTEOARTHRITIS", "authors": ["Pakistan Journal of Medical & Cardiological Review"], "journal": "Zenodo (CERN European Organization for Nuclear Research)", "pubdate": "2026-12-23", "url": "https://doi.org/10.5281/zenodo.22654614", "doi": "10.5281/zenodo.22654614", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7211951065", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "DIAGNOSTIC ACCURACY OF MRI IN DETECTING ROTATOR CUFF TEARS TAKING INDIRECT MR ARTHROGRAPHY AS GOLD STANDARD", "authors": ["DR. MARIA MURTAZA , DR MUHAMMAD AQEEL BABRI , DR. AFAF ARIF , DR. HASSAN RASHID ,"], "journal": "TPM Testing, psychometrics, methodology in applied psychology", "pubdate": "2026-12-15", "url": "https://doi.org/10.5281/zenodo.18464498", "doi": "10.5281/zenodo.18464498", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7127449069", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Sequence-based artificial intelligence-guided inhibitory peptides to counteract AAV neutralizing antibodies in gene therapy.", "authors": ["Bingqi Xu", "Xin Zhang", "Dandan Yu", "Panjing Wang", "Ying Chi", "Wei Liu", "Feng Xue", "Lingling Chen", "Huiyuan Li", "Wentian Wang", "Yunfei Chen", "Xiaofan Liu", "Rongfeng Fu", "Renchi Yang", "Wenwei Shao", "Siwei Yu", "Xiaolei Pei", "Lei Zhang"], "journal": "PubMed", "pubdate": "2026-12-10", "url": "https://doi.org/10.1016/j.omta.2026.201832", "doi": "10.1016/j.omta.2026.201832", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7197044566", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Albiflorin suppresses breast cancer via the HINT2/NLRP3 signaling pathway.", "authors": ["Yunpeng Hu", "Chen Li", "Yiyao Cui"], "journal": "PubMed", "pubdate": "2026-12-01", "url": "https://doi.org/10.36721/pjps.2026.39.12.348.1", "doi": "10.36721/pjps.2026.39.12.348.1", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7211924811", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Assessment and characterization of back pain and biopsychosocial influences in lower limb amputation: scoping review.", "authors": ["Kevin Arribart", "Maximilian O'Malley", "Gerson Cipriano", "Marlon L. Wong", "ROBERT S. GAILEY", "IGNACIO A. GAUNAURD"], "journal": "PubMed", "pubdate": "2026-12-01", "url": "https://doi.org/10.1097/pr9.0000000000001504", "doi": "10.1097/pr9.0000000000001504", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7221448255", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "The Ataxias as an Example of Rare Diseases: Diagnosis, Genetics, and Treatment.", "authors": ["Friedrich Erdlenbruch", "Andreas Thieme", "Christel Depienne", "Tobias B. Haack", "Jennifer Faber", "Dagmar Timmann"], "journal": "PubMed", "pubdate": "2026-11-13", "url": "https://doi.org/10.3238/arztebl.m2026.0172", "doi": "10.3238/arztebl.m2026.0172", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7220945447", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "TO STUDY THE RESPONSE RATE OF HYPO-FRACTIONATED BLADDER PRESERVATION RADIOTHERAPY IN MUSCLE INVASIVE BLADDER CANCER", "authors": ["DR. SHEIKH TAHIR SIDDIQUE , DR. ZEESHAN BADAR , DR. MUHAMMAD UMAIR , DR SANA NAEEM , DR. SAMINA SIDDIQUE , DR RAB NAWAZ MAKEN (SUPERVISOR)"], "journal": "TPM Testing, psychometrics, methodology in applied psychology", "pubdate": "2026-11-05", "url": "https://doi.org/10.5281/zenodo.18456560", "doi": "10.5281/zenodo.18456560", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7127164891", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Metabolic dysfunction-associated Steatotic liver disease prevalence, incidence and global aspects", "authors": ["Sarah H. Wild", "Jeffrey Victor Lazarus", "C. Wendy Spearman", "Ponsiano Ocama", "Josh Bilson", "Xiao-Dong Zhou", "Ming-Hua Zheng", "Chrisopher D. Byrne"], "journal": "ePrints Soton (University of Southampton)", "pubdate": "2026-11-01", "url": "https://doi.org/10.1007/s00125-026-06726-1", "doi": "10.1007/s00125-026-06726-1", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7155662412", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Diagnostic and prognostic utility of bone morphogenetic protein 10 in acute dyspnea: a cohort study", "authors": ["Justas Simonavičius", "Desiree Nadine Wussler", "Maria Belkin", "Karoline Luening", "Pedro López‐Ayala", "Ivo Strebel", "Samyut Shrestha", "Albina Nowak", "Eleni Michou", "Androniki Papachristou", "Codruta Popescu", "Nikola Kozhuharov", "Zaid Sabti", "Zora Reiffer", "Elisa; https://orcid.org/0000-0003-2616-5535 Hennings", "Tobias Zimmermann", "Matthias Diebold", "Tobias Breidthardt", "Christian Eugen Mueller"], "journal": "Zurich Open Repository and Archive (University of Zurich)", "pubdate": "2026-11-01", "url": "https://doi.org/10.1007/s00392-024-02584-2", "doi": "10.1007/s00392-024-02584-2", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7212033513", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Before Qualia, Strategic Existence Begins", "authors": ["Angelina Inesia-Forde"], "journal": "PhilPapers (PhilPapers Foundation)", "pubdate": "2026-11-01", "url": "https://doi.org/10.5281/zenodo.23247992", "doi": "10.5281/zenodo.23247992", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7213723230", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "Lived Experiences of Couples Regarding Grief Caused by Recurrent Miscarriages in Infertile Women: A Phenomenological Study", "authors": ["Hoda Zaraj", "Manijeh Firoozi", "Katayon Vakilian", "Fatimah Nosrati"], "journal": "Psychology of Woman Journal", "pubdate": "2026-11-01", "url": "https://openalex.org/W7216638656", "doi": null, "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7216638656", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "The Effectiveness of Self-Compassion Training on Body Image Concern and Difficulties in Emotion Regulation in Women with Overweight", "authors": ["Zohre Safari", "Seyedeh Fatemeh Dinparast", "Mahdieh Salari"], "journal": "Psychology of Woman Journal", "pubdate": "2026-11-01", "url": "https://openalex.org/W7217300480", "doi": null, "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7217300480", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}, {"title": "The Effectiveness of Emotional Schema Therapy on Defense Mechanisms, Emotional Distress Tolerance, and Psychosomatic Symptoms in Married Women with Psychosomatic Disorder Symptoms", "authors": ["Zeinab Haghighi", "milad Abedi GHelich GHeshlaghi"], "journal": "Psychology of Woman Journal", "pubdate": "2026-11-01", "url": "https://openalex.org/W7217566277", "doi": null, "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7217566277", "cited_by_count": 0, "matched_keywords": ["physical therapy"]}]};
+        const APP_DATA = {"generated_at": "2026-10-25 17:55:11", "keywords": ["理学療法", "脳卒中 リハビリ", "フレイル"], "keyword_translations": {"理学療法": ["physical therapy", "physiotherapy"]}, "policy_keywords": ["リハビリ", "疾患別リハビリテーション", "診療報酬", "疑義解釈", "理学療法", "介護報酬", "介護保険", "医療", "地域包括", "報酬", "通知"], "recommended_count": 5, "policy_news_count": 1, "papers_count": 50, "combined_pdf_url": "pdf/pt_digest_top5.pdf", "recommended": [{"title": "呼吸器・循環器疾患に対する理学療法の卒前教育の実態", "authors": ["田中 貴子", "柳田 頼英", "神津 玲"], "journal": "理学療法教育", "pubdate": "2025-11-10", "url": "https://www.jstage.jst.go.jp/article/jpte/5/2/5_2_74/_article/-char/ja/", "doi": "10.57356/jpte.5.2_2_74", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "当院脊椎ケアセンターにおける理学療法士の研究活動", "authors": ["峯玉 賢和", "川上 守", "中川 雅文", "山本 義男", "中谷 友洋", "吉村 咲愛", "左近 奈菜", "中川 幸洋"], "journal": "Journal of Spine Research", "pubdate": "2026-07-20", "url": "https://www.jstage.jst.go.jp/article/jspineres/17/6/17_2025-3092/_article/-char/ja/", "doi": "10.34371/jspineres.2025-3092", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "地域在住高齢者に対して，ウォーキングは有用か", "authors": ["三栖 翔吾", "石垣 智也", "宮下 敏紀"], "journal": "地域理学療法学", "pubdate": "2025-03-31", "url": "https://www.jstage.jst.go.jp/article/jjccpt/4/2/4_JJCCPT24014/_article/-char/ja/", "doi": "10.57351/jjccpt.JJCCPT24014", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "回復期リハビリテーション病棟における理学療法士の専門性", "authors": ["奥山 夕子"], "journal": "The Japanese Journal of Rehabilitation Medicine", "pubdate": "2025-08-18", "url": "https://www.jstage.jst.go.jp/article/jjrmc/62/6/62_62.552/_article/-char/ja/", "doi": "10.2490/jjrmc.62.552", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "理学療法における基礎研究の活かし方", "authors": ["石倉 英樹"], "journal": "理学療法の臨床と研究", "pubdate": "2025-09-30", "url": "https://www.jstage.jst.go.jp/article/jptpr/35/2/35_9/_article/-char/ja/", "doi": "10.14870/jptpr.35.2.9", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["理学療法"]}], "policy_news": [{"title": "ダミー制度ニュース", "url": "https://example.com", "pubdate": "2026-10-25", "matched_keywords": ["理学療法"]}], "papers": [{"title": "呼吸器・循環器疾患に対する理学療法の卒前教育の実態", "authors": ["田中 貴子", "柳田 頼英", "神津 玲"], "journal": "理学療法教育", "pubdate": "2025-11-10", "url": "https://www.jstage.jst.go.jp/article/jpte/5/2/5_2_74/_article/-char/ja/", "doi": "10.57356/jpte.5.2_2_74", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "当院脊椎ケアセンターにおける理学療法士の研究活動", "authors": ["峯玉 賢和", "川上 守", "中川 雅文", "山本 義男", "中谷 友洋", "吉村 咲愛", "左近 奈菜", "中川 幸洋"], "journal": "Journal of Spine Research", "pubdate": "2026-07-20", "url": "https://www.jstage.jst.go.jp/article/jspineres/17/6/17_2025-3092/_article/-char/ja/", "doi": "10.34371/jspineres.2025-3092", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "地域在住高齢者に対して，ウォーキングは有用か", "authors": ["三栖 翔吾", "石垣 智也", "宮下 敏紀"], "journal": "地域理学療法学", "pubdate": "2025-03-31", "url": "https://www.jstage.jst.go.jp/article/jjccpt/4/2/4_JJCCPT24014/_article/-char/ja/", "doi": "10.57351/jjccpt.JJCCPT24014", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "回復期リハビリテーション病棟における理学療法士の専門性", "authors": ["奥山 夕子"], "journal": "The Japanese Journal of Rehabilitation Medicine", "pubdate": "2025-08-18", "url": "https://www.jstage.jst.go.jp/article/jjrmc/62/6/62_62.552/_article/-char/ja/", "doi": "10.2490/jjrmc.62.552", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "理学療法における基礎研究の活かし方", "authors": ["石倉 英樹"], "journal": "理学療法の臨床と研究", "pubdate": "2025-09-30", "url": "https://www.jstage.jst.go.jp/article/jptpr/35/2/35_9/_article/-char/ja/", "doi": "10.14870/jptpr.35.2.9", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "産後腰痛に対する理学療法", "authors": ["松田 陽子", "葉 清規"], "journal": "Journal of Spine Research", "pubdate": "2026-07-20", "url": "https://www.jstage.jst.go.jp/article/jspineres/17/6/17_2025-3091/_article/-char/ja/", "doi": "10.34371/jspineres.2025-3091", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "橋出血後にPacing 障害を認めた症例に対する 内的聴覚刺激を用いた理学療法経験", "authors": ["城所 大樹", "添田 遼"], "journal": "理学療法ー技術と研究ー", "pubdate": "2025-09-10", "url": "https://www.jstage.jst.go.jp/article/ptkanagawa/53/0/53_71/_article/-char/ja/", "doi": "10.69401/ptkanagawa.53.0_71", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "急性脊髄炎により不全対麻痺を呈した一症例に対する歩行再獲得に向けた理学療法の経過", "authors": ["恒川 結美", "林 祐介", "川口 菜摘", "小松 慎弥", "佐藤 和命", "村上 悠平", "羽鳥 浩三", "藤原 俊之"], "journal": "関東甲信越ブロック理学療法士学会", "pubdate": "2026-02-10", "url": "https://www.jstage.jst.go.jp/article/ptkanbloc/44/0/44_272/_article/-char/ja/", "doi": "10.14901/ptkanbloc.44.0_272", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "合併症としての心不全", "authors": ["笠井 佑哉"], "journal": "奈良理学療法学", "pubdate": "2026-03-31", "url": "https://www.jstage.jst.go.jp/article/nararigakuryohogaku/18/0/18_47/_article/-char/ja/", "doi": "10.51008/nararigakuryohogaku.18.0_47", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "本邦における呼吸理学療法評価の実態調査", "authors": ["岩﨑 円", "瀬崎 学", "関川 清一", "佐々木 康介", "木賀 洋", "田平 一行", "沖 侑大郎", "玉木 彰"], "journal": "日本呼吸ケア・リハビリテーション学会誌", "pubdate": "2025-08-25", "url": "https://www.jstage.jst.go.jp/article/jsrcr/34/3/34_24-02/_article/-char/ja/", "doi": "10.15032/jsrcr.24-02", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "Retraction: Impact of Tight Collars and Neckties on Cervical Dysfunction Among Corporate Workers", "authors": ["Inamdar AS", "Kanase S"], "journal": "Cureus", "pubdate": "2026 Oct", "url": "https://doi.org/10.7759/cureus.r254", "doi": "10.7759/cureus.r254", "source_api": "PubMed", "pmid": "42923090", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "Optimizing exercise prescriptions for older adults with mild cognitive impairment: a dose-response network meta-analysis of modality-dose combinations on executive function", "authors": ["Song M", "Xiong Q", "Qin X"], "journal": "PeerJ", "pubdate": "2026", "url": "https://doi.org/10.7717/peerj.21805", "doi": "10.7717/peerj.21805", "source_api": "PubMed", "pmid": "42921532", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "Functional Neurological Disorder as a Disorder of Sensorimotor Inference Under Stress: A Neurocomputational Account", "authors": ["Putica A"], "journal": "Biol Psychiatry Glob Open Sci", "pubdate": "2027 Jan", "url": "https://doi.org/10.1016/j.bpsgos.2026.100825", "doi": "10.1016/j.bpsgos.2026.100825", "source_api": "PubMed", "pmid": "42921041", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "Ankle Proprioceptive Performance on Increasingly Challenging Functional Tasks in Groups With and Without Chronic Ankle Instability", "authors": ["Wang X", "Shao X", "Shi X", "Adams RD", "Pappas E", "Han J"], "journal": "J Sport Rehabil", "pubdate": "2026 Oct 23", "url": "https://doi.org/10.1123/jsr.2025-0436", "doi": "10.1123/jsr.2025-0436", "source_api": "PubMed", "pmid": "42926125", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "Association of Early Energy Gap With Activities of Daily Living and In-Hospital Complications in Patients With Acute Stroke", "authors": ["Murata H"], "journal": "Clin Nutr ESPEN", "pubdate": "2026 Oct 24", "url": "https://doi.org/10.1016/j.clnesp.2026.105210", "doi": "10.1016/j.clnesp.2026.105210", "source_api": "PubMed", "pmid": "42926059", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "Outcomes Analysis of Low Back Pain Patients Managed Through a Spine Center Clinical Care Redesign Pathway: An Initial Retrospective Cohort Study", "authors": ["Nip I", "Sylvain J", "Chhabra J", "Seetharama S"], "journal": "Spine J", "pubdate": "2026 Oct 24", "url": "https://doi.org/10.1016/j.spinee.2026.10.011", "doi": "10.1016/j.spinee.2026.10.011", "source_api": "PubMed", "pmid": "42926046", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "Balance confidence, balance, and gait capacity in chronic stroke: baseline and change correlations", "authors": ["Moon HM"], "journal": "Clin Biomech (Bristol)", "pubdate": "2026 Oct 20", "url": "https://doi.org/10.1016/j.clinbiomech.2026.107004", "doi": "10.1016/j.clinbiomech.2026.107004", "source_api": "PubMed", "pmid": "42925857", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "The geopolitical architecture of public health: Integrating political literacy and diplomacy into academic and practical training", "authors": ["Codd M", "Conyard KF", "Levesque S", "Middleton J"], "journal": "Public Health", "pubdate": "2026 Oct 24", "url": "https://doi.org/10.1016/j.puhe.2026.106521", "doi": "10.1016/j.puhe.2026.106521", "source_api": "PubMed", "pmid": "42925727", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "Assessing physicians' knowledge, attitudes, beliefs, and guideline adherence in the management of low back pain: A multidimensional evaluation", "authors": ["Vanderstraeten R", "Fourré A", "Anthierens S", "Bastiaens H", "Demoulin C", "Darlow B", "Roussel N", "Michielsen J"], "journal": "Musculoskelet Sci Pract", "pubdate": "2026 Oct 21", "url": "https://doi.org/10.1016/j.msksp.2026.103674", "doi": "10.1016/j.msksp.2026.103674", "source_api": "PubMed", "pmid": "42925661", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "Investigating the Feasibility of Locomotor Training for Children Under 5 Years With Complex Neurodisabilties", "authors": ["Wells V", "Leitão S", "Walmsley C", "Pool D"], "journal": "Pediatr Phys Ther", "pubdate": "2026 Oct 23", "url": "https://doi.org/10.1097/PEP.0000000000001319", "doi": "10.1097/pep.0000000000001319", "source_api": "PubMed", "pmid": "42925538", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "The design of soft-actuated upper-body exoskeletons for movement assistance and physical therapy", "authors": ["Daniel George"], "journal": "CentAUR (University of Reading)", "pubdate": "2029-01-01", "url": "https://doi.org/10.48683/1926.00129237", "doi": "10.48683/1926.00129237", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7151411061", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "Cardiac rehabilitation: A potential pathway for patients with peripheral artery disease", "authors": ["Krist Feka"], "journal": "University of the Sunshine Coast", "pubdate": "2027-07-08", "url": "https://doi.org/10.25907/01071", "doi": "10.25907/01071", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7167918322", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "Investigating the effects of vaping on lung structure and function with pulmonary imaging", "authors": ["Schmidt, Alexandra"], "journal": "cIRcle (University of British Columbia)", "pubdate": "2027-01-01", "url": "https://doi.org/10.14288/1.0451822", "doi": "10.14288/1.0451822", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7153078620", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "Quantifying cell-cycle decisions and their impact on single-cell and population behaviour", "authors": ["Mattia Corigliano"], "journal": "Open Research Online (The Open University)", "pubdate": "2027-01-01", "url": "https://doi.org/10.21954/ou.ro.00110446", "doi": "10.21954/ou.ro.00110446", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7165952245", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "Application of medical gases in prevention and treatment of electromagnetic radiation injury.", "authors": ["Yun Xing", "Fengxu Chen", "Gonggeng Liu", "Shijun Bao", "Xujian Zhang", "Ziyi Guo", "Zhaoyong Shou", "Jiaming Guo"], "journal": "PubMed", "pubdate": "2027-01-01", "url": "https://doi.org/10.4103/mgr.medgasres-d-26-00051", "doi": "10.4103/mgr.medgasres-d-26-00051", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7212498595", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "Perioperative hyperbaric oxygen therapy: mechanisms, evidence, and clinical application.", "authors": ["Takudzwa Gavaza", "Nathanael Matei"], "journal": "PubMed", "pubdate": "2027-01-01", "url": "https://doi.org/10.4103/mgr.medgasres-d-25-00318", "doi": "10.4103/mgr.medgasres-d-25-00318", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7212621018", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "Nitric oxide in the occurrence and development of ischemic cerebrovascular disease.", "authors": ["Tatiana Kh. Bogodvid", "Dinara I. Silantyeva", "Андрианов Вячеслав Вадимович", "Гайнутдинов Халил Латыпович"], "journal": "PubMed", "pubdate": "2027-01-01", "url": "https://doi.org/10.4103/mgr.medgasres-d-25-00117", "doi": "10.4103/mgr.medgasres-d-25-00117", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7212669358", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "Molecular crosstalk between gas transmitters and catecholamine biosynthesis pathways: a narrative review.", "authors": ["Robert Dingley", "Sujeenthar Tharmalingam", "T C Tai"], "journal": "PubMed", "pubdate": "2027-01-01", "url": "https://doi.org/10.4103/mgr.medgasres-d-26-00004", "doi": "10.4103/mgr.medgasres-d-26-00004", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7212822590", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "Nitric oxide signaling and mitophagy in Parkinson's disease: implications for aerobic exercise-related neuroprotection.", "authors": ["Yang Zhou", "Yongliang Wu"], "journal": "PubMed", "pubdate": "2027-01-01", "url": "https://doi.org/10.4103/mgr.medgasres-d-26-00008", "doi": "10.4103/mgr.medgasres-d-26-00008", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7213092516", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "Changes in Hormone Cycles and Exercise Capacity During Testosterone Therapy in a Transmasculine Triathlete: A Case Study.", "authors": ["Skyler R. St. Pierre", "Sarah C. Johnson", "Julie Muccini", "Brianna Bourne", "Benjamin H. Laniakea", "Scott L. Delp", "Jennifer L. Hicks"], "journal": "PubMed", "pubdate": "2027-01-01", "url": "https://doi.org/10.1249/esm.0000000000000073", "doi": "10.1249/esm.0000000000000073", "source_api": "OpenAlex", "openalex_id": "https://openalex.org/W7222110666", "cited_by_count": 0, "matched_keywords": ["理学療法"]}, {"title": "回復期病院を退院後、訪問リハビリを利用し 4 点杖と装具での歩行から伝い歩き自立となった症例", "authors": ["蜂谷 恭平"], "journal": "関東甲信越ブロック理学療法士学会", "pubdate": "2026-02-10", "url": "https://www.jstage.jst.go.jp/article/ptkanbloc/44/0/44_247/_article/-char/ja/", "doi": "10.14901/ptkanbloc.44.0_247", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["脳卒中 リハビリ"]}, {"title": "脳卒中を併発したがん患者に対するリハビリテーション診療の実態調査", "authors": ["立松 典篤", "辻 哲也", "小島 一宏", "加藤 るみ子", "河野 浩之", "高野 利実"], "journal": "日本がんサポーティブケア学会誌", "pubdate": "2026-08-31", "url": "https://www.jstage.jst.go.jp/article/jcsc/1/3/1_119/_article/-char/ja/", "doi": "10.82709/jcsc.1.3_119", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["脳卒中 リハビリ"]}, {"title": "外来と短期集中入院リハビリテーションを併用した生活期脳卒中患者の1年間の歩行能力と社会参加の変化", "authors": ["村上 祐介", "矢守 茂"], "journal": "理学療法の臨床と研究", "pubdate": "2025-12-27", "url": "https://www.jstage.jst.go.jp/article/jptpr/35/suppl.2/35_S31/_article/-char/ja/", "doi": "10.14870/jptpr.35.S31", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["脳卒中 リハビリ"]}, {"title": "耐え難い疼痛によりベッドから離れることができなかった右片麻痺症例", "authors": ["田中 智子", "豊田 拓磨", "沖田 かおる", "沖田 学"], "journal": "高知県作業療法", "pubdate": "2025-12-01", "url": "https://www.jstage.jst.go.jp/article/kochiotjournal/3/0/3_71/_article/-char/ja/", "doi": "10.57334/kochiotjournal.3.0_71", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["脳卒中 リハビリ"]}, {"title": "慢性期脳卒中症例への訪問リハビリテーション介入の実践", "authors": ["布川 才浩"], "journal": "理学療法とちぎ", "pubdate": "2026-09-01", "url": "https://www.jstage.jst.go.jp/article/pttochigi/16/2/16_62/_article/-char/ja/", "doi": "10.32134/pttochigi.16.2_62", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["脳卒中 リハビリ"]}, {"title": "tESおよびアプリケーションにおけるリハビリテーション分野への実装に向けて", "authors": ["都志 宣裕", "行田 智哉"], "journal": "物理療法科学", "pubdate": "2025-08-20", "url": "https://www.jstage.jst.go.jp/article/jjeapt/32/0/32_2025-003/_article/-char/ja/", "doi": "10.57337/jjeapt.2025-003", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["脳卒中 リハビリ"]}, {"title": "医療面談と機能訓練の統合による保険外リハビリテーションの実践", "authors": ["殿﨑 雄太", "鈴木 宏和", "赤松 泰典", "藤井 廉", "田中 慎一郎", "齋藤 直路"], "journal": "保健医療学雑誌", "pubdate": "2025-10-02", "url": "https://www.jstage.jst.go.jp/article/jalliedhealthsci/16/2/16_84_91/_article/-char/ja/", "doi": "10.15563/jalliedhealthsci.16.84_91", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["脳卒中 リハビリ"]}, {"title": "わが国における脳卒中後遺症と「リハビリ入院」に関する一考察", "authors": ["阿部 敦"], "journal": "日本社会福祉マネジメント学会誌", "pubdate": "2026-08-20", "url": "https://www.jstage.jst.go.jp/article/jasmjournal/6/0/6_45/_article/-char/ja/", "doi": "10.50965/jasmjournal.6.0_45", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["脳卒中 リハビリ"]}, {"title": "環境－身体の相互作用とリハビリテーション：感覚情報を補完するインタフェースを生態心理学から再考する", "authors": ["安田 和弘", "岩田 浩康"], "journal": "生態心理学研究", "pubdate": "2025-07-16", "url": "https://www.jstage.jst.go.jp/article/jep/17/1/17_35/_article/-char/ja/", "doi": "10.24807/jep.17.1_35", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["脳卒中 リハビリ"]}, {"title": "脳卒中患者がもう一度美容師に復職するまで～回復期での経過報告～", "authors": ["小川 恭輔", "上條 琴音", "幸田 多絵子", "高原 飛鳥", "関口 絢也", "石川 麻子", "松元 織衛"], "journal": "関東甲信越ブロック理学療法士学会", "pubdate": "2026-02-10", "url": "https://www.jstage.jst.go.jp/article/ptkanbloc/44/0/44_283/_article/-char/ja/", "doi": "10.14901/ptkanbloc.44.0_283", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["脳卒中 リハビリ"]}, {"title": "フレイルと精神心理機能の評価", "authors": ["下木原 俊", "丸田 道雄"], "journal": "日本サルコペニア・フレイル学会誌", "pubdate": "2025-11-30", "url": "https://www.jstage.jst.go.jp/article/jjasf/9/3/9_392/_article/-char/ja/", "doi": "10.69303/jjasf.9.3_392", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["フレイル"]}, {"title": "嚥下のフレイルに対する耳鼻咽喉科医の役割", "authors": ["熊井 良彦"], "journal": "日本耳鼻咽喉科頭頸部外科学会会報", "pubdate": "2025-11-01", "url": "https://www.jstage.jst.go.jp/article/jibiinkotokeibu/128/10/128_1171/_article/-char/ja/", "doi": "10.3950/jibiinkotokeibu.128.10_1171", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["フレイル"]}, {"title": "歯科外来患者のOF-5で評価したオーラルフレイル該当/ 非該当の口腔機能とフレイルの比較", "authors": ["髙野 智史", "齋藤 壮", "堀 綾夏", "久保 慶太郎", "眞田 知基", "河野 立行", "堀部 耕広", "太田 緑", "竜 正大", "上田 貴之"], "journal": "老年歯科医学", "pubdate": "2026-04-28", "url": "https://www.jstage.jst.go.jp/article/jsg/40/4/40_215/_article/-char/ja/", "doi": "10.11259/jsg.40.4_215", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["フレイル"]}, {"title": "COVID-19禍における地域在住高齢者の身体的・社会的フレイル，身体機能，活動に関する予備的研究", "authors": ["森田 新平", "武井 圭一", "稲生 実枝", "谷 直明"], "journal": "理学療法 - 臨床・研究・教育", "pubdate": "2025-05-27", "url": "https://www.jstage.jst.go.jp/article/ptcse/32/1/32_32-45/_article/-char/ja/", "doi": "10.11350/ptcse.32.45", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["フレイル"]}, {"title": "眼から健康寿命を延ばす～アイフレイルの現在～", "authors": ["平塚 義宗"], "journal": "日本視能訓練士協会誌", "pubdate": "2026-02-20", "url": "https://www.jstage.jst.go.jp/article/jorthoptic/55/0/55_55S003/_article/-char/ja/", "doi": "10.4263/jorthoptic.55S003", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["フレイル"]}, {"title": "地域在住高齢者のフレイル予防行動の継続における「計画の適合度」と「変化の自覚」の意義", "authors": ["三浦 佳代", "森田 泰裕", "飛田 和基", "甘利 貴志", "新井 智之"], "journal": "日本予防理学療法学会 学術大会プログラム・抄録集", "pubdate": "2026-03-31", "url": "https://www.jstage.jst.go.jp/article/jsptpsuppl/4.Suppl.No.1/0/4.Suppl.No.1_10/_article/-char/ja/", "doi": "10.57304/jsptpsuppl.4.Suppl.No.1.0_10", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["フレイル"]}, {"title": "医療機関におけるフレイル判定・対策に関する実態調査報告", "authors": ["川崎 翼", "佐藤 博文", "深田 和浩", "木村 雅巳", "神林 宏汰", "新井 智之", "解良 武士"], "journal": "日本予防理学療法学会 学術大会プログラム・抄録集", "pubdate": "2026-03-31", "url": "https://www.jstage.jst.go.jp/article/jsptpsuppl/4.Suppl.No.1/0/4.Suppl.No.1_140/_article/-char/ja/", "doi": "10.57304/jsptpsuppl.4.Suppl.No.1.0_140", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["フレイル"]}, {"title": "入院医療施設におけるフレイル判定と対策の実態", "authors": ["川崎 翼", "佐藤 博文", "神林 宏汰", "深田 和浩", "木村 雅巳", "新井 智之", "解良 武士"], "journal": "日本予防理学療法学会雑誌", "pubdate": "2026-03-31", "url": "https://www.jstage.jst.go.jp/article/jptp/5/2/5_JPTP-D-26-00002/_article/-char/ja/", "doi": "10.57304/jptp.JPTP-D-26-00002", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["フレイル"]}, {"title": "主要慢性疾患におけるフレイル有病率の比較―スクリーニングの優先対象の検討に資する比較―", "authors": ["大村 卓也", "上原 敬尋", "杉本 大貴"], "journal": "日本老年医学会雑誌", "pubdate": "2026-09-15", "url": "https://www.jstage.jst.go.jp/article/geriatrics/63/3/63_63.246/_article/-char/ja/", "doi": "10.3143/geriatrics.63.246", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["フレイル"]}, {"title": "フレイルと認知機能の評価", "authors": ["杉本 大貴"], "journal": "日本サルコペニア・フレイル学会誌", "pubdate": "2025-11-30", "url": "https://www.jstage.jst.go.jp/article/jjasf/9/3/9_386/_article/-char/ja/", "doi": "10.69303/jjasf.9.3_386", "source_api": "J-STAGE", "cited_by_count": 0, "matched_keywords": ["フレイル"]}]};
 
         let currentMainTab = 'policy'; // 'policy' or 'paper'
         let currentPolicyPage = 1;
@@ -997,17 +979,23 @@
         let currentPaperDate = 'ALL';
         let searchQuery = '';
 
-        // ユーザー設定キーワード (LocalStorage または APP_DATA から初期化)
+        // ユーザー設定キーワード & 対訳辞書 (LocalStorage または APP_DATA から初期化)
         let userPaperKeywords = [];
         let userPolicyKeywords = [];
+        let userTranslations = {};
+
         try {
             const savedPaper = localStorage.getItem('pt_user_keywords_paper');
             const savedPolicy = localStorage.getItem('pt_user_keywords_policy');
+            const savedTrans = localStorage.getItem('pt_user_translations');
+            
             userPaperKeywords = savedPaper ? JSON.parse(savedPaper) : (APP_DATA.keywords || []);
             userPolicyKeywords = savedPolicy ? JSON.parse(savedPolicy) : (APP_DATA.policy_keywords || []);
+            userTranslations = savedTrans ? JSON.parse(savedTrans) : (APP_DATA.keyword_translations || {});
         } catch(e) {
             userPaperKeywords = APP_DATA.keywords || [];
             userPolicyKeywords = APP_DATA.policy_keywords || [];
+            userTranslations = APP_DATA.keyword_translations || {};
         }
 
         // トースト通知
@@ -1028,8 +1016,7 @@
 
         // モーダル開閉
         function openKeywordModal() {
-            renderKeywordTags();
-            updateTokenStatus();
+            renderKeywordSettings();
             document.getElementById('keywordModal').style.display = 'flex';
         }
 
@@ -1037,70 +1024,84 @@
             document.getElementById('keywordModal').style.display = 'none';
         }
 
-        function updateTokenStatus() {
-            const token = localStorage.getItem('pt_github_token');
-            const statusEl = document.getElementById('tokenStatus');
-            const inputEl = document.getElementById('githubTokenInput');
-            if (token) {
-                statusEl.innerText = '✅ GitHub Tokenが保存されています（自動同期が有効です）';
-                inputEl.value = token;
+        // 設定の描画
+        function renderKeywordSettings() {
+            // 1. 学術論文キーワード一覧 (日本語 ➔ 英語)
+            const pairContainer = document.getElementById('paperKeywordPairList');
+            if (userPaperKeywords.length === 0) {
+                pairContainer.innerHTML = '<div style="font-size:0.775rem; color:var(--text-secondary); padding:6px;">キーワードがありません</div>';
             } else {
-                statusEl.innerText = '※ Token未設定: ブラウザ内保存のみ動作します';
+                pairContainer.innerHTML = userPaperKeywords.map((kw, idx) => {
+                    const enList = userTranslations[kw] || [];
+                    const enText = enList.length > 0 ? enList.join(', ') : '（未変換・AI自動展開）';
+                    return `
+                    <div class="kw-pair-row">
+                        <span class="kw-pair-main" style="cursor:pointer;" onclick="setSearchFilter('${escapeHtml(kw)}')">🎯 ${escapeHtml(kw)}</span>
+                        <span class="kw-pair-en">➔ ${escapeHtml(enText)}</span>
+                        <span class="kw-pair-del" onclick="removePaperKeyword(${idx})" title="削除">✕</span>
+                    </div>
+                    `;
+                }).join('');
             }
-        }
 
-        function saveGithubToken() {
-            const input = document.getElementById('githubTokenInput');
-            const token = input.value.trim();
-            if (token) {
-                localStorage.setItem('pt_github_token', token);
-                updateTokenStatus();
-                showToast('GitHub Tokenをブラウザに保存しました');
-            } else {
-                localStorage.removeItem('pt_github_token');
-                updateTokenStatus();
-                showToast('GitHub Tokenを解除しました');
-            }
-        }
-
-        // タグのレンダリング
-        function renderKeywordTags() {
-            const paperContainer = document.getElementById('paperKeywordTags');
+            // 2. 制度キーワード一覧
             const policyContainer = document.getElementById('policyKeywordTags');
-
-            paperContainer.innerHTML = userPaperKeywords.map((kw, idx) => `
-                <span class="keyword-tag-badge">
-                    <span style="cursor:pointer;" onclick="setSearchFilter('${escapeHtml(kw)}')">${escapeHtml(kw)}</span>
-                    <span class="tag-remove-btn" onclick="removeKeyword('paper', ${idx})">✕</span>
-                </span>
-            `).join('') || '<span style="font-size:0.75rem; color:var(--text-secondary);">キーワードがありません</span>';
-
-            policyContainer.innerHTML = userPolicyKeywords.map((kw, idx) => `
-                <span class="keyword-tag-badge policy">
-                    <span style="cursor:pointer;" onclick="setSearchFilter('${escapeHtml(kw)}')">${escapeHtml(kw)}</span>
-                    <span class="tag-remove-btn" onclick="removeKeyword('policy', ${idx})">✕</span>
-                </span>
-            `).join('') || '<span style="font-size:0.75rem; color:var(--text-secondary);">キーワードがありません</span>';
+            if (userPolicyKeywords.length === 0) {
+                policyContainer.innerHTML = '<span style="font-size:0.75rem; color:var(--text-secondary);">キーワードがありません</span>';
+            } else {
+                policyContainer.innerHTML = userPolicyKeywords.map((kw, idx) => `
+                    <span class="keyword-tag-badge">
+                        <span style="cursor:pointer;" onclick="setSearchFilter('${escapeHtml(kw)}')">${escapeHtml(kw)}</span>
+                        <span class="tag-remove-btn" onclick="removePolicyKeyword(${idx})">✕</span>
+                    </span>
+                `).join('');
+            }
         }
 
-        function addKeyword(type) {
-            const inputId = type === 'paper' ? 'newPaperKwInput' : 'newPolicyKwInput';
-            const input = document.getElementById(inputId);
+        function addPaperKeyword() {
+            const jaInput = document.getElementById('newPaperKwInput');
+            const enInput = document.getElementById('newPaperEnInput');
+            const jaVal = jaInput.value.trim();
+            const enVal = enInput.value.trim();
+
+            if (!jaVal) return;
+
+            if (!userPaperKeywords.includes(jaVal)) {
+                userPaperKeywords.push(jaVal);
+            }
+
+            if (enVal) {
+                const enList = enVal.split(',').map(s => s.trim()).filter(s => s);
+                userTranslations[jaVal] = enList;
+            }
+
+            jaInput.value = '';
+            enInput.value = '';
+            renderKeywordSettings();
+        }
+
+        function removePaperKeyword(idx) {
+            const kw = userPaperKeywords[idx];
+            userPaperKeywords.splice(idx, 1);
+            delete userTranslations[kw];
+            renderKeywordSettings();
+        }
+
+        function addPolicyKeyword() {
+            const input = document.getElementById('newPolicyKwInput');
             const val = input.value.trim();
             if (!val) return;
 
-            const targetList = type === 'paper' ? userPaperKeywords : userPolicyKeywords;
-            if (!targetList.includes(val)) {
-                targetList.push(val);
-                renderKeywordTags();
+            if (!userPolicyKeywords.includes(val)) {
+                userPolicyKeywords.push(val);
+                renderKeywordSettings();
             }
             input.value = '';
         }
 
-        function removeKeyword(type, index) {
-            const targetList = type === 'paper' ? userPaperKeywords : userPolicyKeywords;
-            targetList.splice(index, 1);
-            renderKeywordTags();
+        function removePolicyKeyword(idx) {
+            userPolicyKeywords.splice(idx, 1);
+            renderKeywordSettings();
         }
 
         function setSearchFilter(keyword) {
@@ -1112,85 +1113,48 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 設定の保存 & GitHub自動同期
-        async function applyAndSyncKeywords() {
-            // 1. LocalStorageへ保存
+        // YAML 内容の生成
+        function generateYamlContent() {
+            const kwLines = userPaperKeywords.map(k => `  - "${k}"`).join('\n');
+            const transLines = Object.keys(userTranslations).map(k => {
+                const items = userTranslations[k].map(en => `    - "${en}"`).join('\n');
+                return `  ${k}:\n${items}`;
+            }).join('\n');
+            const policyLines = userPolicyKeywords.map(k => `  - "${k}"`).join('\n');
+
+            return `keywords:\n${kwLines}\n\nkeyword_translations:\n${transLines}\n\npolicy_keywords:\n${policyLines}\n\ndays_back: 14\nmax_results_per_keyword: 20\n`;
+        }
+
+        // クリップボードへコピー
+        function copyConfigYaml() {
+            const yamlStr = generateYamlContent();
+            navigator.clipboard.writeText(yamlStr).then(() => {
+                showToast('📋 config.yaml の設定内容をコピーしました！リポジトリに貼り付けてください。');
+            }).catch(() => {
+                alert(yamlStr);
+            });
+        }
+
+        // config.yaml ダウンロード
+        function downloadConfigYaml() {
+            const yamlStr = generateYamlContent();
+            const blob = new Blob([yamlStr], { type: 'text/yaml;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'config.yaml';
+            link.click();
+            showToast('💾 config.yaml をダウンロードしました！');
+        }
+
+        // 画面に適用して保存
+        function saveKeywords() {
             localStorage.setItem('pt_user_keywords_paper', JSON.stringify(userPaperKeywords));
             localStorage.setItem('pt_user_keywords_policy', JSON.stringify(userPolicyKeywords));
-
-            const token = localStorage.getItem('pt_github_token');
-            const saveBtn = document.querySelector('.modal-footer .btn-primary');
-
-            if (!token) {
-                showToast('💾 キーワードを保存しました (GitHub同期用Tokenは未設定です)');
-                closeKeywordModal();
-                render();
-                return;
-            }
-
-            // 2. GitHub REST API で config.yaml を自動コミット
-            saveBtn.disabled = true;
-            saveBtn.innerText = '⏳ GitHub同期中...';
-
-            const owner = 'mrmr0401';
-            const repo = 'pt-daily-digest';
-            const filePath = 'config.yaml';
-            const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
-
-            try {
-                // 現在のファイルのSHAを取得
-                const getRes = await fetch(apiUrl, {
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
-                });
-
-                if (!getRes.ok) {
-                    throw new Error(`config.yamlの取得に失敗しました (${getRes.status}) - Tokenの権限をご確認ください`);
-                }
-
-                const fileData = await getRes.json();
-                const currentSha = fileData.sha;
-
-                // 新しい YAML 内容の生成
-                const yamlContent = `keywords:\n${userPaperKeywords.map(k => `  - "${k}"`).join('\n')}\n\npolicy_keywords:\n${userPolicyKeywords.map(k => `  - "${k}"`).join('\n')}\n\ndays_back: 14\nmax_results_per_keyword: 20\n`;
-                
-                // Base64エンコード (UTF-8安全)
-                const utf8Bytes = new TextEncoder().encode(yamlContent);
-                let binaryStr = '';
-                utf8Bytes.forEach(b => binaryStr += String.fromCharCode(b));
-                const base64Content = btoa(binaryStr);
-
-                // PUT リクエストでコミット
-                const putRes = await fetch(apiUrl, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        message: 'chore: update search keywords from website',
-                        content: base64Content,
-                        sha: currentSha
-                    })
-                });
-
-                if (!putRes.ok) {
-                    throw new Error(`config.yamlの更新に失敗しました (${putRes.status})`);
-                }
-
-                showToast('🚀 config.yamlを更新しました！GitHub Actionsの自動再取得が開始されます。');
-                closeKeywordModal();
-                render();
-            } catch (err) {
-                console.error(err);
-                alert(`GitHub自動同期エラー: ${err.message}`);
-            } finally {
-                saveBtn.disabled = false;
-                saveBtn.innerText = '🚀 設定を保存してGitHubと自動同期';
-            }
+            localStorage.setItem('pt_user_translations', JSON.stringify(userTranslations));
+            
+            showToast('💾 設定をブラウザに保存し、画面に反映しました');
+            closeKeywordModal();
+            render();
         }
 
         // 初期化
@@ -1202,7 +1166,7 @@
 
             document.getElementById('searchInput').addEventListener('input', (e) => {
                 searchQuery = e.target.value.trim().toLowerCase();
-                currentPolicyPage = 1; // 検索時は先頭ページに戻す
+                currentPolicyPage = 1;
                 render();
             });
 
@@ -1241,7 +1205,8 @@
                     const title = (item.title || '').toLowerCase();
                     const authors = (item.authors || []).join(' ').toLowerCase();
                     const journal = (item.journal || '').toLowerCase();
-                    const matchSearch = title.includes(searchQuery) || authors.includes(searchQuery) || journal.includes(searchQuery);
+                    const kws = (item.matched_keywords || []).join(' ').toLowerCase();
+                    const matchSearch = title.includes(searchQuery) || authors.includes(searchQuery) || journal.includes(searchQuery) || kws.includes(searchQuery);
                     if (!matchSearch) return false;
                 }
                 // 日付フィルタ
@@ -1294,199 +1259,149 @@
             const filteredItems = items.filter(item => {
                 if (!searchQuery) return true;
                 const title = (item.title || '').toLowerCase();
+                const transTitle = (item.translated_title || '').toLowerCase();
                 const authors = (item.authors || []).join(' ').toLowerCase();
                 const kws = (item.matched_keywords || []).join(' ').toLowerCase();
-                const summary = (item.ai_summary || '').toLowerCase();
-                return title.includes(searchQuery) || authors.includes(searchQuery) || kws.includes(searchQuery) || summary.includes(searchQuery);
+                return title.includes(searchQuery) || transTitle.includes(searchQuery) || authors.includes(searchQuery) || kws.includes(searchQuery);
             });
 
             if (filteredItems.length === 0) {
-                recContainer.innerHTML = '<div class="empty-state" style="padding: 16px; margin-top: 8px;">検索条件に一致するおすすめはありません。</div>';
+                recContainer.innerHTML = '<div style="font-size:0.8rem; color:var(--text-secondary); padding:8px;">検索に該当するおすすめはありません</div>';
                 return;
             }
 
-            let html = '';
-            filteredItems.forEach((item, index) => {
-                const rankNum = index + 1;
-                let rankClass = 'rank-other';
-                let rankText = `#${rankNum}`;
-                if (rankNum === 1) { rankClass = 'rank-1'; rankText = '🥇 #1'; }
-                else if (rankNum === 2) { rankClass = 'rank-2'; rankText = '🥈 #2'; }
-                else if (rankNum === 3) { rankClass = 'rank-3'; rankText = '🥉 #3'; }
-
-                const isPolicy = item.item_type === 'policy';
-                const sourceBadge = isPolicy
-                    ? '<span class="source-badge badge-mhlw">厚生労働省</span>'
-                    : `<span class="source-badge ${item.source_api === 'PubMed' ? 'badge-pubmed' : 'badge-openalex'}">${item.source_api || 'Paper'}</span>`;
-
-                const highlightTags = (item.highlights || []).map(h => {
-                    let tagClass = 'highlight-tag';
-                    if (h.includes('新着')) tagClass += ' new';
-                    if (h.includes('被引用')) tagClass += ' hot';
-                    return `<span class="${tagClass}">${escapeHtml(h)}</span>`;
+            recContainer.innerHTML = filteredItems.map((item, idx) => {
+                const rank = idx + 1;
+                const authorsStr = (item.authors || []).slice(0, 3).join(', ') + ((item.authors || []).length > 3 ? '...' : '');
+                
+                const highlightsHtml = (item.highlights || []).map(hl => {
+                    let c = '';
+                    if (hl.includes('被引用')) c = 'citation';
+                    else if (hl.includes('新着')) c = 'new';
+                    return `<span class="highlight-tag ${c}">${escapeHtml(hl)}</span>`;
                 }).join('');
 
-                const authorsStr = (item.authors || []).slice(0, 3).join(', ') + ((item.authors || []).length > 3 ? '...' : '');
+                const displayTitle = item.translated_title ? escapeHtml(item.translated_title) : escapeHtml(item.title);
+                const originalTitleHtml = item.translated_title ? `<div style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:6px;">原文: ${escapeHtml(item.title)}</div>` : '';
 
-                // タイトル表示（翻訳タイトルがある場合は日本語をメイン、原題をサブに）
-                let titleHtml = '';
-                if (item.translated_title) {
-                    titleHtml = `
-                    <div style="margin-bottom: 8px;">
-                        <h3 class="news-title" style="margin-bottom: 4px;">
-                            <a href="${item.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.translated_title)}</a>
-                        </h3>
-                        <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
-                            <span class="meta-label">原題:</span> <em>${escapeHtml(item.title)}</em>
-                        </div>
-                    </div>
-                    `;
-                } else {
-                    titleHtml = `
-                    <h3 class="news-title" style="margin-bottom: 6px;">
-                        <a href="${item.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.title)}</a>
-                    </h3>
-                    `;
-                }
-
-                // AI要約ブロックの有無判定
-                let aiSummaryHtml = '';
+                let summaryHtml = '';
                 if (item.ai_summary) {
-                    const disclaimerText = item.translated_title 
-                        ? '⚠️ AI要約・翻訳のため原文で確認してください'
-                        : '⚠️ AI要約のため原文で確認してください';
-                    aiSummaryHtml = `
+                    summaryHtml = `
                     <div class="ai-summary-box">
                         <div class="ai-summary-label">
-                            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
-                            AIによる要約 (Gemini)
+                            <span>✨ AI臨床サマリー (日本語要約)</span>
                         </div>
-                        <p class="ai-summary-text">${escapeHtml(item.ai_summary)}</p>
-                        <div class="ai-disclaimer">
-                            ${disclaimerText}
-                        </div>
+                        <div class="ai-summary-text">${escapeHtml(item.ai_summary)}</div>
+                        <div class="ai-disclaimer">⚠️ AI要約のため、重要な臨床判断の際は必ず原文リンクをご確認ください</div>
                     </div>
                     `;
                 }
 
-                html += `
-                <article class="recommend-card">
-                    <div class="recommend-card-header">
-                        <div class="recommend-badges">
-                            <span class="rank-badge ${rankClass}">${rankText}</span>
-                            ${sourceBadge}
-                            <span class="score-pill">⭐ ${item.total_score || 0}pt</span>
-                        </div>
-                        <div style="display:flex; gap:4px; flex-wrap:wrap;">
-                            ${highlightTags}
-                        </div>
-                    </div>
-                    ${titleHtml}
-                    ${!isPolicy ? `
-                    <div class="paper-meta" style="margin-bottom: 6px;">
-                        <div><span class="meta-label">著者:</span> ${escapeHtml(authorsStr || '情報なし')}</div>
-                        <div><span class="meta-label">雑誌:</span> <em>${escapeHtml(item.journal || '掲載誌不明')}</em></div>
-                    </div>
-                    ` : ''}
-                    ${aiSummaryHtml}
-                    <div class="card-footer" style="margin-top: 8px;">
-                        <span class="pub-date">${item.pubdate || ''}</span>
-                        <div style="display:flex; gap:6px; align-items:center;">
-                            ${item.pdf_url ? `
-                            <a href="${item.pdf_url}" target="_blank" download class="link-btn link-btn-pdf">
-                                📄 日本語PDF <svg viewBox="0 0 24 24" width="12" height="12"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                            </a>
-                            ` : ''}
-                            <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="link-btn link-btn-recommend">
-                                原文を見る <svg viewBox="0 0 24 24" width="12" height="12"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
-                            </a>
+                let pdfLinkHtml = '';
+                if (item.pdf_url) {
+                    pdfLinkHtml = `
+                    <a href="${escapeHtml(item.pdf_url)}" target="_blank" download class="pdf-download-btn">
+                        📥 日本語解説PDF
+                    </a>
+                    `;
+                }
+
+                const badgeClass = item.source_api === 'PubMed' ? 'badge-pubmed' : (item.source_api === 'J-STAGE' ? 'badge-jstage' : (item.source_api === 'OpenAlex' ? 'badge-openalex' : 'badge-mhlw'));
+
+                return `
+                <div class="recommend-card">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                        <span class="recommend-rank">★ おすすめ ${rank}位</span>
+                        <div style="display:flex; align-items:center; gap:6px;">
+                            <span class="source-badge ${badgeClass}">${escapeHtml(item.source_api || item.source || '注目')}</span>
+                            <span class="recommend-score">スコア: ${item.total_score || 0}pt</span>
                         </div>
                     </div>
-                </article>
+                    <div class="highlight-tags">${highlightsHtml}</div>
+                    <h3 style="font-size:0.95rem; font-weight:700; line-height:1.45; margin-bottom:4px;">
+                        <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" style="color:var(--text-primary); text-decoration:none;">
+                            ${displayTitle}
+                        </a>
+                    </h3>
+                    ${originalTitleHtml}
+                    <div style="font-size:0.775rem; color:var(--text-secondary); margin-bottom:6px;">
+                        ${authorsStr ? `<span>${escapeHtml(authorsStr)}</span> • ` : ''}
+                        <span>${escapeHtml(item.journal || '掲載情報なし')}</span>
+                        ${item.pubdate ? ` • <span>${escapeHtml(item.pubdate)}</span>` : ''}
+                    </div>
+                    ${summaryHtml}
+                    <div class="card-footer">
+                        <div>
+                            ${pdfLinkHtml}
+                        </div>
+                        <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" class="link-btn link-btn-recommend">
+                            原文を確認 <svg viewBox="0 0 24 24" width="12" height="12"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                        </a>
+                    </div>
+                </div>
                 `;
-            });
-            recContainer.innerHTML = html;
+            }).join('');
         }
 
+        // 全体のメイン描画
         function render() {
             renderRecommendations();
 
             const filteredPolicy = getFilteredPolicyNews();
-            const filteredPaperAll = APP_DATA.papers.filter(item => {
-                if (!searchQuery) return true;
-                const title = (item.title || '').toLowerCase();
-                const authors = (item.authors || []).join(' ').toLowerCase();
-                const journal = (item.journal || '').toLowerCase();
-                return title.includes(searchQuery) || authors.includes(searchQuery) || journal.includes(searchQuery);
-            });
+            const filteredPaper = getFilteredPapers();
 
-            // カウント更新
             document.getElementById('countPolicy').innerText = filteredPolicy.length;
-            document.getElementById('countPaper').innerText = filteredPaperAll.length;
+            document.getElementById('countPaper').innerText = filteredPaper.length;
 
+            const subNav = document.getElementById('subNavContainer');
             const subPills = document.getElementById('subPills');
-            const contentList = document.getElementById('contentList');
             const paginationContainer = document.getElementById('paginationContainer');
-
+            
             subPills.innerHTML = '';
-            contentList.innerHTML = '';
             paginationContainer.innerHTML = '';
 
             if (currentMainTab === 'policy') {
-                // 制度ニュース render
+                subNav.style.display = 'none';
                 renderPolicy(filteredPolicy);
             } else {
-                // 論文 render
-                renderPaper(filteredPaperAll);
+                subNav.style.display = 'flex';
+                renderPaper(filteredPaper);
             }
         }
 
-        // --- 制度ニュース描画 (20件ごとのページ分け) ---
-        function renderPolicy(newsList) {
-            const subPills = document.getElementById('subPills');
+        // --- 制度ニュース描画 ---
+        function renderPolicy(allFilteredNews) {
             const contentList = document.getElementById('contentList');
             const paginationContainer = document.getElementById('paginationContainer');
 
-            if (newsList.length === 0) {
-                contentList.innerHTML = '<div class="empty-state">該当する制度・診療報酬ニュースは見つかりませんでした。</div>';
+            if (allFilteredNews.length === 0) {
+                contentList.innerHTML = '<div class="empty-state">該当する制度ニュースは見つかりませんでした。</div>';
                 return;
             }
 
-            const totalPages = Math.ceil(newsList.length / POLICY_PAGE_SIZE);
+            const totalPages = Math.ceil(allFilteredNews.length / POLICY_PAGE_SIZE);
             if (currentPolicyPage > totalPages) currentPolicyPage = 1;
 
-            // サブピル (ページ選択)
-            for (let p = 1; p <= totalPages; p++) {
-                const btn = document.createElement('button');
-                btn.className = `pill-btn ${p === currentPolicyPage ? 'active-policy' : ''}`;
-                btn.innerText = `ページ ${p} (${(p-1)*POLICY_PAGE_SIZE + 1}〜${Math.min(p*POLICY_PAGE_SIZE, newsList.length)}件)`;
-                btn.onclick = () => {
-                    currentPolicyPage = p;
-                    render();
-                };
-                subPills.appendChild(btn);
-            }
-
-            // スライス表示
-            const startIndex = (currentPolicyPage - 1) * POLICY_PAGE_SIZE;
-            const pageItems = newsList.slice(startIndex, startIndex + POLICY_PAGE_SIZE);
+            const startIdx = (currentPolicyPage - 1) * POLICY_PAGE_SIZE;
+            const endIdx = startIdx + POLICY_PAGE_SIZE;
+            const pageItems = allFilteredNews.slice(startIdx, endIdx);
 
             let html = '';
             pageItems.forEach(item => {
-                const kwTags = (item.matched_keywords || []).map(kw => `<span class="tag-policy">${kw}</span>`).join('');
+                const kwTags = (item.matched_keywords || []).map(kw => `<span class="tag-policy">${escapeHtml(kw)}</span>`).join('');
                 html += `
-                <article class="news-card">
+                <article class="policy-card">
                     <div class="card-header">
-                        <span class="source-badge badge-mhlw">${item.source || '厚生労働省'}</span>
-                        <span class="pub-date">${item.pubdate || ''}</span>
+                        <span class="source-badge badge-mhlw">${escapeHtml(item.source || '厚労省')}</span>
+                        <span class="pub-date">${escapeHtml(item.pubdate || '')}</span>
                     </div>
                     <h3 class="news-title">
-                        <a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.title}</a>
+                        <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.title)}</a>
                     </h3>
                     <div class="card-footer">
-                        <div class="tags-group">${kwTags}</div>
-                        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="link-btn">
-                            原文を見る <svg viewBox="0 0 24 24" width="12" height="12"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                        <div>${kwTags}</div>
+                        <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" class="link-btn">
+                            公式発表 <svg viewBox="0 0 24 24" width="12" height="12"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
                         </a>
                     </div>
                 </article>
@@ -1494,7 +1409,7 @@
             });
             contentList.innerHTML = html;
 
-            // ページネーションボタン (前へ / 次へ)
+            // ページ送りボタン
             if (totalPages > 1) {
                 let navHtml = '';
                 if (currentPolicyPage > 1) {
@@ -1555,26 +1470,37 @@
             let html = '';
             displayPapers.forEach(paper => {
                 const authorsStr = (paper.authors || []).slice(0, 3).join(', ') + ((paper.authors || []).length > 3 ? '...' : '');
-                const badgeClass = paper.source_api === 'PubMed' ? 'badge-pubmed' : 'badge-openalex';
+                
+                let badgeClass = 'badge-openalex';
+                let linkText = '論文原文';
+                if (paper.source_api === 'PubMed') {
+                    badgeClass = 'badge-pubmed';
+                    linkText = 'PubMed原文';
+                } else if (paper.source_api === 'J-STAGE') {
+                    badgeClass = 'badge-jstage';
+                    linkText = 'J-STAGE論文';
+                }
+                
+                const matchedHtml = (paper.matched_keywords || []).map(k => `<span class="matched-kw-badge">🎯 ${escapeHtml(k)}</span>`).join(' ');
                 
                 html += `
-                <article class="paper-card">
+                <article class="paper-card ${paper.source_api === 'J-STAGE' ? 'jstage' : ''}">
                     <div class="card-header">
-                        <span class="source-badge ${badgeClass}">${paper.source_api || 'Paper'}</span>
-                        <span class="pub-date">${paper.pubdate || ''}</span>
+                        <span class="source-badge ${badgeClass}">${escapeHtml(paper.source_api || 'Paper')}</span>
+                        <span class="pub-date">${escapeHtml(paper.pubdate || '')}</span>
                     </div>
                     <h3 class="paper-title">
-                        <a href="${paper.url}" target="_blank" rel="noopener noreferrer">${paper.title}</a>
+                        <a href="${escapeHtml(paper.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(paper.title)}</a>
                     </h3>
                     <div class="paper-meta">
-                        <div><span class="meta-label">著者:</span> ${authorsStr || '情報なし'}</div>
-                        <div><span class="meta-label">雑誌:</span> <em>${paper.journal || '掲載誌不明'}</em></div>
-                        ${paper.doi ? `<div><span class="meta-label">DOI:</span> ${paper.doi}</div>` : ''}
+                        <div><span class="meta-label">著者:</span> ${escapeHtml(authorsStr) || '情報なし'}</div>
+                        <div><span class="meta-label">雑誌:</span> <em>${escapeHtml(paper.journal || '掲載誌不明')}</em></div>
+                        ${paper.doi ? `<div><span class="meta-label">DOI:</span> ${escapeHtml(paper.doi)}</div>` : ''}
                     </div>
                     <div class="card-footer">
-                        <div></div>
-                        <a href="${paper.url}" target="_blank" rel="noopener noreferrer" class="link-btn">
-                            論文原文 <svg viewBox="0 0 24 24" width="12" height="12"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+                        <div>${matchedHtml}</div>
+                        <a href="${escapeHtml(paper.url)}" target="_blank" rel="noopener noreferrer" class="link-btn">
+                            ${linkText} <svg viewBox="0 0 24 24" width="12" height="12"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm-9 2h6v2H5v12h12v-6h2v7A1 1 0 0 1 18 21H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
                         </a>
                     </div>
                 </article>

@@ -1,7 +1,18 @@
 keywords:
-  - "stroke rehabilitation"
-  - "frailty"
-  - "physical therapy"
+  - "理学療法"
+  - "脳卒中 リハビリ"
+  - "フレイル"
+
+keyword_translations:
+  理学療法:
+    - "physical therapy"
+    - "physiotherapy"
+  脳卒中 リハビリ:
+    - "stroke rehabilitation"
+    - "stroke recovery"
+  フレイル:
+    - "frailty"
+    - "frail elderly"
 
 policy_keywords:
   - "リハビリ"

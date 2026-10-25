@@ -9,7 +9,7 @@ on:
   workflow_dispatch: # GitHub UIからの手動実行用
 
 permissions:
-  contents: read # コード読み取り権限
+  contents: write # キャッシュコミットおよびpush権限
   pages: write    # GitHub Pages へのデプロイ権限
   id-token: write # GitHub Pages デプロイ用トークン
 
@@ -49,6 +49,15 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
         run: |
           python main.py
+
+      - name: 翻訳キャッシュの自動コミット & push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          if [ -f data/keyword_cache.json ]; then
+            git add data/keyword_cache.json
+            git diff --staged --quiet || (git commit -m "chore: update keyword translation cache [skip ci]" && git push)
+          fi
 
       - name: GitHub Pages 用アーティファクトのアップロード
         uses: actions/upload-pages-artifact@v3

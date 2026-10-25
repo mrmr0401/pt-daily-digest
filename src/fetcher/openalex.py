@@ -16,12 +16,19 @@ def fetch_openalex_papers(query: str, days_back: int = 7, max_results: int = 20)
     
     start_date = (datetime.now() - timedelta(days=days_back)).strftime("%Y-%m-%d")
     
-    params = {
-        "search": query,
-        "filter": f"from_publication_date:{start_date}",
-        "per_page": max_results,
-        "sort": "publication_date:desc"
-    }
+    if "|" in query:
+        params = {
+            "filter": f"default.search:{query},from_publication_date:{start_date}",
+            "per_page": max_results,
+            "sort": "publication_date:desc"
+        }
+    else:
+        params = {
+            "search": query,
+            "filter": f"from_publication_date:{start_date}",
+            "per_page": max_results,
+            "sort": "publication_date:desc"
+        }
     
     url = f"https://api.openalex.org/works?{urllib.parse.urlencode(params)}"
     

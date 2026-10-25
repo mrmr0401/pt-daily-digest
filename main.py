@@ -32,9 +32,9 @@ def main():
     logger.info("Fetching policy & healthcare news (MHLW)...")
     policy_news = fetch_mhlw_news(policy_keywords=policy_keywords, days_back=days_back)
     
-    # 3. 学術論文データの取得 & 重複排除 (PubMed & OpenAlex)
+    # 3. 学術論文データの取得 & 重複排除 (PubMed & OpenAlex & J-STAGE)
     logger.info("Fetching research papers...")
-    papers = fetch_all_papers(keywords=keywords, days_back=7, max_per_keyword=max_results)
+    papers = fetch_all_papers(keywords=keywords, days_back=7, max_per_keyword=max_results, config=config)
     
     # 4. 「今日のおすすめ5件」の選定 & Gemini AI要約・タイトル翻訳の付加
     logger.info("Selecting Top 5 Recommendations...")
