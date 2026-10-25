@@ -913,7 +913,7 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
         <header>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
                 <div class="header-title" style="margin-bottom: 0;">📋 PT情報ダイジェスト</div>
-                <button class="settings-btn" onclick="openKeywordModal()">⚙️ 検索用語設定</button>
+                <button id="settingsBtn" class="settings-btn" onclick="openKeywordModal()">⚙️ 検索用語設定</button>
             </div>
             <div class="header-meta">
                 <span>更新: {today_date}</span>
@@ -1202,7 +1202,7 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
                 const currentSha = fileData.sha;
 
                 // 新しい YAML 内容の生成
-                const yamlContent = `keywords:\n${{userPaperKeywords.map(k => `  - "${{k}}"`).join('\n')}}\n\npolicy_keywords:\n${{userPolicyKeywords.map(k => `  - "${{k}}"`).join('\n')}}\n\ndays_back: 14\nmax_results_per_keyword: 20\n`;
+                const yamlContent = `keywords:\\n${{userPaperKeywords.map(k => `  - "${{k}}"`).join('\\n')}}\\n\\npolicy_keywords:\\n${{userPolicyKeywords.map(k => `  - "${{k}}"`).join('\\n')}}\\n\\ndays_back: 14\\nmax_results_per_keyword: 20\\n`;
                 
                 // Base64エンコード (UTF-8安全)
                 const utf8Bytes = new TextEncoder().encode(yamlContent);
@@ -1243,6 +1243,11 @@ def generate_docs(papers: List[Dict[str, Any]], policy_news: List[Dict[str, Any]
 
         // 初期化
         document.addEventListener('DOMContentLoaded', () => {{
+            const settingsBtn = document.getElementById('settingsBtn');
+            if (settingsBtn) {{
+                settingsBtn.addEventListener('click', openKeywordModal);
+            }}
+
             document.getElementById('searchInput').addEventListener('input', (e) => {{
                 searchQuery = e.target.value.trim().toLowerCase();
                 currentPolicyPage = 1; // 検索時は先頭ページに戻す
